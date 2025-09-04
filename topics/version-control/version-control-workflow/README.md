@@ -1,35 +1,65 @@
-# TITLE OF PROJECT
+/**
+ * Git Workflow Example
+ * Pippin Barr
+ * 
+ * Some sample code for playing with version control.
+ * Draws a pyramid in the centre of the canvas and a
+ * red circle at the user's mouse position.
+ */
 
-AUTHOR NAME
+"use strict";
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+/**
+ * Create a canvas, hides the cursor
+*/
+function setup() {
+    // A 640x480 canvas
+    createCanvas(640, 640);
 
-## Description
+    // Don't show the cursor
+    noCursor();
+}
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+/**
+ * Draws a top-down view of a pyramid and also a red circle
+ * at the position of the user's cursor
+*/
+function draw() {
+    // Make the background black (specified as RGB)
+    background(0, 0, 0);
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+    // Draw a pyramid
+    // How many levels for the pyramid
+    const levels = 10;
+    // Loop through every level (backwards)
+    for (let level = levels; level > 0; level--) {
+        // Draw this layer
+        push();
+        // Set the grey shade of the level based on its number
+        // e.g. level 1 will get a shade of 10 (dark gray), 
+        // level 10 will be 255(white)
+        const shade = map(level, 1, levels, 10, 255);
+        // No line around the levels
+        noStroke();
+        // Set the fill colour to our shade (RGB)
+        fill(shade, shade, 0);
+        // Draw rectangles from the centre
+        rectMode(CENTER);
+        // Draw the rectangle in the centre of the canvas
+        // (320, 320) with a size based on the level
+        // e.g. level 1 will be a 48x48 rectangle and
+        // level 10 will be a 480x480 rectangle
+        rect(320, 320, level * 48, level * 48);
+        pop();
+    }
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
-
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
-
-## Screenshot(s)
-
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
-
-> ![Image of a clown face](./assets/images/clown.png)
-
-## Attribution
-
-This bit should attribute any code, assets or other elements used taken from other sources. For example:
-
-> - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
-
-## License
-
-This bit should include the license you want to apply to your work. For example:
-
-> This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
+    // Draw a red circle at the position of the mouse
+    push();
+    // No line around the shape
+    noStroke();
+    // Make it red (RGB)
+    fill(255, 0, 0);
+    // Draw a 100x100 circle at the mouse position
+    ellipse(mouseX, mouseY, 100, 100);
+    pop();
+}
