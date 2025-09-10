@@ -1,9 +1,9 @@
 /**
- * Title of Project
- * Author Name
+ * Instruction Challenge
+ * Blaise Treverton
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * Trying to make a self portrait 
+ * 
  */
 
 "use strict";
@@ -12,7 +12,8 @@
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
 function setup() {
-
+    createCanvas(1080, 920);
+    background("#eeecb0ff");
 }
 
 
