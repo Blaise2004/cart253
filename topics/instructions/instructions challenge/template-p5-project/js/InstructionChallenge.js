@@ -33,6 +33,7 @@ function draw() {
     skyScaper2();
     skyScaper3();
     wheel1();
+    moon();
 }
 
 function skyScaper1() { 
@@ -79,5 +80,17 @@ function wheel1() {
       strokeWeight(4);
     line(500, 300, 420, 400);
     line(500, 300, 580, 400);
+    pop();
+}
+
+function moon() {
+   fill("#bdc3a5ff");
+    ellipse(600, 100, 200, 200);
+    push();
+    noStroke();  
+    fill("#5c5f56ff");
+    ellipse(600, 150, 20, 20);
+    ellipse(650, 100, 50, 50);
+    ellipse(550, 80, 50   , 50);
     pop();
 }
