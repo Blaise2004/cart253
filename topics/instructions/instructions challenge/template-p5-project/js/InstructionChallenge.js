@@ -34,6 +34,7 @@ function draw() {
     skyScaper3();
     wheel1();
     moon();
+    road();
 }
 
 function skyScaper1() { 
@@ -88,9 +89,14 @@ function moon() {
     ellipse(600, 100, 200, 200);
     push();
     noStroke();  
-    fill("#5c5f56ff");
+    fill("#5c5f5658");
     ellipse(600, 150, 20, 20);
     ellipse(650, 100, 50, 50);
     ellipse(550, 80, 50   , 50);
     pop();
+}
+
+function road() { 
+    fill("#585858ff");
+    rect(0, 430, width, 100);
 }
