@@ -13,7 +13,7 @@
 */
 function setup() {
     createCanvas(800, 600);
-    background("#b0deeeff");
+    background("#202425ff"); //sky colour
 }
 
 
@@ -24,19 +24,41 @@ function draw() {
 
     push();
    // stroke(10);
-    fill("#1a7027dd");
-    rect(0, 400, 800, 300);
+    fill("#1a7027dd"); // ground colour
+    rect(0, 400, 800, 300); 
     pop();
 
+    //draw all buildings:
     skyScaper1();
     skyScaper2();
     skyScaper3();
-    skyScaper4();
+    wheel1();
 }
 
 function skyScaper1() { 
     fill("#585858ff");
     rect(100, 200, 80, 200);
+    push();
+    fill("#edb91eff");
+    
+    rect(110, 210, 10, 10);//first row windows
+    rect(110, 230, 10, 10);
+    rect(110, 250, 10, 10);
+    rect(110, 270, 10, 10);
+    rect(110, 290, 10, 10);
+    rect(110, 310, 10, 10);
+    rect(110, 330, 10, 10);
+    rect(110, 350, 10, 10);
+
+     rect(130, 210, 10, 10);//second row
+    rect(130, 230, 10, 10);
+    rect(130, 250, 10, 10);
+    rect(130, 270, 10, 10);
+    rect(130, 290, 10, 10);
+    rect(130, 310, 10, 10);
+    rect(130, 330, 10, 10);
+     rect(130,350, 10, 10);
+
 }
 
 function skyScaper2() { 
@@ -49,8 +71,9 @@ function skyScaper3() {
     triangle(300, 400, 400 , 400, 350, 100);
 }
 
-function skyScaper4() { 
-    fill("#b3c432ff");
+
+function wheel1() { 
+    fill("#6a6a6a62");
     ellipse(500, 300, 150);
     push();
       strokeWeight(4);
