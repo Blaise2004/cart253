@@ -23,7 +23,7 @@ function setup() {
 function draw() {
 
     push();
-    stroke(2);
+   // stroke(10);
     fill("#1a7027dd");
     rect(0, 400, 800, 300);
     pop();
@@ -51,5 +51,10 @@ function skyScaper3() {
 
 function skyScaper4() { 
     fill("#b3c432ff");
-    ellipse(500, 400, 100);
+    ellipse(500, 300, 150);
+    push();
+      strokeWeight(4);
+    line(500, 300, 420, 400);
+    line(500, 300, 580, 400);
+    pop();
 }
