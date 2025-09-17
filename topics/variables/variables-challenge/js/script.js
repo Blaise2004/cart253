@@ -21,6 +21,17 @@ let mrFurious = {
   }
 };
 
+let skycolor = {
+
+    fill: {
+    
+        r:160,
+        g:180,
+        b:200
+}
+
+}
+
 /**
  * Create the canvas
  */
@@ -32,7 +43,14 @@ function setup() {
  * Draw (and update) Mr. Furious
  */
 function draw() {
-    background(160, 180, 200);
+    skycolor.fill.r = skycolor.fill.r - 1;
+    skycolor.fill.g = skycolor.fill.g - 1;
+    skycolor.fill.b = skycolor.fill.b - 1;
+    skycolor.fill.b = constrain(skycolor.fill.b, 139, 200);
+    
+    background(skycolor.fill.r, skycolor.fill.g, skycolor.fill.b);
+    
+    
     mrFurious.fill.g = mrFurious.fill.g - 1;
   mrFurious.fill.b = mrFurious.fill.b - 1;
   // Draw Mr. Furious as a coloured circle
