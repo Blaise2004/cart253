@@ -50,8 +50,8 @@ let birdProperties = {
 
 let rage = {
 
-    X: 200,
-    Y: 200
+    min: -5,
+    max: 5
 }
 
 
@@ -82,7 +82,13 @@ function draw() {
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
   
     
-    mrFurious.x = mrFurious.x + random(-10, 10);
+    rage.min = rage.min - 0.1
+    rage.max = rage.max + 0.1
+    mrFurious.x = constrain(mrFurious.x, 30, 380);
+    mrFurious.x = mrFurious.x + random(rage.min , rage.max);
+    
+    
+
     ellipse(mrFurious.x, mrFurious.y, mrFurious.size);
     pop();
     
