@@ -33,6 +33,9 @@ let skycolor = {
 
 let birdProperties = {
 
+    
+    X: 30,
+    Y: 200,
     speed: 2,
 
     fill: {
@@ -77,10 +80,10 @@ function draw() {
 }
 
 function bird() {
-
+birdProperties.X = birdProperties.X + 1
     push();
     fill(birdProperties.fill.r, birdProperties.fill.g, birdProperties.fill.b);
-    rect(30, 200, 50, 20);
+    rect(birdProperties.X, 200, 50, 20);
     pop();
 
 
