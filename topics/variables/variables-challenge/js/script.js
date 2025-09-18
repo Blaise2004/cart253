@@ -37,15 +37,22 @@ let birdProperties = {
     X: 30,
     Y: 200,
     speed: 2,
-
+    velocityX: 1,
+    velocityY: 1,
+  
     fill: {
-        r:64,
+        r: 64,
         g: 224,
         b: 208
     
     }
 }
-    
+
+let rage = {
+
+    X: 200,
+    Y: 200
+}
 
 
 /**
@@ -73,17 +80,23 @@ function draw() {
   push();
   noStroke();
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
-  ellipse(mrFurious.x, mrFurious.y, mrFurious.size);
+  
+    
+    mrFurious.x = mrFurious.x + random(-10, 10);
+    ellipse(mrFurious.x, mrFurious.y, mrFurious.size);
     pop();
     
     bird();
 }
 
 function bird() {
-birdProperties.X = birdProperties.X + 1
+    birdProperties.X = birdProperties.X + birdProperties.velocityX;
+    birdProperties.X = constrain(birdProperties.X, 30, 300);
+    birdProperties.Y = birdProperties.Y - birdProperties.velocityY
+    birdProperties.Y = constrain(birdProperties.Y, 100, 250); 
     push();
     fill(birdProperties.fill.r, birdProperties.fill.g, birdProperties.fill.b);
-    rect(birdProperties.X, 200, 50, 20);
+    rect(birdProperties.X, birdProperties.Y, 50, 20);
     pop();
 
 
