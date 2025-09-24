@@ -1,6 +1,6 @@
 /**
  * Circle Master
- * Pippin Barr
+ * Blaise Treverton
  *
  * This will be a program in which the user can push a circle
  * on the canvas using their own circle.
@@ -35,10 +35,23 @@ function draw() {
   
   // Move user circle
   moveUser();
-  
+    movePuck();
   // Draw the user and puck
-  drawUser();
+    drawUser();
+   
   drawPuck();
+}
+
+function movePuck() {
+  
+
+    const distance = dist(user.x, user.y, puck.x, puck.y);
+
+    const mouseIsOverlapping = (distance < puck.size / 2);
+    
+    if (mouseIsOverlapping) {
+        puck.x= puck.x + 1;
+    }
 }
 
 /**
@@ -70,3 +83,4 @@ function drawPuck() {
   ellipse(puck.x, puck.y, puck.size);
   pop();
 }
+
