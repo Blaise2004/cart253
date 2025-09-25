@@ -60,49 +60,12 @@ function draw() {
 
 
 
-function drawTarget() {
-    
-     push();
-  noStroke();
-  fill(target.fill);
-  ellipse(target.x, target.y, target.size);
-  pop();
-
-
-}
 
 
 
 
-function movePuck() {
-  
-//we are using 3 different players here
-    // mouse
-    // user
-    //puck
-    const distance = dist(user.x, user.y, puck.x, puck.y);
-    console.log(distance);
 
-    const mouseIsOverlapping = (distance < 87  );
-    //X
-    if (mouseIsOverlapping) {
-        if (mouseX < puck.x) {
-            puck.x = puck.x + puck.speed;
-        }
-        else {
-            puck.x = puck.x - puck.speed;
-            }
-         
-       //Y
-        if (mouseY < puck.y) {
-            puck.y = puck.y + puck.speed;
-        }
-        else {
-            puck.y = puck.y - puck.speed;
-            }
-        
-    }
-}
+
 
     
 
@@ -127,6 +90,35 @@ function drawUser() {
   pop();
 }
 
+function movePuck() {
+  
+//we are using 3 different players here
+    // mouse
+    // user
+    //puck
+    const distance = dist(user.x, user.y, puck.x, puck.y);
+    console.log(distance);
+
+    const mouseIsOverlapping = (distance < puck.size/2 +user.size/2 );
+    //X
+    if (mouseIsOverlapping) {
+        if (mouseX < puck.x) {
+            puck.x = puck.x + puck.speed;
+        }
+        else {
+            puck.x = puck.x - puck.speed;
+            }
+         
+       //Y
+        if (mouseY < puck.y) {
+            puck.y = puck.y + puck.speed;
+        }
+        else {
+            puck.y = puck.y - puck.speed;
+            }
+        
+    }
+}
 /**
  * Displays the puck circle
  */
@@ -150,3 +142,13 @@ function checkTarget() {
 
 }
 
+function drawTarget() {
+    
+     push();
+  noStroke();
+  fill(target.fill);
+  ellipse(target.x, target.y, target.size);
+  pop();
+
+
+}
