@@ -75,7 +75,7 @@ function draw() {
  * Sets the user position to the mouse position
  */
 function moveUser() {
-  user.x = mouseX;
+    user.x = mouseX;
   user.y = mouseY;
 }
 
@@ -83,7 +83,10 @@ function moveUser() {
  * Displays the user circle
  */
 function drawUser() {
-  push();
+ 
+ 
+
+    push();
   noStroke();
   fill(user.fill);
   ellipse(user.x, user.y, user.size);
