@@ -123,11 +123,17 @@ function movePuck() {
  * Displays the puck circle
  */
 function drawPuck() {
-  push();
+  
+    puck.x = constrain(puck.x, 0+puck.size/2,width-puck.size/2)
+   puck.y = constrain(puck.y, 0+puck.size/2,height-puck.size/2)
+    push();
   noStroke();
   fill(puck.fill);
   ellipse(puck.x, puck.y, puck.size);
-  pop();
+  
+    
+    
+    pop();
 }
 
 function checkTarget() {
