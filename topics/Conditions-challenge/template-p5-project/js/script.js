@@ -5,12 +5,22 @@
  * This will be a program in which the user can push a circle
  * on the canvas using their own circle.
  */
+const target = {
 
+    x: 350,
+    y: 200,
+    size: 50,
+    fill: "#005effff",
+    fill2: "#00ff08ff"
+
+
+}
 const puck = {
   x: 200,
   y: 200,
   size: 100,
-  fill: "#ff0000"
+    fill: "#ff0000",
+  speed: 5
 };
 
 const user = {
@@ -21,7 +31,7 @@ const user = {
 };
 
 /**
- * Create the canvas
+ * Create the 
  */
 function setup() {
   createCanvas(400, 400);
@@ -32,27 +42,69 @@ function setup() {
  */
 function draw() {
   background("#aaaaaa");
-  
+   
+    
+    
+    checkTarget();
   // Move user circle
   moveUser();
+    
+   
     movePuck();
   // Draw the user and puck
     drawUser();
-   
-  drawPuck();
+    
+    drawPuck();
+      drawTarget();
 }
+
+
+
+function drawTarget() {
+    
+     push();
+  noStroke();
+  fill(target.fill);
+  ellipse(target.x, target.y, target.size);
+  pop();
+
+
+}
+
+
+
 
 function movePuck() {
   
-
+//we are using 3 different players here
+    // mouse
+    // user
+    //puck
     const distance = dist(user.x, user.y, puck.x, puck.y);
 
     const mouseIsOverlapping = (distance < puck.size / 2);
     
     if (mouseIsOverlapping) {
-        puck.x= puck.x + 1;
+        if (mouseX < puck.x) {
+            puck.x = puck.x + puck.speed;
+        }
+        else {
+            puck.x = puck.x - puck.speed;
+            }
+         
+        if (mouseY < puck.y) {
+            puck.y = puck.y + puck.speed;
+        }
+        else {
+            puck.y = puck.y - puck.speed;
+            }
+        
     }
 }
+
+    
+
+
 
 /**
  * Sets the user position to the mouse position
@@ -82,5 +134,17 @@ function drawPuck() {
   fill(puck.fill);
   ellipse(puck.x, puck.y, puck.size);
   pop();
+}
+
+function checkTarget() {
+    
+    const distance = dist(puck.x, puck.y, target.x , target.y);
+    
+    const mouseIsOverlapping = (distance < target.size);
+    
+    if (mouseIsOverlapping) {
+        target.fill = target.fill2;
+    }
+
 }
 
