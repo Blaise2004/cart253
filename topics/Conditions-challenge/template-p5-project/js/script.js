@@ -20,7 +20,7 @@ const puck = {
   y: 200,
   size: 100,
     fill: "#ff0000",
-  speed: 5
+  speed: 1
 };
 
 const user = {
@@ -81,9 +81,10 @@ function movePuck() {
     // user
     //puck
     const distance = dist(user.x, user.y, puck.x, puck.y);
+    console.log(distance);
 
-    const mouseIsOverlapping = (distance < puck.size / 2);
-    
+    const mouseIsOverlapping = (distance < 87  );
+    //X
     if (mouseIsOverlapping) {
         if (mouseX < puck.x) {
             puck.x = puck.x + puck.speed;
@@ -92,6 +93,7 @@ function movePuck() {
             puck.x = puck.x - puck.speed;
             }
          
+       //Y
         if (mouseY < puck.y) {
             puck.y = puck.y + puck.speed;
         }
