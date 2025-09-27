@@ -11,14 +11,34 @@
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
-let colourclouds = {
+let clouds = {
+   
+ax : 30,
+ay : 200,
+bx : 150,
+    by: 130,
+    cx: 300,
+    cy: 200,
+
+
+    colourclouds: {
+        leftside: "#faf3e3",
+        rightside: '#b5a08f'
+    }
+}
+let moon = {
+    x: 200, 
+    y: 100,
+    size: 50,
+    colourmoon:{
     leftside: "#faf3e3",
     rightside: '#ebcaaa'
 }
-let colourmoon = {
-    leftside: "#faf3e3",
-    rightside: '#ebcaaa'
 }
+
+
+
+
 
 function setup() {
     createCanvas(800, 600,);
@@ -45,20 +65,50 @@ function drawSky() {
     let skycolour1 = '#65687bff';
     background (skycolour1)
 }
-function drawMoon() {
+function drawMoon() { // moon Function 
   
+    fill(moon.colourmoon.rightside);
+    ellipse(moon.x, moon.y, moon.size);
+    ellipse(moon.x, moon.y, moon.size-10);
 
-    fill(colourmoon.rightside);
-    ellipse(200, 100, 50);
-
-    fill(colourmoon.leftside)
-   arc(196, 100, 40, 50, 1.9,11.5); // top half overlay
+    fill(moon.colourmoon.leftside)
+    arc(moon.x - 3, moon.y, moon.size - 10, moon.size, 1.7708, 5.7124, );
+    
+    push();
+    fill(moon.colourmoon.rightside);
+    ellipse(moon.x+4, moon.y+1, moon.size-14);
+    pop();
 
 }
-function drawClouds() {
+function drawClouds() { //cloud Function
+  fill(clouds.colourclouds.leftside);
+    triangle(clouds.ax, clouds.ay, clouds.bx, clouds.by, clouds.cx, clouds.cy);
+    //find angle
+let mx = (clouds.ax + clouds.by) / 2;
+let my = (clouds.ay + clouds.by) / 2;
+
+ // Angle of the slope in radians
+    let angle = atan2(clouds.by - clouds.ay, clouds.bx - clouds.ax);
+    
+     // Distance between points for arc size
+  let d = dist(clouds.ax, clouds.ay, clouds.bx, clouds.by);
+
+
+
     push();
-    fill("#faf3e3")
-    ellipse();
+    fill(clouds.colourclouds.leftside);
+ 
+    translate(mx+11, my);
+    rotate(angle);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+    
+    push();
+    fill(clouds.colourclouds.leftside);
+ 
+    translate(mx+40, my-15);
+    rotate(angle);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
         pop();
 }
 
