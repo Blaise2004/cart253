@@ -1,6 +1,6 @@
 /**
  * Circle Master
- * Blaise Treverton
+ * Blaise Treverton and Shrook
  *
  * This will be a program in which the user can push a circle
  * on the canvas using their own circle.
