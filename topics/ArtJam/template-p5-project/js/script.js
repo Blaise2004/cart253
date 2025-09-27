@@ -21,6 +21,9 @@ function setup() {
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
+    background(220);
     fill(255, 0, 0);
     ellipse(mouseX, mouseY, 50, 50);
 }
+
+
