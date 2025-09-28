@@ -28,7 +28,7 @@ bx : 150,
 }
 let moon = {
     x: 200, 
-    y: 100,
+    y: 80,
     size: 50,
     colourmoon:{
     leftside: "#faf3e3",
@@ -87,29 +87,68 @@ function drawClouds() { //cloud Function
 let mx = (clouds.ax + clouds.by) / 2;
 let my = (clouds.ay + clouds.by) / 2;
 
+    mx = mx - 0;
+    my = my + 0 ;
  // Angle of the slope in radians
     let angle = atan2(clouds.by - clouds.ay, clouds.bx - clouds.ax);
     
      // Distance between points for arc size
   let d = dist(clouds.ax, clouds.ay, clouds.bx, clouds.by);
 
+mx = mx - 0;
+    my = my + 0 ;
 
-
+   
+   push();
+    translate(mx-20, my+18);
+    rotate(angle);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+   
     push();
-    fill(clouds.colourclouds.leftside);
- 
     translate(mx+11, my);
+    rotate(angle);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+
+    
+    push();
+    translate(mx+40, my-15);
     rotate(angle);
     arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
     
     push();
-    fill(clouds.colourclouds.leftside);
- 
-    translate(mx+40, my-15);
-    rotate(angle);
+    translate(mx+70, my-25);
+    rotate(angle+1);
     arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-        pop();
+    pop();
+
+     push();
+    translate(mx+100, my-18);
+    rotate(angle*-1);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx+130, my-0);
+    rotate(angle*-1);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx+178, my+18);
+    rotate(angle*-1);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx+188, my+18);
+    rotate(angle*-1);
+    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+    
 }
 
 function drawMountains() {}
