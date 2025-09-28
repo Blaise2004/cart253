@@ -61,7 +61,7 @@ let moon = {
 
 
 function setup() {
-    createCanvas(800, 600,);
+    createCanvas(1000, 800,);
     background(220); 
 }
 
@@ -81,7 +81,7 @@ drawMoon();
 drawHills();
 drawTrees();
 drawFirepit();
-drawTent();
+    drawTent();
 }
 
 function drawSky() {
@@ -101,6 +101,8 @@ function drawMoon() { // moon Function
     fill(moon.colourmoon.rightside);
     ellipse(moon.x+4, moon.y+1, moon.size-14);
     pop();
+
+    resetMatrix();
 
 }
 function drawCloud1() { //cloud Function
@@ -238,7 +240,9 @@ function drawCloud1() { //cloud Function
   translate(mx2 + 171, my2 + 18);
   rotate(angleBC2);
   arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
-  pop();
+    pop();
+    
+    resetMatrix();
 }
 
 function drawCloud2() { //cloud Function
@@ -379,12 +383,15 @@ function drawCloud2() { //cloud Function
   translate(mx2 + 171, my2 + 18);
   rotate(angleBC2);
   arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
-  pop();
+    pop();
+    
+resetMatrix();
+
 }
 
 function drawCloud3() { //cloud Function
 
-    translate(-100,100)
+    translate(400, 50);
     
     
     fill(cloud1.main.colourclouds.leftside);
@@ -529,9 +536,15 @@ resetMatrix(); // reset the translation
 
 function drawMountains() {
 
+    
     push();
-    triangle(0,0, 200,250,300,300)
+    fill("#0d46876e")
+    triangle(width-width,height-height/4, 200,250,500,height-height/4)
     pop();
+    push()
+    fill("#93b2e338")
+     triangle(width-width,height-height/4, 200,250,200,height-height/4)
+    pop()
 }
 function drawHills() {}
 function drawTrees() {}
