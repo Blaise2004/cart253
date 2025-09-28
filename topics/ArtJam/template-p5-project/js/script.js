@@ -520,11 +520,19 @@ function drawCloud3() { //cloud Function
   translate(mx2 + 171, my2 + 18);
   rotate(angleBC2);
   arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
-  pop();
+    pop();
+    
+resetMatrix(); // reset the translation
+
 }
 
 
-function drawMountains() {}
+function drawMountains() {
+
+    push();
+    triangle(0,0, 200,250,300,300)
+    pop();
+}
 function drawHills() {}
 function drawTrees() {}
 function drawFirepit() {}
