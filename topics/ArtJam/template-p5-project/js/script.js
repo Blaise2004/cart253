@@ -15,37 +15,38 @@
 
 const offSet = { x: 20, y: 0 };
 
+let cloudCoordinates = {
+    ax: 30,
+    ay: 200,
+    bx: 150,
+    by: 130,
+    cx: 300,
+    cy: 200,
+};
+
 let cloud1 = {
     main: {
-        ax: 30,
-        ay: 200,
-        bx: 150,
-        by: 130,
-        cx: 300,
-        cy: 200,
-        colourclouds: {
-            leftside: "#faf3e3ff"
-        }
+        ...cloudCoordinates,
+        colourclouds: { leftside: "#faf3e3ff" }
     },
     offset: {
-        ax: 30 + offSet.x,
-        ay: 200 + offSet.y,
-        bx: 150 + offSet.x,
-        by: 130 + offSet.y,
-        cx: 300 + offSet.x,
-        cy: 200 + offSet.y,
-        colourclouds: {
-            rightside: "#ebcbaaf2"
-        }
+        ax: cloudCoordinates.ax + offSet.x,
+        ay: cloudCoordinates.ay + offSet.y,
+        bx: cloudCoordinates.bx + offSet.x,
+        by: cloudCoordinates.by + offSet.y,
+        cx: cloudCoordinates.cx + offSet.x,
+        cy: cloudCoordinates.cy + offSet.y,
+        colourclouds: { rightside: "#ebcbaaf2" }
     }
 };
 
 
 
+
 let moon = {
-    x: 200, 
+    x: 300, 
     y: 80,
-    size: 50,
+    size: 100,
     colourmoon:{
     leftside: "#faf3e3",
     rightside: '#ebcaaa'
@@ -70,8 +71,7 @@ function draw() {
 drawSky();
 drawMoon();
 
-    drawClouds();
-  drawClouds2();
+    drawCloud1();
 
     drawMountains();
 drawHills();
@@ -99,7 +99,7 @@ function drawMoon() { // moon Function
     pop();
 
 }
-function drawClouds() { //cloud Function
+function drawCloud1() { //cloud Function
   fill(cloud1.main.colourclouds.leftside);
   triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
 
