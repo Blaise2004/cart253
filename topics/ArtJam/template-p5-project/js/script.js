@@ -11,21 +11,33 @@
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
-let clouds = {
-   
-ax : 30,
-ay : 200,
-bx : 150,
+const offSet = { x: 20, y: 0 };
+
+let clouds = {  // this will be used in drawClouds()
+    ax: 30,
+    ay: 200,
+    bx: 150,
     by: 130,
     cx: 300,
     cy: 200,
-
-
     colourclouds: {
-        leftside: "#faf3e3",
-        rightside: '#b5a08f'
+        leftside: "#faf3e3"
     }
-}
+};
+
+let clouds2 = {  // this will be used in drawClouds2()
+    ax: 30 + offSet.x,
+    ay: 200 + offSet.y,
+    bx: 150 + offSet.x,
+    by: 130 + offSet.y,
+    cx: 300 + offSet.x,
+    cy: 200 + offSet.y,
+    colourclouds: {
+        rightside: '#ebcaaa'
+    }
+};
+
+
 let moon = {
     x: 200, 
     y: 80,
@@ -53,7 +65,9 @@ function draw() {
     noStroke();
 drawSky();
 drawMoon();
-drawClouds();
+
+    drawClouds();
+  drawClouds2();
 drawMountains();
 drawHills();
 drawTrees();
@@ -149,11 +163,77 @@ let dBC = dist(clouds.bx, clouds.by, clouds.cx, clouds.cy);
     translate(mx+171, my+18);
     rotate(angleBC);
     arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();   
+}
+
+function drawClouds2() { //cloud Function
+    fill(clouds2.colourclouds.rightside);
+    triangle(clouds2.ax, clouds2.ay, clouds2.bx, clouds2.by, clouds2.cx, clouds2.cy);
+
+    //find angle A-B
+    let mx = (clouds2.ax + clouds2.bx) / 2;
+    let my = (clouds2.ay + clouds2.by) / 2;
+
+    // Angle of the slope in radians
+    let angle = atan2(clouds2.by - clouds2.ay, clouds2.bx - clouds2.ax);
+
+    // Distance between points for arc size
+    let d = dist(clouds2.ax, clouds2.ay, clouds2.bx, clouds2.by);
+
+    // Midpoint of B–C
+    let mxBC = (clouds2.bx + clouds2.cx) / 2;
+    let myBC = (clouds2.by + clouds2.cy) / 2;
+
+    // Angle of the slope B→C
+    let angleBC = atan2(clouds2.cy - clouds2.by, clouds2.cx - clouds2.bx);
+
+    // Distance between B and C
+    let dBC = dist(clouds2.bx, clouds2.by, clouds2.cx, clouds2.cy);
+
+    push();
+    translate(mx - 30, my + 18);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
 
- 
-    
+    push();
+    translate(mx + 11, my);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx + 40, my - 15);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx + 70, my - 25);
+    rotate(angleBC);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx + 100, my - 18);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx + 130, my - 0);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
+
+    push();
+    translate(mx + 171, my + 18);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
+    pop();
 }
+
+
 
 function drawMountains() {}
 function drawHills() {}
