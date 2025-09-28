@@ -95,7 +95,10 @@ drawMoon();
     drawCloud2();
     drawCloud3();
     drawMountains();
-drawHills();
+    drawHills();
+    drawMountains2();
+    drawMountains3();
+
 drawTrees();
 drawFirepit();
     drawTent();
@@ -123,6 +126,8 @@ function drawMoon() { // moon Function
 
 }
 function drawCloud1() { //cloud Function
+
+    angleMode(RADIANS);
 
     fill(cloud1.main.colourclouds.leftside);
   triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
@@ -553,101 +558,105 @@ resetMatrix(); // reset the translation
 
 function drawMountains() {
 
-   push();
-// Main mountain
-fill("#0d4687ff");
-triangle(
-    mountain.bottomLeft.x, mountain.bottomLeft.y,
-    mountain.top.x, mountain.top.y,
-    mountain.bottomRight.x, mountain.bottomRight.y
-);
+    push();
+    // Main mountain
+    fill("#0d4687ff");
+    triangle(
+        mountain.bottomLeft.x, mountain.bottomLeft.y,
+        mountain.top.x, mountain.top.y,
+        mountain.bottomRight.x, mountain.bottomRight.y
+    );
 
 
-// Smaller triangles / details
-fill("#93b2e3ff");
-triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
-triangle(300, 600, 200, 300, 200, 600);
+    // Smaller triangles / details
+    fill("#93b2e3ff");
+    triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
+    triangle(300, 600, 200, 300, 200, 600);
 
-// Snow at the top
-fill("#ffffffa8");
+    // Snow at the top
+    fill("#ffffffa8");
     // Example: several small triangles to simulate jagged snow
     triangle(145, 350, mountain.top.x, mountain.top.y, 190, 320);
     triangle(190, 320, mountain.top.x, mountain.top.y, 210, 350);
     triangle(210, 350, mountain.top.x, mountain.top.y, 230, 320);
-    triangle(230, 320, mountain.top.x, mountain.top.y, 250,350);
-    triangle(250,350, mountain.top.x, mountain.top.y,269, 330);
+    triangle(230, 320, mountain.top.x, mountain.top.y, 250, 350);
+    triangle(250, 350, mountain.top.x, mountain.top.y, 269, 330);
     pop();
+}
     
-    
-    
+function drawMountains2() {
     
     push();
     
-    translate(300, 0);
+    translate(300, 20);
 
-// Main mountain
-fill("#0d4687ff");
-triangle(
-    mountain.bottomLeft.x, mountain.bottomLeft.y,
-    mountain.top.x, mountain.top.y,
-    mountain.bottomRight.x, mountain.bottomRight.y
-);
+    // Main mountain
+    fill("#0d4687ff");
+    triangle(
+        mountain.bottomLeft.x, mountain.bottomLeft.y,
+        mountain.top.x, mountain.top.y,
+        mountain.bottomRight.x, mountain.bottomRight.y
+    );
 
 
-// Smaller triangles / details
-fill("#93b2e3ff");
-triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
-triangle(300, 600, 200, 300, 200, 600);
+    // Smaller triangles / details
+    fill("#93b2e3ff");
+    triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
+    triangle(300, 600, 200, 300, 200, 600);
 
-// Snow at the top
-fill("#ffffffa8");
+    // Snow at the top
+    fill("#ffffffa8");
     // Example: several small triangles to simulate jagged snow
     triangle(145, 350, mountain.top.x, mountain.top.y, 190, 320);
     triangle(190, 320, mountain.top.x, mountain.top.y, 210, 350);
     triangle(210, 350, mountain.top.x, mountain.top.y, 230, 320);
-    triangle(230, 320, mountain.top.x, mountain.top.y, 250,350);
-    triangle(250,350, mountain.top.x, mountain.top.y,269, 330);
+    triangle(230, 320, mountain.top.x, mountain.top.y, 250, 350);
+    triangle(250, 350, mountain.top.x, mountain.top.y, 269, 330);
     pop();
     
-     push();
-    
-    translate(450, 30);
+    push();
+}
+  
 
-// Main mountain
-fill("#0d4687ff");
-triangle(
-    mountain.bottomLeft.x, mountain.bottomLeft.y,
-    mountain.top.x, mountain.top.y,
-    mountain.bottomRight.x, mountain.bottomRight.y
-);
+function drawMountains3() {
+    translate(475, 50);
+
+    // Main mountain
+    fill("#0d4687ff");
+    triangle(
+        mountain.bottomLeft.x, mountain.bottomLeft.y,
+        mountain.top.x, mountain.top.y,
+        mountain.bottomRight.x, mountain.bottomRight.y
+    );
 
 
-// Smaller triangles / details
-fill("#93b2e3ff");
-triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
-triangle(300, 600, 200, 300, 200, 600);
+    // Smaller triangles / details
+    fill("#93b2e3ff");
+    triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
+    triangle(300, 600, 200, 300, 200, 600);
 
-// Snow at the top
-fill("#ffffffa8");
+    // Snow at the top
+    fill("#ffffffa8");
     // Example: several small triangles to simulate jagged snow
     triangle(145, 350, mountain.top.x, mountain.top.y, 190, 320);
     triangle(190, 320, mountain.top.x, mountain.top.y, 210, 350);
     triangle(210, 350, mountain.top.x, mountain.top.y, 230, 320);
-    triangle(230, 320, mountain.top.x, mountain.top.y, 250,350);
-    triangle(250,350, mountain.top.x, mountain.top.y,269, 330);
-pop();
-
-
+    triangle(230, 320, mountain.top.x, mountain.top.y, 250, 350);
+    triangle(250, 350, mountain.top.x, mountain.top.y, 269, 330);
+    pop();
 }
+
+
 function drawHills() {
-angleMode (DEGREES)
+
+  
+  
     push()
+    angleMode(DEGREES)
     fill("#b09831")
-   arc(mountain.bottomLeft.x, mountain.bottomLeft.y, width, height - mountain.bottomLeft.y, 180, 0);
-
-
-
+    arc(width/2-width/4, mountain.bottomLeft.y+40, width/2, 100, 180, 0);
     pop()
+
 }
 function drawTrees() {}
 function drawFirepit() {}
