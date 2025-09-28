@@ -11,31 +11,35 @@
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
+
+
 const offSet = { x: 20, y: 0 };
 
-let clouds = {  // this will be used in drawClouds()
-    ax: 30,
-    ay: 200,
-    bx: 150,
-    by: 130,
-    cx: 300,
-    cy: 200,
-    colourclouds: {
-        leftside: "#faf3e3"
+let cloud1 = {
+    main: {
+        ax: 30,
+        ay: 200,
+        bx: 150,
+        by: 130,
+        cx: 300,
+        cy: 200,
+        colourclouds: {
+            leftside: "#faf3e3"
+        }
+    },
+    offset: {
+        ax: 30 + offSet.x,
+        ay: 200 + offSet.y,
+        bx: 150 + offSet.x,
+        by: 130 + offSet.y,
+        cx: 300 + offSet.x,
+        cy: 200 + offSet.y,
+        colourclouds: {
+            rightside: "#ebcaaa"
+        }
     }
 };
 
-let clouds2 = {  // this will be used in drawClouds2()
-    ax: 30 + offSet.x,
-    ay: 200 + offSet.y,
-    bx: 150 + offSet.x,
-    by: 130 + offSet.y,
-    cx: 300 + offSet.x,
-    cy: 200 + offSet.y,
-    colourclouds: {
-        rightside: '#ebcaaa'
-    }
-};
 
 
 let moon = {
@@ -95,143 +99,141 @@ function drawMoon() { // moon Function
 
 }
 function drawClouds() { //cloud Function
-  fill(clouds.colourclouds.leftside);
-    triangle(clouds.ax, clouds.ay, clouds.bx, clouds.by, clouds.cx, clouds.cy);
-    
-    
-    //find angle A-B
-let mx = (clouds.ax + clouds.bx) / 2;
-let my = (clouds.ay + clouds.by) / 2;
+  fill(cloud1.main.colourclouds.leftside);
+  triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
 
+  //find angle A-B
+  let mx = (cloud1.main.ax + cloud1.main.bx) / 2;
+  let my = (cloud1.main.ay + cloud1.main.by) / 2;
 
- // Angle of the slope in radians
-    let angle = atan2(clouds.by - clouds.ay, clouds.bx - clouds.ax);
-    
-     // Distance between points for arc size
-    let d = dist(clouds.ax, clouds.ay, clouds.bx, clouds.by);
-    
-    // Midpoint of B–C
-let mxBC = (clouds.bx + clouds.cx) / 2;
-let myBC = (clouds.by + clouds.cy) / 2;
+  // Angle of the slope in radians
+  let angle = atan2(cloud1.main.by - cloud1.main.ay, cloud1.main.bx - cloud1.main.ax);
 
-// Angle of the slope B→C
-let angleBC = atan2(clouds.cy - clouds.by, clouds.cx - clouds.bx);
+  // Distance between points for arc size
+  let d = dist(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by);
 
-// Distance between B and C
-let dBC = dist(clouds.bx, clouds.by, clouds.cx, clouds.cy);
+  // Midpoint of B–C
+  let mxBC = (cloud1.main.bx + cloud1.main.cx) / 2;
+  let myBC = (cloud1.main.by + cloud1.main.cy) / 2;
 
+  // Angle of the slope B→C
+  let angleBC = atan2(cloud1.main.cy - cloud1.main.by, cloud1.main.cx - cloud1.main.bx);
 
-   push();
-    translate(mx-30, my+18);
-    rotate(angle);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
-   
-    push();
-    translate(mx+11, my);
-    rotate(angle);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  // Distance between B and C
+  let dBC = dist(cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
 
+  push();
+  translate(mx - 30, my + 18);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    
-    push();
-    translate(mx+40, my-15);
-    rotate(angle);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
-    
-    push();
-    translate(mx+70, my-25);
-    rotate(angleBC);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 11, my);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-     push();
-    translate(mx+100, my-18);
-    rotate(angleBC);
-    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 40, my - 15);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx+130, my-0);
-    rotate(angleBC);
-    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 70, my - 25);
+  rotate(angleBC);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx+171, my+18);
-    rotate(angleBC);
-    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();   
+  push();
+  translate(mx + 100, my - 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 130, my - 0);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 171, my + 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();   
 }
+
+
 
 function drawClouds2() { //cloud Function
-    fill(clouds2.colourclouds.rightside);
-    triangle(clouds2.ax, clouds2.ay, clouds2.bx, clouds2.by, clouds2.cx, clouds2.cy);
+  fill(cloud1.offset.colourclouds.rightside);
+  triangle(cloud1.offset.ax, cloud1.offset.ay, cloud1.offset.bx, cloud1.offset.by, cloud1.offset.cx, cloud1.offset.cy);
 
-    //find angle A-B
-    let mx = (clouds2.ax + clouds2.bx) / 2;
-    let my = (clouds2.ay + clouds2.by) / 2;
+  //find angle A-B
+  let mx = (cloud1.offset.ax + cloud1.offset.bx) / 2;
+  let my = (cloud1.offset.ay + cloud1.offset.by) / 2;
 
-    // Angle of the slope in radians
-    let angle = atan2(clouds2.by - clouds2.ay, clouds2.bx - clouds2.ax);
+  // Angle of the slope in radians
+  let angle = atan2(cloud1.offset.by - cloud1.offset.ay, cloud1.offset.bx - cloud1.offset.ax);
 
-    // Distance between points for arc size
-    let d = dist(clouds2.ax, clouds2.ay, clouds2.bx, clouds2.by);
+  // Distance between points for arc size
+  let d = dist(cloud1.offset.ax, cloud1.offset.ay, cloud1.offset.bx, cloud1.offset.by);
 
-    // Midpoint of B–C
-    let mxBC = (clouds2.bx + clouds2.cx) / 2;
-    let myBC = (clouds2.by + clouds2.cy) / 2;
+  // Midpoint of B–C
+  let mxBC = (cloud1.offset.bx + cloud1.offset.cx) / 2;
+  let myBC = (cloud1.offset.by + cloud1.offset.cy) / 2;
 
-    // Angle of the slope B→C
-    let angleBC = atan2(clouds2.cy - clouds2.by, clouds2.cx - clouds2.bx);
+  // Angle of the slope B→C
+  let angleBC = atan2(cloud1.offset.cy - cloud1.offset.by, cloud1.offset.cx - cloud1.offset.bx);
 
-    // Distance between B and C
-    let dBC = dist(clouds2.bx, clouds2.by, clouds2.cx, clouds2.cy);
+  // Distance between B and C
+  let dBC = dist(cloud1.offset.bx, cloud1.offset.by, cloud1.offset.cx, cloud1.offset.cy);
 
-    push();
-    translate(mx - 30, my + 18);
-    rotate(angle);
-    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx - 30, my + 18);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 11, my);
-    rotate(angle);
-    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 11, my);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 40, my - 15);
-    rotate(angle);
-    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 40, my - 15);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 70, my - 25);
-    rotate(angleBC);
-    arc(0, 0, d / 2, d / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 70, my - 25);
+  rotate(angleBC);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 100, my - 18);
-    rotate(angleBC);
-    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 100, my - 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 130, my - 0);
-    rotate(angleBC);
-    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 130, my - 0);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
 
-    push();
-    translate(mx + 171, my + 18);
-    rotate(angleBC);
-    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+  push();
+  translate(mx + 171, my + 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
 }
+
 
 
 
