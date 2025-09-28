@@ -40,6 +40,33 @@ let cloud1 = {
     }
 };
 
+let cloudCoordinates2 = {
+    ax: 30,
+    ay: 200,
+    bx: 150,
+    by: 130,
+    cx: 300,
+    cy: 200,
+};
+
+let cloud2 = {
+    main: {
+        ...cloudCoordinates2,
+        colourclouds: { leftside: "#faf3e3ff" }
+    },
+    offset: {
+        ax: cloudCoordinates2.ax + offSet.x,
+        ay: cloudCoordinates2.ay + offSet.y,
+        bx: cloudCoordinates2.bx + offSet.x,
+        by: cloudCoordinates2.by + offSet.y,
+        cx: cloudCoordinates2.cx + offSet.x,
+        cy: cloudCoordinates2.cy + offSet.y,
+        colourclouds: { rightside: "#ebcbaaf2" }
+    }
+};
+
+
+
 
 
 
@@ -72,7 +99,7 @@ drawSky();
 drawMoon();
 
     drawCloud1();
-
+ drawCloud2()  // cloud2 Function
     drawMountains();
 drawHills();
 drawTrees();
@@ -100,7 +127,8 @@ function drawMoon() { // moon Function
 
 }
 function drawCloud1() { //cloud Function
-  fill(cloud1.main.colourclouds.leftside);
+
+    fill(cloud1.main.colourclouds.leftside);
   triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
 
   //find angle A-B
@@ -234,6 +262,142 @@ function drawCloud1() { //cloud Function
   rotate(angleBC2);
   arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
   pop();
+}
+
+function drawCloud2() { // cloud2 Function
+
+translate(300,0)
+
+    fill(cloud2.main.colourclouds.leftside);
+    triangle(cloud2.main.ax, cloud2.main.ay, cloud2.main.bx, cloud2.main.by, cloud2.main.cx, cloud2.main.cy);
+
+    // find angle A-B
+    let mx = (cloud2.main.ax + cloud2.main.bx) / 2;
+    let my = (cloud2.main.ay + cloud2.main.by) / 2;
+
+    // Angle of the slope in radians
+    let angle = atan2(cloud2.main.by - cloud2.main.ay, cloud2.main.bx - cloud2.main.ax);
+
+    // Distance between points for arc size
+    let d = dist(cloud2.main.ax, cloud2.main.ay, cloud2.main.bx, cloud2.main.by);
+
+    // Midpoint of B–C
+    let mxBC = (cloud2.main.bx + cloud2.main.cx) / 2;
+    let myBC = (cloud2.main.by + cloud2.main.cy) / 2;
+
+    // Angle of the slope B→C
+    let angleBC = atan2(cloud2.main.cy - cloud2.main.by, cloud2.main.cx - cloud2.main.bx);
+
+    // Distance between B and C
+    let dBC = dist(cloud2.main.bx, cloud2.main.by, cloud2.main.cx, cloud2.main.cy);
+
+    push();
+    translate(mx - 30, my + 18);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 11, my);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 40, my - 15);
+    rotate(angle);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 70, my - 25);
+    rotate(angleBC);
+    arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 100, my - 18);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 130, my - 0);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx + 171, my + 18);
+    rotate(angleBC);
+    arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+    pop();   
+
+    // Offset cloud
+    fill(cloud2.offset.colourclouds.rightside);
+    triangle(cloud2.offset.ax, cloud2.offset.ay, cloud2.offset.bx, cloud2.offset.by, cloud2.offset.cx, cloud2.offset.cy);
+
+    // find angle A-B
+    let mx2 = (cloud2.offset.ax + cloud2.offset.bx) / 2;
+    let my2 = (cloud2.offset.ay + cloud2.offset.by) / 2;
+
+    // Angle of the slope in radians
+    let angle2 = atan2(cloud2.offset.by - cloud2.offset.ay, cloud2.offset.bx - cloud2.offset.ax);
+
+    // Distance between points for arc size
+    let d2 = dist(cloud2.offset.ax, cloud2.offset.ay, cloud2.offset.bx, cloud2.offset.by);
+
+    // Midpoint of B–C
+    let mxBC2 = (cloud2.offset.bx + cloud2.offset.cx) / 2;
+    let myBC2 = (cloud2.offset.by + cloud2.offset.cy) / 2;
+
+    // Angle of the slope B→C
+    let angleBC2 = atan2(cloud2.offset.cy - cloud2.offset.by, cloud2.offset.cx - cloud2.offset.bx);
+
+    // Distance between B and C
+    let dBC2 = dist(cloud2.offset.bx, cloud2.offset.by, cloud2.offset.cx, cloud2.offset.cy);
+
+    push();
+    translate(mx2 - 30, my2 + 18);
+    rotate(angle2);
+    arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 11, my2);
+    rotate(angle2);
+    arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 40, my2 - 15);
+    rotate(angle2);
+    arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 70, my2 - 25);
+    rotate(angleBC2);
+    arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 100, my2 - 18);
+    rotate(angleBC2);
+    arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 130, my2 - 0);
+    rotate(angleBC2);
+    arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+    pop();
+
+    push();
+    translate(mx2 + 171, my2 + 18);
+    rotate(angleBC2);
+    arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+    pop();
 }
 
 
