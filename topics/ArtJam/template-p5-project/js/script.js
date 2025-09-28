@@ -40,6 +40,23 @@ let cloud1 = {
     }
 };
 
+let mountain = {
+    top: {
+        x: 200,
+        y: 250
+    },
+    bottomLeft: {
+        x: 0,
+        y: 600
+    },
+    bottomRight: {
+        x: 500,
+        y: 600
+    }
+};
+
+
+
 
 
 
@@ -535,40 +552,61 @@ resetMatrix(); // reset the translation
 
 
 function drawMountains() {
-
-    push();
-fill("#0d4687ff");
-triangle(0, 600, 200, 250, 500, 600);
-pop();
-
+/*
+    // Right mountain (drawn first, behind)
 push();
+    translate(500, -30); // move entire mountain right
+   
+fill("#0d4687ff");
+triangle(0, 600, 200, 250, 600, 600);
+
 fill("#93b2e3ff");
 triangle(0, 600, 200, 250, 200, 600);
-pop();
 
-push();
-fill("#93b2e3ff");
 triangle(300, 600, 200, 300, 200, 600);
-    pop();
-    
-    translate(200, 0)
-    
-      push();
-fill("#0d4687ff");
-triangle(0, 600, 200, 250, 500, 600);
-pop();
+pop(); // translation ends here
 
+// Right mountain (drawn first, behind)
 push();
+    translate(200, -20); // move entire mountain right
+   
+fill("#0d4687ff");
+triangle(0, 600, 200, 250, 600, 600);
+
 fill("#93b2e3ff");
 triangle(0, 600, 200, 250, 200, 600);
+
+triangle(300, 600, 200, 300, 200, 600);
+pop(); // translation ends here
+
+    */
+// Left mountain (drawn second, in front)
+   push();
+// Main mountain
+fill("#0d4687ff");
+triangle(
+    mountain.bottomLeft.x, mountain.bottomLeft.y,
+    mountain.top.x, mountain.top.y,
+    mountain.bottomRight.x, mountain.bottomRight.y
+);
+
+
+// Smaller triangles / details
+fill("#93b2e3ff");
+triangle(mountain.bottomLeft.x, mountain.bottomLeft.y, mountain.top.x, mountain.top.y, 200, mountain.bottomLeft.y);
+triangle(300, 600, 200, 300, 200, 600);
+
+// Snow at the top
+fill("#ffffffa8");
+    // Example: several small triangles to simulate jagged snow
+    triangle(145, 350, mountain.top.x, mountain.top.y, 190, 320);
+    triangle(190, 320, mountain.top.x, mountain.top.y, 210, 350);
+    triangle(210, 350, mountain.top.x, mountain.top.y, 230, 320);
+    triangle(230, 320, mountain.top.x, mountain.top.y, 250,350);
+    triangle(250,350, mountain.top.x, mountain.top.y,269, 330);
 pop();
 
-push();
-fill("#93b2e3ff");
-triangle(300, 600, 200, 300, 200, 600);
-    pop();
-    
-    
+
 }
 function drawHills() {}
 function drawTrees() {}
