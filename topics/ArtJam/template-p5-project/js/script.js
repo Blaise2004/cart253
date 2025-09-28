@@ -76,6 +76,7 @@ drawMoon();
 
     drawCloud1();
     drawCloud2();
+    drawCloud3();
     drawMountains();
 drawHills();
 drawTrees();
@@ -242,7 +243,9 @@ function drawCloud1() { //cloud Function
 
 function drawCloud2() { //cloud Function
 
-    translate(400,-50)
+    translate(450, -80)
+    
+
     fill(cloud1.main.colourclouds.leftside);
   triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
 
@@ -379,6 +382,146 @@ function drawCloud2() { //cloud Function
   pop();
 }
 
+function drawCloud3() { //cloud Function
+
+    translate(-100,100)
+    
+    
+    fill(cloud1.main.colourclouds.leftside);
+  triangle(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
+
+  //find angle A-B
+  let mx = (cloud1.main.ax + cloud1.main.bx) / 2;
+  let my = (cloud1.main.ay + cloud1.main.by) / 2;
+
+  // Angle of the slope in radians
+  let angle = atan2(cloud1.main.by - cloud1.main.ay, cloud1.main.bx - cloud1.main.ax);
+
+  // Distance between points for arc size
+  let d = dist(cloud1.main.ax, cloud1.main.ay, cloud1.main.bx, cloud1.main.by);
+
+  // Midpoint of B–C
+  let mxBC = (cloud1.main.bx + cloud1.main.cx) / 2;
+  let myBC = (cloud1.main.by + cloud1.main.cy) / 2;
+
+  // Angle of the slope B→C
+  let angleBC = atan2(cloud1.main.cy - cloud1.main.by, cloud1.main.cx - cloud1.main.bx);
+
+  // Distance between B and C
+  let dBC = dist(cloud1.main.bx, cloud1.main.by, cloud1.main.cx, cloud1.main.cy);
+
+  push();
+  translate(mx - 30, my + 18);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 11, my);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 40, my - 15);
+  rotate(angle);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 70, my - 25);
+  rotate(angleBC);
+  arc(0, 0, d / 2, d / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 100, my - 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 130, my - 0);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx + 171, my + 18);
+  rotate(angleBC);
+  arc(0, 0, dBC / 2, dBC / 2, PI, 0, CHORD);
+  pop();   
+
+  
+    
+    fill(cloud1.offset.colourclouds.rightside);
+  triangle(cloud1.offset.ax, cloud1.offset.ay, cloud1.offset.bx, cloud1.offset.by, cloud1.offset.cx, cloud1.offset.cy);
+
+  //find angle A-B
+  let mx2 = (cloud1.offset.ax + cloud1.offset.bx) / 2;
+  let my2 = (cloud1.offset.ay + cloud1.offset.by) / 2;
+
+  // Angle of the slope in radians
+  let angle2 = atan2(cloud1.offset.by - cloud1.offset.ay, cloud1.offset.bx - cloud1.offset.ax);
+
+  // Distance between points for arc size
+  let d2 = dist(cloud1.offset.ax, cloud1.offset.ay, cloud1.offset.bx, cloud1.offset.by);
+
+  // Midpoint of B–C
+  let mxBC2 = (cloud1.offset.bx + cloud1.offset.cx) / 2;
+  let myBC2 = (cloud1.offset.by + cloud1.offset.cy) / 2;
+
+  // Angle of the slope B→C
+  let angleBC2 = atan2(cloud1.offset.cy - cloud1.offset.by, cloud1.offset.cx - cloud1.offset.bx);
+
+  // Distance between B and C
+    let dBC2 = dist(cloud1.offset.bx, cloud1.offset.by, cloud1.offset.cx, cloud1.offset.cy);
+    
+   
+    
+
+  push();
+  translate(mx2 - 30, my2 + 18);
+  rotate(angle2);
+  arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 11, my2);
+  rotate(angle);
+  arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 40, my2 - 15);
+  rotate(angle2);
+  arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 70, my2 - 25);
+  rotate(angleBC2);
+  arc(0, 0, d2 / 2, d2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 100, my2 - 18);
+  rotate(angleBC2);
+  arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 130, my2 - 0);
+  rotate(angleBC2);
+  arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+  pop();
+
+  push();
+  translate(mx2 + 171, my2 + 18);
+  rotate(angleBC2);
+  arc(0, 0, dBC2 / 2, dBC2 / 2, PI, 0, CHORD);
+  pop();
+}
 
 
 function drawMountains() {}
