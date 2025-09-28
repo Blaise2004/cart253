@@ -536,15 +536,39 @@ resetMatrix(); // reset the translation
 
 function drawMountains() {
 
-    
     push();
-    fill("#0d46876e")
-    triangle(width-width,height-height/4, 200,250,500,height-height/4)
+fill("#0d4687ff");
+triangle(0, 600, 200, 250, 500, 600);
+pop();
+
+push();
+fill("#93b2e3ff");
+triangle(0, 600, 200, 250, 200, 600);
+pop();
+
+push();
+fill("#93b2e3ff");
+triangle(300, 600, 200, 300, 200, 600);
     pop();
-    push()
-    fill("#93b2e338")
-     triangle(width-width,height-height/4, 200,250,200,height-height/4)
-    pop()
+    
+    translate(200, 0)
+    
+      push();
+fill("#0d4687ff");
+triangle(0, 600, 200, 250, 500, 600);
+pop();
+
+push();
+fill("#93b2e3ff");
+triangle(0, 600, 200, 250, 200, 600);
+pop();
+
+push();
+fill("#93b2e3ff");
+triangle(300, 600, 200, 300, 200, 600);
+    pop();
+    
+    
 }
 function drawHills() {}
 function drawTrees() {}
