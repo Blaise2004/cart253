@@ -83,24 +83,32 @@ function drawMoon() { // moon Function
 function drawClouds() { //cloud Function
   fill(clouds.colourclouds.leftside);
     triangle(clouds.ax, clouds.ay, clouds.bx, clouds.by, clouds.cx, clouds.cy);
-    //find angle
-let mx = (clouds.ax + clouds.by) / 2;
+    
+    
+    //find angle A-B
+let mx = (clouds.ax + clouds.bx) / 2;
 let my = (clouds.ay + clouds.by) / 2;
 
-    mx = mx - 0;
-    my = my + 0 ;
+
  // Angle of the slope in radians
     let angle = atan2(clouds.by - clouds.ay, clouds.bx - clouds.ax);
     
      // Distance between points for arc size
-  let d = dist(clouds.ax, clouds.ay, clouds.bx, clouds.by);
+    let d = dist(clouds.ax, clouds.ay, clouds.bx, clouds.by);
+    
+    // Midpoint of B–C
+let mxBC = (clouds.bx + clouds.cx) / 2;
+let myBC = (clouds.by + clouds.cy) / 2;
 
-mx = mx - 0;
-    my = my + 0 ;
+// Angle of the slope B→C
+let angleBC = atan2(clouds.cy - clouds.by, clouds.cx - clouds.bx);
 
-   
+// Distance between B and C
+let dBC = dist(clouds.bx, clouds.by, clouds.cx, clouds.cy);
+
+
    push();
-    translate(mx-20, my+18);
+    translate(mx-30, my+18);
     rotate(angle);
     arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
@@ -121,33 +129,29 @@ mx = mx - 0;
     
     push();
     translate(mx+70, my-25);
-    rotate(angle+1);
+    rotate(angleBC);
     arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
 
      push();
     translate(mx+100, my-18);
-    rotate(angle*-1);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    rotate(angleBC);
+    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
 
     push();
     translate(mx+130, my-0);
-    rotate(angle*-1);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    rotate(angleBC);
+    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
 
     push();
-    translate(mx+178, my+18);
-    rotate(angle*-1);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
+    translate(mx+171, my+18);
+    rotate(angleBC);
+    arc(0, 0, dBC/2, dBC/2, PI, 0, CHORD); // bottom-facing semi-circle
     pop();
 
-    push();
-    translate(mx+188, my+18);
-    rotate(angle*-1);
-    arc(0, 0, d/2, d/2, PI, 0, CHORD); // bottom-facing semi-circle
-    pop();
+ 
     
 }
 
