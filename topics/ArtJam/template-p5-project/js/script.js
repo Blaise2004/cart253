@@ -654,7 +654,8 @@ function drawHills() {
     push()
     angleMode(DEGREES)
     fill("#b09831")
-    arc(width/2-width/4, mountain.bottomLeft.y+40, width/2, 100, 180, 0);
+    arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 100, 180, 0);
+    rect(0, mountain.bottomLeft.y, width, height-mountain.bottomLeft.y)
     pop()
 
 }
