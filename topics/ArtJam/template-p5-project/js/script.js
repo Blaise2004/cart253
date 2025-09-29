@@ -52,6 +52,14 @@ let mountain = {
     bottomRight: {
         x: 500,
         y: 600
+    },
+    translate: {
+        x:300,
+        y:20
+    },
+      translate2: {
+        x:475,
+        y: 50
     }
 };
 
@@ -97,7 +105,9 @@ drawMoon();
     drawMountains();
     drawHills();
     drawMountains2();
+    drawHills2();
     drawMountains3();
+    drawHills3()
 
 drawTrees();
 drawFirepit();
@@ -588,7 +598,7 @@ function drawMountains2() {
     
     push();
     
-    translate(300, 20);
+    translate(mountain.translate.x, mountain.translate.y);
 
     // Main mountain
     fill("#0d4687ff");
@@ -619,7 +629,7 @@ function drawMountains2() {
   
 
 function drawMountains3() {
-    translate(475, 50);
+    translate(mountain.translate2.x, mountain.translate2.y);
 
     // Main mountain
     fill("#0d4687ff");
@@ -648,14 +658,33 @@ function drawMountains3() {
 
 
 function drawHills() {
-
-  
-  
     push()
     angleMode(DEGREES)
     fill("#b09831")
     arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 100, 180, 0);
     rect(0, mountain.bottomLeft.y, width, height-mountain.bottomLeft.y)
+    pop()
+
+}
+
+function drawHills2() {
+    push()
+    translate(mountain.translate.x, mountain.translate.y)
+    angleMode(DEGREES)
+    fill("#b09831")
+    arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 75, 180, 0);
+    
+    pop()
+
+}
+
+function drawHills3() {
+    push()
+    translate(mountain.translate2.x, mountain.translate2.y)
+    angleMode(DEGREES)
+    fill("#b09831")
+    arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 50, 180, 0);
+    
     pop()
 
 }
