@@ -86,8 +86,8 @@ let moon = {
 
 
 function setup() {
-    createCanvas(1000, 800,);
-    background(220); 
+    createCanvas(1000, 800);
+   
 }
 
 
@@ -95,10 +95,13 @@ function setup() {
 
 
 function draw() {
-    noStroke();
-drawSky();
-drawMoon();
+    
 
+    
+    
+    noStroke();
+    drawSky();
+    drawMoon();
     drawCloud1();
     drawCloud2();
     drawCloud3();
@@ -109,14 +112,23 @@ drawMoon();
     drawMountains3();
     drawHills3()
 
-drawTrees();
-drawFirepit();
+    drawFire();
+    drawFirepit();
+    
     drawTent();
 }
 
 function drawSky() {
-    let skycolour1 = '#65687bff';
-    background (skycolour1)
+    let c1 = color("#636770"); 
+let c2 = color("#efe1c7");
+    
+     // Map mouseX (0 → width) to a value between 0 and 1
+    let mouseMap = map(mouseX, 0, width, 0, 1);
+    
+    let backgroundColour = lerpColor(c1, c2, mouseMap);
+    
+    background(backgroundColour); 
+ 
 }
 function drawMoon() { // moon Function 
   
@@ -686,15 +698,11 @@ function drawHills3() {
     pop()
 }
 function drawTrees() {
-    push()
-    translate(80,0)
-    fill("#f5a71c")
-    
-    triangle(10, 410, 20, 400, 30, 410);
-    
 
 
-    pop()
+
+
+
 }
 function drawFirepit() {
     angleMode(DEGREES)
@@ -711,9 +719,6 @@ function drawFirepit() {
     arc(310, 700, 30, 20, 180, 0)
     pop();
 
-
-
-   
     push()
     fill("#816e66c0")
     arc(375,710,30,20,180,0)
@@ -725,9 +730,43 @@ function drawFirepit() {
     arc(350, 700, 30, 20, 180, 0)
     arc(330, 700, 30, 20, 180, 0)
     arc(310, 700, 30, 20, 180, 0)
-     
     pop()
 }
+
+function drawFire() {
+   
+    let x1 = 335 
+    let y1 = 680
+    let width1 = 40
+    let height1 = 48
+
+    let x2 = 335
+     let y2 = 680
+     let width2 = width1/2
+     let height2 = height1*0.6
+
+
+
+    let c1 = color(cloud1.main.colourclouds.leftside);
+  let c2 = color(cloud1.offset.colourclouds.rightside);
+  let mouseMap = map(mouseX, 0, width, 0, 1);
+  cloud1.offset.colourclouds.blended = lerpColor(c1, c2, mouseMap);
+
+    
+    
+    fill("#f5a71c")
+    ellipse(x1, y1, width1, height1)//link this to firpit X Y pos
+    triangle(x1-width2, y1, x1, y1-height1, x1+width2, y2)
+    
+
+    
+    fill("#f3e1c3")
+      ellipse(x2, y2, width2, height2); // 60% of 40 and 48
+  triangle(x2-width2/2, y2, x2, y2-height2, x2+width2/2, y2); // 60% of triangle offsets
+
+    
+}
+
 function drawTent() {
 
 
