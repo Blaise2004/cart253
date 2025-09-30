@@ -673,7 +673,6 @@ function drawHills2() {
     angleMode(DEGREES)
     fill("#b09831")
     arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 75, 180, 0);
-    
     pop()
 
 }
@@ -684,10 +683,53 @@ function drawHills3() {
     angleMode(DEGREES)
     fill("#b09831")
     arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 50, 180, 0);
-    
     pop()
+}
+function drawTrees() {
+    push()
+    translate(80,0)
+    fill("#f5a71c")
+    
+    triangle(10, 410, 20, 400, 30, 410);
+    
+
+
+    pop()
+}
+function drawFirepit() {}
+function drawTent() {
+
+
+push();
+    fill("#faf3e3")
+    triangle(550, 680, 750, 500, 950, 680)
+pop();
+    
+push();
+    stroke("#faf3e3");
+    strokeWeight(10);
+    line(520, 710, 750, 500);
+    strokeWeight(10);
+    line(980, 710, 750, 500);
+pop();
+    
+push();
+    stroke("#98613e");
+    strokeWeight(5);
+    line(520, 710, 750, 500);
+    strokeWeight(5);
+    line(980, 710, 750, 500);    
+pop();
+
+push();
+    fill("#464853")
+    triangle(650, 680, 750, 500, 850, 680);
+pop();
+    
+push();
+    stroke("#f3e1c3");
+    strokeWeight(5);
+    line(750, 680, 750, 500); 
+pop();
 
 }
-function drawTrees() {}
-function drawFirepit() {}
-function drawTent() {}
