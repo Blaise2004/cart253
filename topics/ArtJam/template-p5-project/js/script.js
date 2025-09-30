@@ -735,34 +735,40 @@ function drawFirepit() {
 
 function drawFire() {
    
-    let x1 = 335 
-    let y1 = 680
-    let width1 = 40
-    let height1 = 48
+let x1 = 335 
+let y1 = 680
+let width1 = 40
+let height1 = 48
 
-    let x2 = 335
-     let y2 = 680
-     let width2 = width1/2
-     let height2 = height1*0.6
+let x2 = 335
+let y2 = 680
+let width2 = width1/2
+let height2 = height1*0.6
 
 
+  let shrinkFactor = map(mouseX, 0, width, 0, 1);
 
+  // Lerp ellipse heights
+  let minHeight1 = 0; // fully flat
+  let minHeight2 = 0;
+
+  let dynamicHeight1 = lerp(height1, minHeight1, shrinkFactor);
+  let dynamicHeight2 = lerp(height2, minHeight2, shrinkFactor);
+
+  // Outer flame
+  fill("#f5a71c");
+  ellipse(x1, y1, width1, dynamicHeight1);
+  triangle(x1 - width2, y1, x1, y1 - dynamicHeight1, x1 + width2, y1);
+
+  // Inner flame
+  fill("#f3e1c3");
+  ellipse(x1, y1, width2, dynamicHeight2);
+    triangle(x1 - width2 / 2, y1, x1, y1 - dynamicHeight2, x1 + width2 / 2, y1);
+    
     let c1 = color(cloud1.main.colourclouds.leftside);
-  let c2 = color(cloud1.offset.colourclouds.rightside);
-  let mouseMap = map(mouseX, 0, width, 0, 1);
-  cloud1.offset.colourclouds.blended = lerpColor(c1, c2, mouseMap);
-
-    
-    
-    fill("#f5a71c")
-    ellipse(x1, y1, width1, height1)//link this to firpit X Y pos
-    triangle(x1-width2, y1, x1, y1-height1, x1+width2, y2)
-    
-
-    
-    fill("#f3e1c3")
-      ellipse(x2, y2, width2, height2); // 60% of 40 and 48
-  triangle(x2-width2/2, y2, x2, y2-height2, x2+width2/2, y2); // 60% of triangle offsets
+let c2 = color(cloud1.offset.colourclouds.rightside);
+let mouseMap = map(mouseX, 0, width, 0, 1);
+cloud1.offset.colourclouds.blended = lerpColor(c1, c2, mouseMap);
 
     
 }
