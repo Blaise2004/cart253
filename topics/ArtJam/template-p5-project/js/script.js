@@ -1,9 +1,10 @@
 /**
- * ArtJam Assignment 
+ * 
+ * ArtJam Assignment  
  * Blaise Treverton
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This Project is  self portrait of sorts, it resembles my passion for the outdoors, camping and the highlands of scotland.
+ * Use Mouse X to control the time of Day. 
  */
 
 "use strict";
@@ -27,7 +28,7 @@ let cloudCoordinates = {
 let cloud1 = {
     main: {
         ...cloudCoordinates,
-        colourclouds: { leftside: "#faf3e3ff" }
+        colourclouds: { leftside: "#faf3e3f4" }
     },
     offset: {
         ax: cloudCoordinates.ax + offSet.x,
@@ -36,7 +37,7 @@ let cloud1 = {
         by: cloudCoordinates.by + offSet.y,
         cx: cloudCoordinates.cx + offSet.x,
         cy: cloudCoordinates.cy + offSet.y,
-        colourclouds: { rightside: "#ebcbaaf2" }
+        colourclouds: { rightside: "#ebcbaac0" }
     }
 };
 
@@ -82,7 +83,13 @@ let moon = {
 }
 
 
+let tent = {
 
+    inside: {
+        baseColor: "#a89066ff",
+        peakColor: "#c6c8a8ff"
+    }
+}
 
 
 function setup() {
@@ -765,16 +772,17 @@ let height2 = height1*0.6
   ellipse(x1, y1, width2, dynamicHeight2);
     triangle(x1 - width2 / 2, y1, x1, y1 - dynamicHeight2, x1 + width2 / 2, y1);
     
-    let c1 = color(cloud1.main.colourclouds.leftside);
-let c2 = color(cloud1.offset.colourclouds.rightside);
-let mouseMap = map(mouseX, 0, width, 0, 1);
-cloud1.offset.colourclouds.blended = lerpColor(c1, c2, mouseMap);
+    
 
     
 }
 
 function drawTent() {
 
+let c1 = color(tent.inside.baseColor);
+  let c2 = color(tent.inside.peakColor);
+  let mouseMap = map(mouseX, 0, width, 0, 1);
+  let blendedTentColor = lerpColor(c1, c2, mouseMap);
 
 push();
     fill("#faf3e3")
@@ -798,7 +806,7 @@ push();
 pop();
 
 push();
-    fill("#464853")
+    fill(blendedTentColor)
     triangle(650, 680, 750, 500, 850, 680);
 pop();
     
