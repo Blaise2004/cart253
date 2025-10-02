@@ -13,11 +13,20 @@ let score = 0;
 // Is the game over?
 let gameOver = false;
 
+//check if thr internet is down!!!!!!!!!
+window.addEventListener("offline", () => {
+    console.log("hello");
+        lose();
+});
+document.addEventListener("visibilitychange", lose)
+ 
 /**
  * Create the canvas
  */
 function setup() {
-  createCanvas(400, 400);
+    createCanvas(400, 400);
+
+
 }
 
 /**
@@ -27,11 +36,13 @@ function draw() {
   background("#87ceeb");
   
   // Only increase the score if the game is not over
-    if (!gameOver) {
+    if (!gameOver) {//check if it is true or false
         // Score increases relatively slowly
         score += 0.05;
     }
-    displayUI();
+    displayUI(); 
+  //  window.addEventListener("online",);
+    
 }
 
 /**
@@ -62,11 +73,23 @@ function displayScore() {
 }
 
 function lose() {
-  gameOver = true
-
+    gameOver = true; // make the gameOver true
 }
 
 function keyPressed() {
-    lose();
+    lose(); // we call lose function like we would it draw
     
 }
+/*
+function mousePressed() {
+    lose();
+}
+
+function mouseMoved() {
+    lose();
+}
+
+function mouseWheel() {
+    lose();
+}
+*/
