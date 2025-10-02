@@ -18,8 +18,13 @@ window.addEventListener("offline", () => {
     console.log("hello");
         lose();
 });
-document.addEventListener("visibilitychange", lose)
- 
+//document.addEventListener("visibilitychange", lose)
+
+
+window.addEventListener("keyup", lose)
+window.addEventListener("mouseup", lose)
+//window.addEventListener("mousemove", lose)
+window.addEventListener("wheel",lose)
 /**
  * Create the canvas
  */
@@ -76,7 +81,7 @@ function lose() {
     gameOver = true; // make the gameOver true
 }
 
-function keyPressed() {
+/*function keyPressed() {
     lose(); // we call lose function like we would it draw
     
 }
