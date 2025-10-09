@@ -691,7 +691,7 @@ function drawHills2() {
     translate(mountain.translate.x, mountain.translate.y)
     angleMode(DEGREES)
     fill("#b09831")
-    arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 75, 180, 0);
+    arc(width / 2 - width / 4, mountain.bottomLeft.y, width / 2, 200, 180, 0);
     pop()
 
 }
@@ -711,7 +711,7 @@ function drawTrees() {
 
 
 }
-function drawFirepit() {
+function drawFirepit() { //Hard coding! 
     angleMode(DEGREES)
     push();
      fill("#ebcaaa")
