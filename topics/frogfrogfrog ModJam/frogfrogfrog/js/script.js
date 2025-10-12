@@ -38,6 +38,12 @@ const spaceShip = {
 let farStars = [];
 let nearStars = [];
 
+let target = {
+    x:500,
+    y:350,
+size: 50
+}
+
 
 
 
@@ -91,6 +97,8 @@ function draw() {
     moveLaser();
     drawSpaceShip();
     checkLaserAsteroidOverlap();
+    drawTarget();
+    moveTarget();
 }
 
 
@@ -166,7 +174,19 @@ function resetAsteroid() {
 function moveSpaceShip() {
     spaceShip.body.x = mouseX;
 }
+function drawTarget() {
+    noFill();
+    stroke("#ff0000")
+    strokeWeight(0.5);
+    ellipse(target.x, target.y, target.size, target.size);
+    line(target.x - target.size, target.y, target.x + target.size, target.y)
+    line(target.x, target.y - target.size, target.x, target.y + target.size); // vertical
+}
 
+function moveTarget() {
+    target.x = mouseX
+    target.y = mouseY
+}
 /**
  * Handles moving the laser based on its state
  */
