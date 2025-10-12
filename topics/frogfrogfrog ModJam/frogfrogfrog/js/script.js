@@ -20,8 +20,8 @@
 const spaceShip = {
     // The spaceShip's body has a position and size
     body: {
-        x: 320,
-        y: 520,
+        x: 500,
+        y: 650,
         size: 50
     },
     // The spaceShip's laser has a position, size, speed, and state
@@ -176,9 +176,29 @@ function drawSpaceShip() {
     ellipse(spaceShip.body.x, spaceShip.body.y, spaceShip.body.size);
     triangle(
         spaceShip.body.x - spaceShip.body.size/2, spaceShip.body.y,
-        spaceShip.body.x - 10, spaceShip.body.y - 50,
-        spaceShip.body.x - 50, spaceShip.body.y - 10
+         spaceShip.body.x - spaceShip.body.size/4, spaceShip.body.y,
+        spaceShip.body.x - spaceShip.body.size / 2.5, spaceShip.body.y - spaceShip.body.size
     );
+//left wing
+     triangle(
+        spaceShip.body.x, spaceShip.body.y+ spaceShip.body.size/2,
+         spaceShip.body.x, spaceShip.body.y,
+        spaceShip.body.x - spaceShip.body.size*1.2, spaceShip.body.y
+    );
+    
+        triangle(
+  spaceShip.body.x + spaceShip.body.size / 2, spaceShip.body.y,
+  spaceShip.body.x + spaceShip.body.size / 4, spaceShip.body.y,
+  spaceShip.body.x + spaceShip.body.size / 2.5, spaceShip.body.y - spaceShip.body.size
+        );
+   
+   // right wing
+triangle(
+  spaceShip.body.x, spaceShip.body.y + spaceShip.body.size / 2,
+  spaceShip.body.x, spaceShip.body.y,
+  spaceShip.body.x + spaceShip.body.size * 1.2, spaceShip.body.y
+);
+    
     pop();
 }
 
