@@ -35,7 +35,11 @@ const spaceShip = {
     }
 };
 
-let stars = [];
+let farStars = [];
+let nearStars = [];
+
+
+
 
 
 
@@ -58,19 +62,27 @@ function setup() {
     
     // generate star positions once
   for (let i = 0; i < 750; i++) {
-    stars.push({
+    farStars.push({
       x: random(width),
       y: random(height),
-      size: random(1, 4)
+      size: random(1, 2)
     });
   }
-
+    
+     for (let i = 0; i < 100; i++) {
+    nearStars.push({
+      x: random(width),
+      y: random(height),
+      size: random(3, 8)
+    });
+  }
     // Give the asteroid its first random position
     resetAsteroid();
 }
 
 function draw() {
     drawBackground();
+    nearStars();
     moveAsteroid();
     drawAsteroid();
     moveSpaceShip();
@@ -79,16 +91,24 @@ function draw() {
     checkLaserAsteroidOverlap();
 }
 
+
 function drawBackground() {
     background("#0f1011ff");
      // draw stars every frame, but positions don’t change
   noStroke();
   fill(255);
- for (let star of stars) {
-  ellipse(star.x, star.y, star.size, star.size);
+ for (let star of farStars) {
+     ellipse(star.x, star.y, star.size, star.size);
+ }
+   for (let stars of nearStars) {
+     ellipse(stars.x, stars.y, stars.size, stars.size);
+ }
+
+   
 }
 
-}
+
+
 /**
  * Moves the asteroid according to its speed
  * Resets the asteroid if it gets all the way to the right
