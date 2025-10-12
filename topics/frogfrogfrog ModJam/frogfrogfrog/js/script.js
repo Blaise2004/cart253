@@ -27,7 +27,7 @@ const spaceShip = {
     // The spaceShip's laser has a position, size, speed, and state
     laser: {
         x: undefined,
-        y: 480,
+        y: 650,
         size: 20,
         speed: 100,
         // Determines how the laser moves each frame
@@ -45,7 +45,9 @@ const asteroid = {
     x: 0,
     y: 200, // Will be random
     size: 30,
-    speed: 7
+    speed: 7,
+    colour: "#383838ff"
+    
 };
 
 /**
@@ -104,7 +106,7 @@ function moveAsteroid() {
 function drawAsteroid() {
     push();
     noStroke();
-    fill("#000000");
+    fill(asteroid.colour);
     ellipse(asteroid.x, asteroid.y, asteroid.size);
     pop();
 
@@ -117,7 +119,12 @@ function resetAsteroid() {
     asteroid.x = -300;
     asteroid.y = random(0, height - height / 3);
     asteroid.size = random(20, 100)
-    asteroid.speed = random(3,5)
+    asteroid.speed = random(1.9, 3)
+    
+    let grey = map(random(), 0, 1, 56, 186);
+    asteroid.colour = [grey]; // or fill(grey, grey, grey) for clarity
+
+
 }
 
 /**
@@ -158,7 +165,7 @@ function drawSpaceShip() {
     push();
     fill("#ff0000");
     noStroke();
-    ellipse(spaceShip.laser.x, spaceShip.laser.y, spaceShip.laser.size);
+    ellipse(spaceShip.laser.x, spaceShip.body.y, spaceShip.laser.size);
     pop();
 
     // Draw the rest of the laser
