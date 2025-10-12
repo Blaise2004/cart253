@@ -22,14 +22,14 @@ const spaceShip = {
     body: {
         x: 500,
         y: 650,
-        size: 50
+        size: 45
     },
     // The spaceShip's laser has a position, size, speed, and state
     laser: {
         x: undefined,
         y: 650,
-        size: 20,
-        speed: 100,
+        size: 10,
+        speed: 70,
         // Determines how the laser moves each frame
         state: "idle" // State can be: idle, outbound, inbound
     }
@@ -82,7 +82,7 @@ function setup() {
 
 function draw() {
     drawBackground();
-    nearStars();
+
     moveAsteroid();
     drawAsteroid();
     moveSpaceShip();
@@ -101,7 +101,10 @@ function drawBackground() {
      ellipse(star.x, star.y, star.size, star.size);
  }
    for (let stars of nearStars) {
-     ellipse(stars.x, stars.y, stars.size, stars.size);
+          stars.x += 2; // Adjust speed here
+          
+       ellipse(stars.x, stars.y, stars.size, stars.size); 
+
  }
 
    
@@ -142,7 +145,7 @@ function resetAsteroid() {
     asteroid.speed = random(1.9, 3)
     
     let grey = map(random(), 0, 1, 56, 186);
-    asteroid.colour = [grey]; // or fill(grey, grey, grey) for clarity
+    asteroid.colour = color(grey); // proper p5 color
 
 
 }
@@ -240,7 +243,7 @@ triangle(
  */
 function checkLaserAsteroidOverlap() {
     const d = dist(spaceShip.laser.x, spaceShip.laser.y, asteroid.x, asteroid.y);
-    const hit = (d < spaceShip.laser.size / 2 + asteroid.size / 2);
+    const hit = (d <  spaceShip.laser.size/2 + asteroid.size / 2);
     if (hit) {
         resetAsteroid();
         spaceShip.laser.state = "inbound";
