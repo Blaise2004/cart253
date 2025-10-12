@@ -16,8 +16,20 @@
 "use strict";
 
 // Our frog
-let gameScreen = true; // start with game screen off
+let startScreen = true;
+let gameScreen = false; // start with game screen off
 
+let startButtons = {
+
+    x: 500,
+    y: 350,
+    width:100,
+    height:  50,
+
+
+
+}
+ 
 const spaceShip = {
     // The spaceShip's body has a position and size
     body: {
@@ -35,6 +47,16 @@ const spaceShip = {
         state: "idle" // State can be: idle, outbound, inbound
     }
 };
+
+const startShip = {
+    // The spaceShip's body has a position and size
+    body: {
+        x: 500,
+        y: 350,
+        size: 300
+    },
+}
+
 
 let farStars = [];
 let nearStars = [];
@@ -90,7 +112,17 @@ function setup() {
 }
 
 function draw() {
-    
+    if (startScreen === true) {
+        noCursor();
+        drawBackground();
+        drawStartShip()
+         drawStartButton();
+        drawTarget();
+        moveTarget();
+        mousePressed();
+        buttonHover();
+       
+    }
     if (gameScreen === true) {
         noCursor();
         drawBackground();
@@ -132,6 +164,41 @@ function drawBackground() {
    
 }
 
+function drawStartButton() {
+    push();
+    rectMode(CENTER); // draw rectangle from its center
+    fill("#4e90ff");  // choose any color
+    noStroke();
+    rect(startButtons.x, startButtons.y, startButtons.width, startButtons.height); // width:100, height:50
+    pop();
+
+    push();
+
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text("START",startButtons.x,startButtons.y)
+    pop();
+    
+}
+
+
+function buttonHover() {
+   
+    let baseButtonWidth = 100;
+    let baseButtonHeight = 50;
+    
+    const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
+    const hover = (d < startButtons.width/2 );
+    if (hover) {
+        startButtons.width = baseButtonWidth + 10
+        startButtons.height = baseButtonHeight + 10
+    }
+    else {
+        startButtons.width = baseButtonWidth;
+        startButtons.height = baseButtonHeight;
+    }
+}
 
 
 /**
@@ -272,6 +339,53 @@ triangle(
     pop();
 }
 
+function drawStartShip() {
+   
+   
+    // Draw the ship's body
+    push();
+    fill("#2f556eff");
+    noStroke();
+    ellipse(startShip.body.x, startShip.body.y, startShip.body.size);
+
+    // Left triangle
+    triangle(
+        startShip.body.x - startShip.body.size / 2, startShip.body.y,
+        startShip.body.x - startShip.body.size / 4, startShip.body.y,
+        startShip.body.x - startShip.body.size / 2.5, startShip.body.y - startShip.body.size
+    );
+
+    // Left wing
+    triangle(
+        startShip.body.x, startShip.body.y + startShip.body.size / 2,
+        startShip.body.x, startShip.body.y,
+        startShip.body.x - startShip.body.size * 1.2, startShip.body.y
+    );
+
+    // Right triangle
+    triangle(
+        startShip.body.x + startShip.body.size / 2, startShip.body.y,
+        startShip.body.x + startShip.body.size / 4, startShip.body.y,
+        startShip.body.x + startShip.body.size / 2.5, startShip.body.y - startShip.body.size
+    );
+
+    // Right wing
+    triangle(
+        startShip.body.x, startShip.body.y + startShip.body.size / 2,
+        startShip.body.x, startShip.body.y,
+        startShip.body.x + startShip.body.size * 1.2, startShip.body.y
+    );
+
+    // Back of the ship
+    triangle(
+        startShip.body.x - startShip.body.size / 1.5, startShip.body.y,
+        startShip.body.x + startShip.body.size / 1.5, startShip.body.y,
+        startShip.body.x, startShip.body.y + startShip.body.size
+    );
+    pop();
+}
+
+
 /**
  * Handles the laser overlapping the asteroid
  */
@@ -292,3 +406,4 @@ function mousePressed() {
         spaceShip.laser.state = "outbound";
     }
 }
+
