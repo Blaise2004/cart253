@@ -65,7 +65,8 @@ function setup() {
     farStars.push({
       x: random(width),
       y: random(height),
-      size: random(1, 2)
+        size: random(1, 2),
+      speed:random(0.1,0.6)
     });
   }
     
@@ -73,7 +74,8 @@ function setup() {
     nearStars.push({
       x: random(width),
       y: random(height),
-      size: random(3, 8)
+        size: random(3, 8),
+      speed:random(0.5,1)
     });
   }
     // Give the asteroid its first random position
@@ -97,12 +99,20 @@ function drawBackground() {
      // draw stars every frame, but positions don’t change
   noStroke();
   fill(255);
- for (let star of farStars) {
+    for (let star of farStars) {
+        star.x += star.speed // random speed
+        if (star.x > width) {
+            star.x = 0 
+            star.y = random(height)
+        }
      ellipse(star.x, star.y, star.size, star.size);
  }
    for (let stars of nearStars) {
-          stars.x += 2; // Adjust speed here
-          
+       stars.x += stars.speed // random speed
+        if (stars.x > width) {
+            stars.x = 0 
+            stars.y = random(height)
+        }
        ellipse(stars.x, stars.y, stars.size, stars.size); 
 
  }
