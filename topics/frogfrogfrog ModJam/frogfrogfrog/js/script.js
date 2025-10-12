@@ -106,7 +106,6 @@ function drawAsteroid() {
     noStroke();
     fill("#000000");
     ellipse(asteroid.x, asteroid.y, asteroid.size);
-   
     pop();
 
 }
@@ -144,8 +143,8 @@ function moveLaser() {
         }
     } else if (spaceShip.laser.state === "inbound") {
         spaceShip.laser.y += spaceShip.laser.speed;
-        // The laser stops if it hits the bottom
-        if (spaceShip.laser.y >= height) {
+        // The laser stops if it hits the spceship body
+        if (spaceShip.laser.y >= spaceShip.body.y-spaceShip.body.size/2) {
             spaceShip.laser.state = "idle";
         }
     }
@@ -164,7 +163,7 @@ function drawSpaceShip() {
 
     // Draw the rest of the laser
     push();
-    stroke("#ff0000");
+    stroke("#4e0606ff");
     strokeWeight(spaceShip.laser.size);
     line(spaceShip.laser.x, spaceShip.laser.y, spaceShip.body.x, spaceShip.body.y);
     pop();
@@ -197,6 +196,13 @@ triangle(
   spaceShip.body.x, spaceShip.body.y + spaceShip.body.size / 2,
   spaceShip.body.x, spaceShip.body.y,
   spaceShip.body.x + spaceShip.body.size * 1.2, spaceShip.body.y
+);
+  
+    //backofSpaceshi
+    triangle(
+  spaceShip.body.x -spaceShip.body.size/1.5, spaceShip.body.y,
+  spaceShip.body.x +spaceShip.body.size/1.5, spaceShip.body.y,
+  spaceShip.body.x, spaceShip.body.y + spaceShip.body.size
 );
     
     pop();
