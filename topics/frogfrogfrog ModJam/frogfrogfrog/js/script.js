@@ -41,7 +41,7 @@ let stars = [];
 
 // Our asteroid
 // Has a position, size, and speed of horizontal movement
-const asteroid = {
+let asteroid = {
     x: 0,
     y: 200, // Will be random
     size: 30,
@@ -165,7 +165,7 @@ function drawSpaceShip() {
     push();
     fill("#ff0000");
     noStroke();
-    ellipse(spaceShip.laser.x, spaceShip.body.y, spaceShip.laser.size);
+    ellipse(spaceShip.laser.x, spaceShip.body.y, spaceShip.laser.size);//draw the first frame of laser tip at the centreof the spaceship
     pop();
 
     // Draw the rest of the laser
