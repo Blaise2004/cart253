@@ -16,6 +16,7 @@
 "use strict";
 
 // Our frog
+let gameScreen = true; // start with game screen off
 
 const spaceShip = {
     // The spaceShip's body has a position and size
@@ -89,16 +90,19 @@ function setup() {
 }
 
 function draw() {
-    drawBackground();
-
-    moveAsteroid();
-    drawAsteroid();
-    moveSpaceShip();
-    moveLaser();
-    drawSpaceShip();
-    checkLaserAsteroidOverlap();
-    drawTarget();
-    moveTarget();
+    
+    if (gameScreen === true) {
+        noCursor();
+        drawBackground();
+        moveAsteroid();
+        drawAsteroid();
+        moveSpaceShip();
+        moveLaser();
+        drawSpaceShip();
+        checkLaserAsteroidOverlap();
+        drawTarget();
+        moveTarget();
+    }
 }
 
 
