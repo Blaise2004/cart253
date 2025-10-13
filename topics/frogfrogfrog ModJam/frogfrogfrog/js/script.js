@@ -93,11 +93,17 @@ let score = {
     x: 800,
     y: 75,
     size: 50,
-    text: 0
-  
+    text: 19  
 
 }
 
+endScore = {
+
+ x: 500,
+ y: 350,
+
+
+}
 /**
  * Creates the canvas and initializes the asteroid
  */
@@ -132,7 +138,7 @@ function draw() {
         noCursor();
         drawBackground();
         drawStartShip()
-         drawStartButton();
+        drawStartButton();
         drawTarget();
         moveTarget();
         buttonHover();
@@ -150,9 +156,16 @@ function draw() {
         drawTarget();
         moveTarget();
         drawScore();
-
-
     }
+    else if (scene === "end") { 
+        noCursor();
+        drawBackground();
+        drawStartShip();
+        drawEndScore();
+        drawTarget();
+        moveTarget();
+    }
+         
 }
 
 
@@ -448,11 +461,25 @@ function drawScore() {
     
  
  // At the end of drawScore() or draw():
-if (spaceShip.laser.hit) {
+if (scene === "game" && spaceShip.laser.hit) {
     score.text++;          // register the hit
     spaceShip.laser.hit = false; // now reset for the next frame
+    resetA.speedMin = resetA.speedMin + 0.5
+    resetA.speedMax = resetA.speedMax + 0.5
+    console.log(resetA.speedMin);
 }
+    if (scene === "game" && score.text >= 20) {
+        scene = "end"
+    }
 }
 
+function drawEndScore() {
 
+    push();
+    fill(asteroid.colour);
+    textAlign(CENTER, CENTER);
+    textSize(score.size);
+    text("You scored" + score.text + "!",endScore.x,endScore.y)
+    pop();
 
+}
