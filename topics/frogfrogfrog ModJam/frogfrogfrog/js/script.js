@@ -121,7 +121,6 @@ function draw() {
          drawStartButton();
         drawTarget();
         moveTarget();
-        mousePressed();
         buttonHover();
        
     }
