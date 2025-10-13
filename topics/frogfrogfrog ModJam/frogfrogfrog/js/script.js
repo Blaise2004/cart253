@@ -43,7 +43,8 @@ const spaceShip = {
         size: 10,
         speed: 70,
         // Determines how the laser moves each frame
-        state: "idle" // State can be: idle, outbound, inbound
+        state: "idle", // State can be: idle, outbound, inbound
+        hit: false
     }
 };
 
@@ -411,8 +412,10 @@ function checkLaserAsteroidOverlap() {
     const d = dist(spaceShip.laser.x, spaceShip.laser.y, asteroid.x, asteroid.y);
     const hit = (d <  spaceShip.laser.size/2 + asteroid.size / 2);
     if (hit) {
+         spaceShip.laser.hit = true
         resetAsteroid();
         spaceShip.laser.state = "inbound";
+        
     }
 }
 
@@ -444,11 +447,11 @@ function drawScore() {
     text(score.text, score.x,score.y)
     
  
-    if (spaceShip.laser.state === "inbound") { 
-        score.text++;
-    }
-
-    pop();
+ // At the end of drawScore() or draw():
+if (spaceShip.laser.hit) {
+    score.text++;          // register the hit
+    spaceShip.laser.hit = false; // now reset for the next frame
+}
 }
 
 
