@@ -16,8 +16,9 @@
 "use strict";
 
 // Our frog
-let startScreen = true;
-let gameScreen = false; // start with game screen off
+let scene = "start"; // or "game"
+
+
 
 let startButtons = {
 
@@ -112,7 +113,8 @@ function setup() {
 }
 
 function draw() {
-    if (startScreen === true) {
+   
+    if (scene === "start") {
         noCursor();
         drawBackground();
         drawStartShip()
@@ -123,7 +125,7 @@ function draw() {
         buttonHover();
        
     }
-    if (gameScreen === true) {
+    else if (scene === "game") {
         noCursor();
         drawBackground();
         moveAsteroid();
@@ -134,6 +136,7 @@ function draw() {
         checkLaserAsteroidOverlap();
         drawTarget();
         moveTarget();
+    
     }
 }
 
@@ -402,8 +405,23 @@ function checkLaserAsteroidOverlap() {
  * Launch the laser on click (if it's not launched yet)
  */
 function mousePressed() {
-    if (spaceShip.laser.state === "idle") {
-        spaceShip.laser.state = "outbound";
-    }
+  const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
+  const hover = (d < startButtons.width / 2);
+
+  // If we're on the start screen and clicked the button
+  if (scene === "start" && hover) {
+   scene = "game"
+        console.log("start clicked!");
+  }
+
+  // If we're in the game and laser is idle, fire it
+  if (scene === "game" && spaceShip.laser.state === "idle") {
+    spaceShip.laser.state = "outbound";
+  }
 }
+
+    
+
+
+
 
