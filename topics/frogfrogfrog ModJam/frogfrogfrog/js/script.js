@@ -27,8 +27,6 @@ let startButtons = {
     width:100,
     height:  50,
 
-
-
 }
  
 const spaceShip = {
@@ -68,11 +66,6 @@ let target = {
 size: 50
 }
 
-
-
-
-
-
 // Our asteroid
 // Has a position, size, and speed of horizontal movement
 let asteroid = {
@@ -80,9 +73,29 @@ let asteroid = {
     y: 200, // Will be random
     size: 30,
     speed: 7,
-    colour: "#383838ff"
-    
-};
+    colour: "#383838ff",
+
+
+}
+
+let resetA = {
+    x: -300,
+    sizeMin: 40,
+    sizeMax: 160,
+    speedMin: 1.9,
+    speedMax: 3
+}
+
+
+let score = {
+
+    x: 800,
+    y: 75,
+    size: 50,
+    text: 0
+  
+
+}
 
 /**
  * Creates the canvas and initializes the asteroid
@@ -135,7 +148,9 @@ function draw() {
         checkLaserAsteroidOverlap();
         drawTarget();
         moveTarget();
-    
+        drawScore();
+
+
     }
 }
 
@@ -218,22 +233,23 @@ function moveAsteroid() {
  * Draws the asteroid as a black circle
  */
 function drawAsteroid() {
+    
     push();
     noStroke();
     fill(asteroid.colour);
     ellipse(asteroid.x, asteroid.y, asteroid.size);
     pop();
-
 }
 
 /**
  * Resets the asteroid to the left with a random y
  */
 function resetAsteroid() {
-    asteroid.x = -300;
+    asteroid.x = resetA.x;
     asteroid.y = random(0, height - height / 3);
-    asteroid.size = random(20, 100)
-    asteroid.speed = random(1.9, 3)
+    asteroid.size = random(resetA.sizeMin, resetA.sizeMax)
+    asteroid.speed = random(resetA.speedMin, resetA.speedMax)
+    asteroid.shrinking = false; // make sure it's alive again
     
     let grey = map(random(), 0, 1, 56, 186);
     asteroid.colour = color(grey); // proper p5 color
@@ -419,8 +435,21 @@ function mousePressed() {
   }
 }
 
+function drawScore() {
     
+  push();
+    fill(asteroid.colour);
+    textAlign(CENTER, CENTER);
+    textSize(score.size);
+    text(score.text, score.x,score.y)
+    
+ 
+    if (spaceShip.laser.state === "inbound") { 
+        score.text++;
+    }
 
+    pop();
+}
 
 
 
