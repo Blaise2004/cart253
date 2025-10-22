@@ -15,8 +15,8 @@
 
 "use strict";
 
-// Our frog
-let scene = "start"; // or "game"
+
+let scene = "start"; 
 
 
 
@@ -93,14 +93,14 @@ let score = {
     x: 800,
     y: 75,
     size: 50,
-    text: 19  
+    text: 0  
 
 }
 
-endScore = {
+let endScore = {
 
  x: 500,
- y: 350,
+ y: 300,
 
 
 }
@@ -111,7 +111,7 @@ function setup() {
     createCanvas(1000, 700);
     
     // generate star positions once
-  for (let i = 0; i < 750; i++) {
+  for (let i = 0; i < 400; i++) {
     farStars.push({
       x: random(width),
       y: random(height),
@@ -468,7 +468,7 @@ if (scene === "game" && spaceShip.laser.hit) {
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 20) {
+    if (scene === "game" && score.text >= 5) {
         scene = "end"
     }
 }
@@ -476,9 +476,9 @@ if (scene === "game" && spaceShip.laser.hit) {
 function drawEndScore() {
 
     push();
-    fill(asteroid.colour);
+    fill(255);
     textAlign(CENTER, CENTER);
-    textSize(score.size);
+    textSize(20);
     text("You scored" + score.text + "!",endScore.x,endScore.y)
     pop();
 
