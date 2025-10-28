@@ -97,6 +97,16 @@ let score = {
 
 }
 
+let lives = {
+    
+    x: 900,
+    y: 75,
+    size: 50,
+    text:3,
+    colour: "#ff0000ff"
+
+}
+
 let endScore = {
 
  x: 500,
@@ -142,6 +152,7 @@ function draw() {
         drawTarget();
         moveTarget();
         buttonHover();
+        
        
     }
     else if (scene === "game") {
@@ -156,7 +167,15 @@ function draw() {
         drawTarget();
         moveTarget();
         drawScore();
+        drawLives();
     }
+    /*else if (scene === "lose") {
+    noCursor();
+    drawBackground();
+    drawStartShip();
+    drawTarget();
+
+        }*/
     else if (scene === "end") { 
         noCursor();
         drawBackground();
@@ -458,7 +477,7 @@ function drawScore() {
     textAlign(CENTER, CENTER);
     textSize(score.size);
     text(score.text, score.x,score.y)
-    
+    pop();
  
  // At the end of drawScore() or draw():
 if (scene === "game" && spaceShip.laser.hit) {
@@ -472,14 +491,37 @@ if (scene === "game" && spaceShip.laser.hit) {
         scene = "end"
     }
 }
+function drawLives() {
+    
+    push()
+    fill(lives.colour);
+    textAlign(CENTER, CENTER);
+    textSize(lives.size);
+    text(lives.text, lives.x, lives.y);
+    pop();
 
+}
+/*
+function drawLoseScreen() {
+    
+    push();
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text("Too bad! You scored " + score.text + "!",endScore.x,endScore.y)
+    pop();
+    
+
+
+}
+    */
 function drawEndScore() {
 
     push();
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("You scored" + score.text + "!",endScore.x,endScore.y)
+    text("YOU WIN!" + score.text + "!",endScore.x,endScore.y)
     pop();
 
 }
