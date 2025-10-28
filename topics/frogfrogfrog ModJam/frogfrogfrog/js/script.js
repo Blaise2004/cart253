@@ -28,6 +28,14 @@ let startButtons = {
     height:  50,
 
 }
+let loseButtons = {
+
+    x: 500,
+    y: 350,
+    width:100,
+    height:  50,
+
+}
  
 const spaceShip = {
     // The spaceShip's body has a position and size
@@ -169,13 +177,16 @@ function draw() {
         drawScore();
         drawLives();
     }
-    /*else if (scene === "lose") {
-    noCursor();
+    else if (scene === "lose") {
+        
+        noCursor();
     drawBackground();
     drawStartShip();
-    drawTarget();
+        drawTarget();
+        loseButtons();
+        drawloseButton();
+    }
 
-        }*/
     else if (scene === "end") { 
         noCursor();
         drawBackground();
@@ -259,6 +270,7 @@ function moveAsteroid() {
     asteroid.x += asteroid.speed;
     if (asteroid.x > width) {
         resetAsteroid();
+        lives.text -=  1;
     }
 }
 
@@ -487,7 +499,7 @@ if (scene === "game" && spaceShip.laser.hit) {
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 5) {
+    if (scene === "game" && score.text >= 1) {
         scene = "end"
     }
 }
@@ -500,9 +512,15 @@ function drawLives() {
     text(lives.text, lives.x, lives.y);
     pop();
 
+    if (scene === "game" && lives.text <=0) { 
+    scene = "lose"
+
+    }
+
+
 }
-/*
-function drawLoseScreen() {
+
+function drawLoseScore() {
     
     push();
     fill(255);
@@ -514,7 +532,23 @@ function drawLoseScreen() {
 
 
 }
-    */
+function drawloseButton(){
+ push();
+rectMode(CENTER); // draw rectangle from its center
+fill("#4e90ff");  // choose any color
+noStroke();
+rect(loseButtons.x, loseButtons.y, loseButtons.width, loseButtons.height); // width:100, height:50
+pop();
+
+push();
+fill(255);
+textAlign(CENTER, CENTER);
+textSize(20);
+text("TryAgain!", loseButtons.x, loseButtons.y);
+pop();
+
+}
+    
 function drawEndScore() {
 
     push();
