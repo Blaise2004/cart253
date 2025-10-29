@@ -40,6 +40,15 @@ let loseButtons = {
     height:  50,
 
 }
+
+let freePlayButton = {
+
+    x: 500,
+    y: 350,
+    width:100,
+    height:  50,
+
+}
  
 const spaceShip = {
     // The spaceShip's body has a position and size
@@ -102,9 +111,9 @@ let resetA = {
 
 let score = {
 
-    x: 800,
+    x: 500,
     y: 75,
-    size: 50,
+    size: 100,
     text: 0  
 
 }
@@ -141,7 +150,10 @@ function preload() {
 
 function setup() {
     createCanvas(1000, 700);
+    
+    sfxHitAsteroid.setVolume(0.4);
     musicGameScene.setVolume(0.8);
+    sfxLoseLife.setVolume(1.5);
     // generate star positions once
   for (let i = 0; i < 400; i++) {
     farStars.push({
@@ -214,9 +226,24 @@ function draw() {
         drawBackground();
         drawStartShip();
         drawEndScore();
+        drawFreePlayButton();
         drawTarget();
         moveTarget();
        
+    }
+    else if (scene === "freePlay") {
+        noCursor();
+        drawBackground();
+        moveAsteroid();
+        drawAsteroid();
+        moveSpaceShip();
+        moveLaser();
+        drawSpaceShip();
+        checkLaserAsteroidOverlap();
+        drawTarget();
+        moveTarget();
+        drawScore();
+        drawLives();
     }
          
 }
@@ -293,7 +320,8 @@ function moveAsteroid() {
     asteroid.x += asteroid.speed;
     if (asteroid.x > width) {
         resetAsteroid();
-        lives.text -=  1;
+        lives.text -= 1;
+        sfxLoseLife.play();
     }
 }
 
@@ -481,6 +509,7 @@ function checkLaserAsteroidOverlap() {
     if (hit) {
          spaceShip.laser.hit = true
         resetAsteroid();
+        sfxHitAsteroid.play();
         spaceShip.laser.state = "inbound";
         
     }
@@ -495,7 +524,10 @@ function mousePressed() {
   const hover = (d < startButtons.width / 2);
 
     const loseD = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
-  const loseHover = (loseD < loseButtons.width / 2);
+    const loseHover = (loseD < loseButtons.width / 2);
+    
+     const freeD = dist(mouseX, mouseY, freePlayButton.x, freePlayButton.y);
+  const freeHover = (freeD < freePlayButton.width / 2);
     
   // If we're on the start screen and clicked the button
   if (scene === "start" && hover) {
@@ -515,16 +547,25 @@ function mousePressed() {
    resetAsteroid();      // reposition the asteroid
    spaceShip.laser.state = "idle";  // reset laser
 
-   scene = "game";
+     scene = "game";
+      musicGameScene.loop();
    console.log("Try again clicked!");
 }
-    
+
+    if (scene === "end" && freeHover) {
+        
+        lives.text = 3;       // back to full lives
+        score.text = 0;       // restart score
+        scene = "freePlay"
+        musicGameScene.loop();
+    }    
 
   // If we're in the game and laser is idle, fire it
-  if (scene === "game" && spaceShip.laser.state === "idle") {
+  if ((scene === "game" || scene === "freePlay") && spaceShip.laser.state === "idle") {
       spaceShip.laser.state = "outbound";
       sfxFire.play();
   }
+    
 }
 
 function drawScore() {
@@ -544,7 +585,7 @@ if (scene === "game" && spaceShip.laser.hit) {
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 20) {
+    if (scene === "game" && score.text >= 1) {
         scene = "end"
         sfxWinner.play();
         musicGameScene.stop();
@@ -606,4 +647,21 @@ function drawEndScore() {
     text("YOU WIN" + score.text + "!",endScore.x,endScore.y)
     pop();
 
+}
+
+function drawFreePlayButton() {
+  // Draw the "Free Play" button
+push();
+rectMode(CENTER); // draw rectangle from its center
+fill("#4e90ff");  // button color
+noStroke();
+rect(freePlayButton.x, freePlayButton.y, freePlayButton.width, freePlayButton.height); // width:100, height:50
+pop();
+
+push();
+fill(255); // text color
+textAlign(CENTER, CENTER);
+textSize(20);
+text("Free Play", freePlayButton.x, freePlayButton.y);
+pop();
 }
