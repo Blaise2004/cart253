@@ -14,11 +14,14 @@
  */
 
 "use strict";
-
-
 let scene = "start"; 
 
-
+// SOUND VARIABLES
+let sfxFire;
+let sfxHitAsteroid;
+let sfxLoseLife;
+let sfxGameOver;
+let musicGameScene;
 
 let startButtons = {
 
@@ -122,9 +125,18 @@ let endScore = {
 
 
 }
-/**
- * Creates the canvas and initializes the asteroid
- */
+
+
+function preload() {
+  soundFormats('mp3', 'wav'); 
+  sfxFire = loadSound('assets/sounds/fire.wav');
+  sfxHitAsteroid = loadSound('assets/sounds/hitAstroid.wav');
+  sfxLoseLife = loadSound('assets/sounds/loseLife.wav');
+  sfxGameOver = loadSound('assets/sounds/gameOver.wav');
+  musicGameScene = loadSound('assets/sounds/gameScene.mp3');
+}
+
+
 function setup() {
     createCanvas(1000, 700);
     
@@ -149,6 +161,10 @@ function setup() {
     // Give the asteroid its first random position
     resetAsteroid();
 }
+
+
+
+
 
 function draw() {
    
@@ -182,10 +198,10 @@ function draw() {
         noCursor();
         drawBackground();
         drawStartShip();
-        drawTarget();
         moveTarget();
         drawLoseScore();
         drawloseButton();
+        drawTarget();
         
     }
 
@@ -470,7 +486,8 @@ function checkLaserAsteroidOverlap() {
  * Launch the laser on click (if it's not launched yet)
  */
 function mousePressed() {
-  const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
+  
+    const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
   const hover = (d < startButtons.width / 2);
 
     const loseD = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
@@ -478,7 +495,9 @@ function mousePressed() {
     
   // If we're on the start screen and clicked the button
   if (scene === "start" && hover) {
-   scene = "game"
+      
+      scene = "game"
+      
         console.log("start clicked!");
   }
     
@@ -499,7 +518,8 @@ function mousePressed() {
 
   // If we're in the game and laser is idle, fire it
   if (scene === "game" && spaceShip.laser.state === "idle") {
-    spaceShip.laser.state = "outbound";
+      spaceShip.laser.state = "outbound";
+      sfxFire.play();
   }
 }
 
