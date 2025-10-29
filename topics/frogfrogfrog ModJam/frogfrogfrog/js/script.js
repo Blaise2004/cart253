@@ -180,11 +180,13 @@ function draw() {
     else if (scene === "lose") {
         
         noCursor();
-    drawBackground();
-    drawStartShip();
+        drawBackground();
+        drawStartShip();
         drawTarget();
-        loseButtons();
+        moveTarget();
+        drawLoseScore();
         drawloseButton();
+        
     }
 
     else if (scene === "end") { 
@@ -194,6 +196,7 @@ function draw() {
         drawEndScore();
         drawTarget();
         moveTarget();
+       
     }
          
 }
@@ -470,11 +473,29 @@ function mousePressed() {
   const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
   const hover = (d < startButtons.width / 2);
 
+    const loseD = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
+  const loseHover = (loseD < loseButtons.width / 2);
+    
   // If we're on the start screen and clicked the button
   if (scene === "start" && hover) {
    scene = "game"
         console.log("start clicked!");
   }
+    
+    
+
+  // If we're on the start screen and clicked the button
+ if (scene === "lose" && loseHover) {
+   // Reset player stats
+   lives.text = 3;       // back to full lives
+   score.text = 0;       // restart score
+   resetAsteroid();      // reposition the asteroid
+   spaceShip.laser.state = "idle";  // reset laser
+
+   scene = "game";
+   console.log("Try again clicked!");
+}
+    
 
   // If we're in the game and laser is idle, fire it
   if (scene === "game" && spaceShip.laser.state === "idle") {
@@ -512,7 +533,7 @@ function drawLives() {
     text(lives.text, lives.x, lives.y);
     pop();
 
-    if (scene === "game" && lives.text <=0) { 
+    if (scene === "game" && lives.text <=2) { 
     scene = "lose"
 
     }
@@ -555,7 +576,7 @@ function drawEndScore() {
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("YOU WIN!" + score.text + "!",endScore.x,endScore.y)
+    text("YOU WIN" + score.text + "!",endScore.x,endScore.y)
     pop();
 
 }
