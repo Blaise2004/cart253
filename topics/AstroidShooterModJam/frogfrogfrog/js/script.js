@@ -12,7 +12,7 @@
  * - You have 3 Lives
  * - fee Play is optional after you win!
  * 
- * Made with p5
+ * Made with p5 r
  * https://p5js.org/
  */
 
