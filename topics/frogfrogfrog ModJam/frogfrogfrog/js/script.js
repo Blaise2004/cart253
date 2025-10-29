@@ -22,6 +22,7 @@ let sfxHitAsteroid;
 let sfxLoseLife;
 let sfxGameOver;
 let musicGameScene;
+let sfxWinner;
 
 let startButtons = {
 
@@ -133,13 +134,14 @@ function preload() {
   sfxHitAsteroid = loadSound('assets/sounds/hitAstroid.wav');
   sfxLoseLife = loadSound('assets/sounds/loseLife.wav');
   sfxGameOver = loadSound('assets/sounds/gameOver.wav');
-  musicGameScene = loadSound('assets/sounds/gameScene.mp3');
+    musicGameScene = loadSound('assets/sounds/gameScene.mp3');
+    sfxWinner = loadSound('assets/sounds/winner.mp3');
 }
 
 
 function setup() {
     createCanvas(1000, 700);
-    
+    musicGameScene.setVolume(0.8);
     // generate star positions once
   for (let i = 0; i < 400; i++) {
     farStars.push({
@@ -160,6 +162,8 @@ function setup() {
   }
     // Give the asteroid its first random position
     resetAsteroid();
+
+
 }
 
 
@@ -497,7 +501,7 @@ function mousePressed() {
   if (scene === "start" && hover) {
       
       scene = "game"
-      
+      musicGameScene.loop();
         console.log("start clicked!");
   }
     
@@ -540,8 +544,10 @@ if (scene === "game" && spaceShip.laser.hit) {
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 1) {
+    if (scene === "game" && score.text >= 20) {
         scene = "end"
+        sfxWinner.play();
+        musicGameScene.stop();
     }
 }
 function drawLives() {
@@ -553,9 +559,10 @@ function drawLives() {
     text(lives.text, lives.x, lives.y);
     pop();
 
-    if (scene === "game" && lives.text <=2) { 
+    if (scene === "game" && lives.text <=0) { 
     scene = "lose"
-
+        sfxGameOver.play();
+        musicGameScene.stop();
     }
 
 
