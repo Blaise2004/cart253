@@ -1,13 +1,16 @@
 /**
- * SpaceMiner
+ * SpaceShooter
  * Blaise Treverton
  * 
- * A game of mining astroids
+ * A game of shooting astroids
  * 
  * Instructions:
  * - Move the Space ship with your mouse
  * - Click to launch the laser
  * - Mine the Astroids
+ * -Get a score of 20 and you win!
+ * - You have 3 Lives
+ * - fee Play is optional after you win!
  * 
  * Made with p5
  * https://p5js.org/
@@ -105,7 +108,9 @@ let resetA = {
     sizeMin: 40,
     sizeMax: 160,
     speedMin: 1.9,
-    speedMax: 3
+    speedMax: 3,
+     baseSpeedMin: 1.9,
+    baseSpeedMax: 3
 }
 
 
@@ -578,17 +583,19 @@ function drawScore() {
     pop();
  
  // At the end of drawScore() or draw():
-if (scene === "game" && spaceShip.laser.hit) {
+if ((scene === "game" || scene === "freePlay") && spaceShip.laser.hit) {
     score.text++;          // register the hit
     spaceShip.laser.hit = false; // now reset for the next frame
     resetA.speedMin = resetA.speedMin + 0.5
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 1) {
+    if (scene === "game" && score.text >= 20) {
         scene = "end"
         sfxWinner.play();
         musicGameScene.stop();
+        resetA.speedMin = resetA.baseSpeedMin;
+        resetA.speedMax = resetA.baseSpeedMax;
     }
 }
 function drawLives() {
@@ -604,8 +611,17 @@ function drawLives() {
     scene = "lose"
         sfxGameOver.play();
         musicGameScene.stop();
+        resetA.speedMin = resetA.baseSpeedMin;
+        resetA.speedMax = resetA.baseSpeedMax;
     }
+    if (scene === "freePlay" && lives.text <= 0) {
+        scene = "lose"
+        sfxGameOver.play();
+        musicGameScene.stop();
+        resetA.speedMin = resetA.baseSpeedMin;
+        resetA.speedMax = resetA.baseSpeedMax;
 
+ }
 
 }
 
