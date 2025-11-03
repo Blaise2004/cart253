@@ -194,6 +194,7 @@ function draw() {
         drawBackground();
         drawStartShip()
         drawStartButton();
+        drawGoal();
         drawTarget();
         moveTarget();
         buttonHover();
@@ -203,6 +204,7 @@ function draw() {
     else if (scene === "game") {
         noCursor();
         drawBackground();
+        drawSpeedAstroid()
         moveAsteroid();
         drawAsteroid();
         moveSpaceShip();
@@ -241,6 +243,7 @@ function draw() {
         drawBackground();
         moveAsteroid();
         drawAsteroid();
+        drawSpeedAstroid()
         moveSpaceShip();
         moveLaser();
         drawSpaceShip();
@@ -296,6 +299,13 @@ function drawStartButton() {
     text("START",startButtons.x,startButtons.y)
     pop();
     
+}
+function drawGoal(){
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text("AIM: DESTROY 20 ASTROIDS",startButtons.x,startButtons.y+50)
+    pop();
 }
 
 
@@ -357,7 +367,15 @@ function resetAsteroid() {
 
 
 }
-
+function drawSpeedAstroid() {
+    asteroid.speed
+     fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text("Asteroid Speed: " + Math.round(asteroid.speed), 100, 30);
+    pop();
+    
+}
 /**
  * Moves the spaceShip to the mouse position on x
  */
