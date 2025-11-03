@@ -52,6 +52,7 @@ let freePlayButton = {
     height:  50,
 
 }
+const goal = 30;
  
 const spaceShip = {
     // The spaceShip's body has a position and size
@@ -159,6 +160,7 @@ function setup() {
     sfxHitAsteroid.setVolume(0.4);
     musicGameScene.setVolume(0.8);
     sfxLoseLife.setVolume(1.5);
+
     // generate star positions once
   for (let i = 0; i < 400; i++) {
     farStars.push({
@@ -188,7 +190,10 @@ function setup() {
 
 
 function draw() {
-   
+  
+
+
+
     if (scene === "start") {
         noCursor();
         drawBackground();
@@ -253,17 +258,18 @@ function draw() {
         drawScore();
         drawLives();
     }
-         
+
 }
 
 
 function drawBackground() {
+    
     background("#0f1011ff");
      // draw stars every frame, but positions don’t change
-  noStroke();
-  fill(255);
+    noStroke();
+    fill(255);
     for (let star of farStars) {
-        star.x += star.speed // random speed
+        star.x += star.speed + asteroid.speed/2 // random speed
         if (star.x > width) {
             star.x = 0 
             star.y = random(height)
@@ -271,7 +277,7 @@ function drawBackground() {
      ellipse(star.x, star.y, star.size, star.size);
  }
    for (let stars of nearStars) {
-       stars.x += stars.speed // random speed
+       stars.x += stars.speed + asteroid.speed/2// random speed
         if (stars.x > width) {
             stars.x = 0 
             stars.y = random(height)
@@ -304,7 +310,7 @@ function drawGoal(){
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("AIM: DESTROY 20 ASTROIDS",startButtons.x,startButtons.y+50)
+    text("AIM: DESTROY " + goal + " ASTEROIDS", startButtons.x, startButtons.y + 50);
     pop();
 }
 
@@ -608,7 +614,7 @@ if ((scene === "game" || scene === "freePlay") && spaceShip.laser.hit) {
     resetA.speedMax = resetA.speedMax + 0.5
     console.log(resetA.speedMin);
 }
-    if (scene === "game" && score.text >= 20) {
+    if (scene === "game" && score.text >= goal) {
         scene = "end"
         sfxWinner.play();
         musicGameScene.stop();
