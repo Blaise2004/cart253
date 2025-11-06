@@ -371,8 +371,8 @@ function resetAsteroid() {
     let grey = map(random(), 0, 1, 56, 186);
     asteroid.colour = color(grey); // proper p5 color
 
-
 }
+
 function drawSpeedAstroid() {
     asteroid.speed
      fill(255);
