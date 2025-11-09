@@ -32,9 +32,7 @@ let y2 = 0
 
     let startColour = color(0, 0, 128);
     let endColour = color(191, 64, 191);
-    let numberOfLines= 100
-    let linesHeight = height / numberOfLines
-    
+  
     for (let y = 0; y < height; y++){
         let percent = y / height;
         let c = lerpColor(startColour, endColour, percent);

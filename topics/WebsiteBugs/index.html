@@ -8,39 +8,58 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
     <title>Blaise Treverton</title>
 </head>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = 1200;  // Scroll distance to reach full effect
+        const maxBlur = 20;      // Max blur in pixels
+        const minSaturation = 0.01; // 0.5 = half as colorful (desaturated)
+
+        // Calculate current values
+        const blurValue = Math.min(scrollY / maxScroll * maxBlur, maxBlur);
+        const saturationValue = Math.max(1 - (scrollY / maxScroll) * (1 - minSaturation), minSaturation);
+
+        // Apply both filters
+        document.querySelector('.background').style.filter =
+            `blur(${blurValue}px) saturate(${saturationValue})`;
+    });
+</script>
+
 
 <body>
     <!-- Background -->
     <div class="background"></div>
 
     <!-- Transparent blocker -->
-    <div class="blocker"></div>
+<div class="blocker"></div>
+
 
     <!-- Navigation -->
     <nav>
-        <a href="index.html" style="color: white;">Home</a>
-        <a href="bio.html">About</a>
+        <a href="index.html" >Home </a>
+        <a href="bio.html">About </a>
         <a href="work.html">Print</a>
     </nav>
+
+    <div class="blocker2"></div>
 
     <!-- Main content -->
     <div class="wrapper">
         <header>
-            <div class="spacer">Spacer</div>
+            <div class="spacer"></div>
         </header>
 
         <main>
             <p>
-                Blaise Treverton, born in 2004 in South London, is an interaction designer and artist focusing on
-                computational arts
-                using a variety of techniques. His work explores the ideas of scale, 3D space, and the connections
-                between machine and
-                nature, with construction and deconstruction playing a large role in his practice. At times playful and
-                at times deeply
-                moving, Treverton’s art reflects a thoughtful engagement with the world around him. His relationship
-                with nature is
-                evident in his life and work in Glasgow, Scotland, where the Highlands play a key role in shaping his
-                creative practice.
+                Data Migration explores the unsettling reality of how personal information has become the new currency of the digital
+                age. In a world where every click, search, and scroll is tracked, our data moves invisibly through networks, bought and
+                sold by corporations on an unimaginable scale, often without our awareness or consent. This hidden economy of
+                information reflects a profound loss of privacy, as individuals are reduced to datasets fueling profit and control.
+                
+                The beetle in the work serves as a symbolic “bug,” a term rooted in programming that represents flaws, errors, and
+                vulnerabilities within systems. Here, it embodies both the corruption within digital infrastructures and the parasitic
+                relationship between users and the technologies that feed on their data. The creature’s migration mirrors that of our
+                personal information, crawling unnoticed through coded pathways and leaving traces that can never truly be erased.
             </p>
         </main>
     </div>
