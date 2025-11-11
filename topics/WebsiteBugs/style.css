@@ -74,7 +74,7 @@ nav {
     margin-left: 50px;
     float: left;
     cursor: pointer;
-  
+  position: fixed;
       
 }
 
@@ -94,7 +94,9 @@ nav a:hover {
 
 }
 
-
+h1 {
+    margin-left: 10%;
+}
 main p {
     max-width: 80%;
     margin: 40px auto;
@@ -130,6 +132,7 @@ font-family: 'Dot', sans-serif;
 @media (max-width: 400px) {
 
 nav {
+    background-color: rgb(255, 255, 255);
         display: flex;
         /* flex layout */
         flex-direction: row;
@@ -148,9 +151,10 @@ nav {
         /* span full width */
         float: none;
         /* cancel any float */
-      
+        position: fixed;
     }
     nav a {
+        scroll-margin-top: 30px;
         font-size: 25px;
         
     }
@@ -196,5 +200,11 @@ nav {
         z-index: -2;
     }
 
+
+    h1 a {
+margin-top: 30%;
+    font-size: 60px;
+    
+}
     
 }
