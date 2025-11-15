@@ -1,21 +1,24 @@
 /**
- * Variation Menu
- * Pippin Barr
+ * Variation Jam
+ * Blaise Treverton
  * 
- * A relatively simple example of a set of variations within a single
- * project. (When we learn Object-Oriented Programming this will be a
- * LOT easier.)
+ * An ASCII Art maker.
  */
 
 "use strict";
 
 let state = "menu";
 
+let Canvas = {
+    X: 900,
+    Y: 600
+}
+
 /**
  * Create the canvas
 */
 function setup() {
-    createCanvas(500, 500);
+    createCanvas(Canvas.X, Canvas.Y);
 }
 
 

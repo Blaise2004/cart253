@@ -46,7 +46,7 @@ function menuKeyPressed(event) {
 }
 
 /**
- * This will be called whenever the mouse is pressed while the menu is active
+ er
  */
 function menuMousePressed() {
 

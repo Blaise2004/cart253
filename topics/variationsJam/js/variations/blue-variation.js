@@ -7,15 +7,27 @@
 /**
  * This will be called just before the blue variation starts
  */
-function blueSetup() {
 
+let capture
+
+function videoIn(){
+    capture = createCapture(VIDEO);
+    capture.size(Canvas.X, Canvas.Y);
+      capture.hide();
+}
+
+
+
+function blueSetup() {
+videoIn();
 }
 
 /**
  * This will be called every frame when the blue variation is active
  */
 function blueDraw() {
-    background("blue");
+   //b background("blue");
+    image(capture, 0, 0, Canvas.X, Canvas.Y);
 }
 
 /**
