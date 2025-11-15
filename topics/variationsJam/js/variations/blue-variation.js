@@ -8,7 +8,8 @@
  * This will be called just before the blue variation starts
  */
 
-let capture;
+
+
 let resolution = {
     X: 50,
     Y:50
