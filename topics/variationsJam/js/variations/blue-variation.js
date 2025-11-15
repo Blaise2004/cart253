@@ -8,18 +8,21 @@
  * This will be called just before the blue variation starts
  */
 
-let capture
-
-function videoIn(){
+let capture;
+let resolution = {
+    X: 50,
+    Y:50
+}
+function initializeVideoCapture(){
     capture = createCapture(VIDEO);
-    capture.size(Canvas.X, Canvas.Y);
-      capture.hide();
+     capture.size(resolution.X, resolution.Y);
+    capture.hide(); // Mkaes it only appeare in the Java Script, Not the HTML as well.b
 }
 
 
 
 function blueSetup() {
-videoIn();
+initializeVideoCapture();
 }
 
 /**
@@ -27,7 +30,7 @@ videoIn();
  */
 function blueDraw() {
    //b background("blue");
-    image(capture, 0, 0, Canvas.X, Canvas.Y);
+    image(capture, 0, 0, Canvas.X, Canvas.Y); // Display the Video Stream In Draw. Display
 }
 
 /**
