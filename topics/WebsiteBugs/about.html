@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styleAbout.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = 1600;  // Scroll distance to reach full effect
+        const maxBlur = 50;      // Max blur in pixels
+        const minSaturation = 0.01; // 0.5 = half as colorful (desaturated)
+
+        // Calculate current values
+        const blurValue = Math.min(scrollY / maxScroll * maxBlur, maxBlur);
+        const saturationValue = Math.max(1 - (scrollY / maxScroll) * (1 - minSaturation), minSaturation);
+
+        // Apply both filters
+        document.querySelector('.video-background').style.filter =
+            `blur(${blurValue}px)`;
+
+        document.querySelector('nav').style.filter =
+            `blur(${blurValue}px) saturate(${saturationValue})`;
+
+    });
+
+
+
+</script>
+
+
+
+
+<body>
+    <!-- Background -->
+
+<div class="video-background">
+    <video autoplay muted loop playsinline>
+        <source src="assets/aboutBackground.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+    <div class="blocker"></div>
+
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home </a>
+        <a href="about.html">About </a>
+        <a href="work.html">Print</a>
+    </nav>
+
+    <div class="blocker2"></div>
+    <h1><a>Patents, Patents, Patents</a></h1>
+    <!-- Main content -->
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+
+        <main>
+            <p>
+                Companies have secured thousands of patents for technologies that track and analyse how people behave online. These
+                systems collect data from clicks, scrolls, movements, and other interactions, turning them into information that can be
+                used to target content and advertising. Over time, these patented approaches have created a largely unseen framework
+                that influences what information we see and how digital platforms respond to us.
+                
+                Below are a few of these patented technologies. Click on any of them to explore how they work.
+            </p>
+        </main>
+    </div>
+
+    <!-- Image grid -->
+    <div class="image-row">
+        <img src="assets/Modeling_And_Visualizing_A_Dynamic_Interpersonal_Relationship_From_Social_Media_noBackground.png" alt="">
+        <a href="bulgi.html"><img src="assets/System_And_Method_For_Identifying_Contacts_Of_A_Target_User_In_A_Social_Network_noBackground.png" alt=""></a>
+        <img src="assets/Machine_Learned_Candidate_Selection_On_Inverted_Indices_noBackgorund.png" alt="">
+        <a href="bulgi.html"><img src="assets/System_And_Method_For_Managing_Targeted_Social_Communications_noBackground.png" alt=""></a>
+        <img src="assets/Monitoring_User_Status_By_Comparing_Public_And_Private_Activities.png" alt="">
+        <img src="assets/Monitoring_User_Status_By_Comparing_Public_And_Private_Activities.png" alt="">
+        <a href="bulgi.html"><img src="assets/System_And_Method_For_Managing_Targeted_Social_Communications_noBackground.png" alt=""></a>
+        <img src="assets/User_Recommendation_Using_A_Multi-view_Deep_Learning_Framework.png" alt="">
+        <a href="bulgi.html"><img src="assets/Bulgi2.9.jpg" alt=""></a>
+        <img src="assets/Instagrampost1.jpg" alt="">
+        <img src="assets/Design Domain Still5.jpg" alt="">
+        <a href="bulgi.html"><img src="assets/Bulgi2.8.jpg" alt=""></a>
+        <img src="assets/Instagrampost6.jpg" alt="">
+        <img src="assets/Design Domain Still7.jpg" alt="">
+        <a href="bulgi.html"><img src="assets/Bulgi2.1.jpg" alt=""></a>
+    </div>
+
+    <!-- Footer -->
+    <footer style="font-style: italic; bottom: 0; left: 0; width: 100%; color: white; text-align: left; padding: 10px;">
+        <small><em>By Blaise Treverton</em></small>
+    </footer>
+
+    <!-- JavaScript for scroll-based blur -->
+    <script src="script.js"></script>
+</body>
+
+</html>
