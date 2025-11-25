@@ -9,6 +9,15 @@
  */
 
 
+const density = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'
+
+/*
+# Source - https://stackoverflow.com/a
+# Posted by Ahsen Khan, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-11-25, License - CC BY-SA 4.0
+
+$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'.
+*/
 
 let resolution = {
     X: 50,
@@ -19,8 +28,6 @@ function initializeVideoCapture(){
      capture.size(resolution.X, resolution.Y);
     capture.hide(); // Mkaes it only appeare in the Java Script, Not the HTML as well.b
 }
-
-
 
 function blueSetup() {
 initializeVideoCapture();
@@ -34,6 +41,15 @@ function blueDraw() {
     image(capture, 0, 0, Canvas.X, Canvas.Y); // Display the Video Stream In Draw. Display
 }
 
+
+function pixelArray() {
+    for (let i = 0; i < resolution.X; i++) {
+        for (let i = 0; i < resolution.Y; i++) {
+            const pixelIndex = (i + j * resolution.X) * 4;
+            const r = 
+        }
+    }
+}
 /**
  * This will be called whenever a key is pressed while the blue variation is active
  */
