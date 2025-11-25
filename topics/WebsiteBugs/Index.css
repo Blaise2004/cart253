@@ -1,0 +1,272 @@
+/* General layout */
+html,
+
+
+body {
+    height: 100%;
+
+
+        cursor: none;
+    
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'Dot';
+    src: url('assets/fonts/Doto/static/Doto-ExtraBold.ttf');
+
+}
+
+
+.flashlight-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* allows clicks to pass through */
+    z-index: 999;
+    /* on top of everything */
+    transition: background 0.05s;
+    /* smooth movement */
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image fills the container */
+}
+/* Transparent overlay (blocker) */
+.blocker {
+
+
+    left: 0;
+    width: 100%;
+    height: 1%;
+    background: rgba(178, 158, 231, 0);
+    filter: blur(5px)
+        /* subtle dark tint */
+
+}
+.center-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: 'Dot', sans-serif;
+    font-weight: bold;
+    font-size: 62px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px 0;
+    cursor: pointer;
+    z-index: 2;
+    transform: rotate(90deg);
+    position: relative;
+    /* add this */
+}
+
+/* Transparent overlay (blocker) */
+.blocker2 {
+
+    margin-top: 20%;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background: rgba(168, 18, 18, 0);
+    filter: blur(5px)
+        /* subtle dark tint */
+
+}
+
+/* Navigation */
+a {
+    display: block;
+    font-weight: bold;
+    font-size: 62px;
+    margin-bottom: 15px;
+    text-decoration: none;
+
+    font-family: 'Dot', sans-serif;
+    font-kerning: initial;
+}
+
+nav {
+   
+    bottom: 0;           /* stick to bottom */
+    left: 0;
+    width: 100%;
+    display: flex;       /* horizontal layout */
+    justify-content: center; /* center the link(s) */
+    gap: 40px;           /* space between links if multiple */
+    cursor: pointer;
+    margin: 0;
+    padding: 15px 0;
+    background: rgba(0,0,0,0.3); /* subtle background */
+    z-index: 1000;       /* on top of everything */
+}
+
+nav a {
+    color: rgb(232,232,232);
+    font-family: 'Dot', sans-serif;
+    font-weight: bold;
+    font-size: 62px;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    transform: scale(1.05);
+    color: rgb(35,87,97);
+}
+
+/* Main content */
+.wrapper {
+    width: 100%;
+
+}
+
+h1 {
+    margin-left: 10%;
+}
+
+main p {
+    max-width: 80%;
+    margin: 40px auto;
+    line-height: 1.2;
+    color: rgb(129, 129, 129);
+    font-size: 32px;
+    font: bold;
+    font-family: 'Dot', sans-serif;
+}
+
+/* Image grid */
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 5px 0;
+    padding: 40px;
+
+}
+
+.image-row img {
+    width: 100%;
+    height: auto;
+    border-radius: 80px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.image-row img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 400px) {
+
+    nav {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        /* flex layout */
+        flex-direction: row;
+        /* horizontal links */
+        justify-content: center;
+        /* center links horizontally */
+        align-items: center;
+        /* vertical alignment */
+        gap: 20px;
+        /* spacing between links */
+        margin: 0px 0;
+        /* top & bottom spacing */
+        padding: 0;
+        /* remove desktop padding */
+        width: 100%;
+        /* span full width */
+        float: none;
+        /* cancel any float */
+        position: fixed;
+    }
+
+    nav a {
+        scroll-margin-top: 30px;
+        font-size: 25px;
+
+    }
+
+    /* Main text */
+    main p {
+        width: 90%;
+        max-width: 320px;
+        margin: auto;
+        font-size: 25px;
+        line-height: 1.5;
+        color: rgb(27, 21, 64);
+        text-align: left;
+    }
+
+    /* Image grid */
+    .image-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .image-row img {
+        width: 100%;
+        height: auto;
+        border-radius: 25px;
+    }
+
+    /* Background for mobile */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('assets/C2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: blur(0px);
+        transition: filter 0.2s ease-out;
+        z-index: -2;
+    }
+
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('assets/C2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: blur(0px);
+        transition: filter 0.2s ease-out;
+        z-index: -2;
+    }
+
+    h1 a {
+        margin-top: 30%;
+        font-size: 60px;
+
+    }
+
+}
