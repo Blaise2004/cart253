@@ -39,11 +39,14 @@ function draw() {
         drawBackground();
         drawStartShip();
         drawStartButton();
+        draweasyButton();
+        drawhardButton();
+        drawImpossibleButton()
         drawGoal();
         drawTarget();
         moveTarget();
         buttonHover();
-        draweasyButton()
+        
     } 
     else if (scene === "game") {
         noCursor();

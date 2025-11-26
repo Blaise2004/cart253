@@ -1,5 +1,7 @@
 let startButtons = { x: 500, y: 350, width: 100, height: 50 };
-let easyButton = { x: 200, y: 250, width: 100, height: 50 };
+let easyButton = { x: 500, y: 250, width: 0, height: 50 };
+let hardButton = { x: 500, y: 450, width: 0, height: 50 };
+let impossibleButton = { x: 500, y: 550, width: 0, height: 50 };
 let loseButtons  = { x: 500, y: 350, width: 100, height: 50 };
 let freePlayButton = { x: 500, y: 350, width: 100, height: 50 };
 
@@ -21,7 +23,7 @@ function drawStartButton() {
 function draweasyButton() {
     push();
     rectMode(CENTER);
-    fill("#4e90ff");
+    fill("#77ff4eff");
     rect(easyButton.x, easyButton.y, easyButton.width, easyButton.height);
     pop();
 
@@ -32,6 +34,22 @@ function draweasyButton() {
     text("Easy", easyButton.x, easyButton.y);
     pop();
 }
+
+function drawhardButton() {
+    push();
+    rectMode(CENTER);
+    fill("#ff4e4e");   
+    rect(hardButton.x, hardButton.y, hardButton.width, hardButton.height);
+    pop();
+
+    push();
+    fill(255);
+    textAlign(CENTER);
+    textSize(20);
+    text("Hard", hardButton.x, hardButton.y);
+    pop();
+}
+
 
 function drawloseButton() {
     push();
@@ -47,6 +65,21 @@ function drawloseButton() {
     text("Try Again!", loseButtons.x, loseButtons.y);
     pop();
 }
+function drawImpossibleButton() {
+    push();
+    rectMode(CENTER);
+    fill("#8a00ff"); 
+    rect(impossibleButton.x, impossibleButton.y, impossibleButton.width, impossibleButton.height);
+    pop();
+
+    push();
+    fill(255);
+    textAlign(CENTER);
+    textSize(20);
+    text("Impossible", impossibleButton.x, impossibleButton.y);
+    pop();
+}
+
 
 function drawFreePlayButton() {
     push();
@@ -75,14 +108,38 @@ function buttonHover() {
         startButtons.height = baseH;
     }
     
-    
+    const easyBaseW = 70, easyBaseH = 50;
     let dEasy = dist(mouseX, mouseY, easyButton.x, easyButton.y);
 
     if (dEasy < easyButton.width / 2) {
-        easyButton.width = baseW + 10;
-        easyButton.height = baseH + 10;
+        easyButton.width = easyBaseW + 10;
+        easyButton.height = easyBaseH + 10;
     } else {
-        easyButton.width = baseW;
-        easyButton.height = baseH;
+        easyButton.width = easyBaseW;
+        easyButton.height = easyBaseH;
     }
+
+    const hardBaseW = 70, hardBaseH = 50;
+let dHard = dist(mouseX, mouseY, hardButton.x, hardButton.y);
+
+if (dHard < hardButton.width / 2) {
+    hardButton.width = hardBaseW + 10;
+    hardButton.height = hardBaseH + 10;
+} else {
+    hardButton.width = hardBaseW;
+    hardButton.height = hardBaseH;
+}
+
+const impossibleBaseW = 70, impossibleBaseH = 50;
+let dImpossible = dist(mouseX, mouseY, impossibleButton.x, impossibleButton.y);
+
+if (dImpossible < impossibleButton.width / 2) {
+    impossibleButton.width = impossibleBaseW + 10;
+    impossibleButton.height = impossibleBaseH + 10;
+} else {
+    impossibleButton.width = impossibleBaseW;
+    impossibleButton.height = impossibleBaseH;
+}
+
+    
 }
