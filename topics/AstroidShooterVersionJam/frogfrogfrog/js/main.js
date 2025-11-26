@@ -3,7 +3,7 @@
 //(Controls scenes, setup, draw, mouse input)
 
 let scene = "start";
-let level = "level2";
+let level = "level1";
 
 function setup() {
     createCanvas(1000, 700);
@@ -115,7 +115,7 @@ function mousePressed() {
         musicGameScene.loop();
 
 
-            if (level === "level1") {
+        if (level === "level1") {
     musicGameSceneLevel2.stop();
     musicGameScene.loop();
 } else if (level === "level2") {
@@ -130,6 +130,14 @@ function mousePressed() {
         resetAsteroid();
         spaceShip.laser.state = "idle";
         scene = "game";
+
+             if (level === "level1") {
+    musicGameSceneLevel2.stop();
+    musicGameScene.loop();
+} else if (level === "level2") {
+    musicGameScene.stop();
+    musicGameSceneLevel2.loop();
+}
         
 
 }
@@ -138,7 +146,14 @@ function mousePressed() {
         lives.text = 3;
         score.text = 0;
         scene = "freePlay";
-        musicGameScene.loop();
+            
+        if (level === "level1") {
+    musicGameSceneLevel2.stop();
+    musicGameScene.loop();
+} else if (level === "level2") {
+    musicGameScene.stop();
+    musicGameSceneLevel2.loop();
+}
     }
 
     if ((scene === "game" || scene === "freePlay") &&
