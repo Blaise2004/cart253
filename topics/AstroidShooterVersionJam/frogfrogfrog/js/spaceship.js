@@ -36,55 +36,74 @@ function moveLaser() {
 }
 
 function drawSpaceShip() {
-    // Your full original drawing code
+
+   
+    // Draw the laser tip
     push();
     fill("#ff0000");
     noStroke();
     ellipse(spaceShip.laser.x, spaceShip.body.y, spaceShip.laser.size);
     pop();
 
+    // Laser line
     push();
     stroke("#4e0606ff");
     strokeWeight(spaceShip.laser.size);
     line(spaceShip.laser.x, spaceShip.laser.y, spaceShip.body.x, spaceShip.body.y);
     pop();
 
-    push();
+
+    push()
+    if (level === "level3") {
+        // shrink ship to 50%
+        translate(spaceShip.body.x, spaceShip.body.y);
+        scale(0.5);
+        translate(-spaceShip.body.x, -spaceShip.body.y);
+    }
+    // Draw the spaceShip's body + wings
     fill("#2f556eff");
     noStroke();
     ellipse(spaceShip.body.x, spaceShip.body.y, spaceShip.body.size);
 
+    // left front fin
     triangle(
         spaceShip.body.x - spaceShip.body.size/2, spaceShip.body.y,
         spaceShip.body.x - spaceShip.body.size/4, spaceShip.body.y,
         spaceShip.body.x - spaceShip.body.size/2.5, spaceShip.body.y - spaceShip.body.size
     );
 
+    // left wing
     triangle(
         spaceShip.body.x, spaceShip.body.y + spaceShip.body.size/2,
         spaceShip.body.x, spaceShip.body.y,
         spaceShip.body.x - spaceShip.body.size * 1.2, spaceShip.body.y
     );
 
+    // right front fin
     triangle(
         spaceShip.body.x + spaceShip.body.size/2, spaceShip.body.y,
         spaceShip.body.x + spaceShip.body.size/4, spaceShip.body.y,
-        spaceShip.body.x + spaceShip.body.size / 2.5, spaceShip.body.y - spaceShip.body.size
+        spaceShip.body.x + spaceShip.body.size/2.5, spaceShip.body.y - spaceShip.body.size
     );
 
+    // right wing
     triangle(
         spaceShip.body.x, spaceShip.body.y + spaceShip.body.size/2,
         spaceShip.body.x, spaceShip.body.y,
         spaceShip.body.x + spaceShip.body.size * 1.2, spaceShip.body.y
     );
 
+    // back fin
     triangle(
         spaceShip.body.x - spaceShip.body.size/1.5, spaceShip.body.y,
         spaceShip.body.x + spaceShip.body.size/1.5, spaceShip.body.y,
         spaceShip.body.x, spaceShip.body.y + spaceShip.body.size
     );
     pop();
+
+    pop();  
 }
+
 
 function drawStartShip() {
     // identical to your original, safely moved here
@@ -124,4 +143,9 @@ function drawStartShip() {
         startShip.body.x, startShip.body.y + startShip.body.size
     );
     pop();
+
+
+
+
+
 }

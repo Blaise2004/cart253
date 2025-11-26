@@ -3,6 +3,7 @@
 //(Controls scenes, setup, draw, mouse input)
 
 let scene = "start";
+let level = 'level3'
 
 function setup() {
     createCanvas(1000, 700);
@@ -59,7 +60,7 @@ function draw() {
         drawScore();
         drawLives();
     }
-
+    
     else if (scene === "lose") {
         noCursor();
         drawBackground();
