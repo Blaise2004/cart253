@@ -101,7 +101,7 @@ function drawSpaceShip() {
     );
     pop();
 
-    pop();  
+     
 }
 
 
