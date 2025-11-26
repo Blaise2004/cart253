@@ -37,16 +37,33 @@ initializeVideoCapture();
  * This will be called every frame when the blue variation is active
  */
 function blueDraw() {
-   //b background("blue");
-    image(capture, 0, 0, Canvas.X, Canvas.Y); // Display the Video Stream In Draw. Display
+   background(220)
+    pixelArray();
+    
+    
+    
 }
 
 
-function pixelArray() {
-    for (let i = 0; i < resolution.X; i++) {
-        for (let i = 0; i < resolution.Y; i++) {
-            const pixelIndex = (i + j * resolution.X) * 4;
-            const r = 
+function pixelArray(  ) {
+
+    image(capture, 0, 0, Canvas.X, Canvas.Y); // Display the Video Stream In Draw. Display
+    
+    let w = Canvas.X / resolution.X;
+    let h = Canvas.Y / resolution.Y
+
+ capture.loadPixels();
+
+ for (let i = 0; i < resolution.X; i++) {
+    for (let j = 0; j < resolution.Y; j++) {
+            const pixelIndex = (i + j * resolution.X) * 4; //The *4 is because each pixel has 4 values: R, G, B, A.
+            const r = capture.pixel[pixelIndex + 0]; 
+            const g = capture.pixel[pixelIndex + 1];
+            const b = capture.pixel[pixelIndex + 2]; 
+
+            noStroke();
+            fill(r, g, b)
+            square(i*w,j*h,w)
         }
     }
 }

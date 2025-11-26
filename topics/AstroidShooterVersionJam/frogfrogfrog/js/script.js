@@ -190,7 +190,7 @@ function setup() {
 
 
 function draw() {
-  
+
     if (scene === "start") {
         noCursor();
         drawBackground();
@@ -200,6 +200,7 @@ function draw() {
         drawTarget();
         moveTarget();
         buttonHover();
+        
     }
     else if (scene === "game") {
         noCursor();
@@ -217,7 +218,6 @@ function draw() {
         drawLives();
     }
     else if (scene === "lose") {
-        
         noCursor();
         drawBackground();
         drawStartShip();
@@ -276,10 +276,7 @@ function drawBackground() {
             stars.y = random(height)
         }
        ellipse(stars.x, stars.y, stars.size, stars.size); 
-
  }
-
-   
 }
 
 function drawStartButton() {
@@ -314,7 +311,7 @@ function buttonHover() {
     let baseButtonHeight = 50;
     
     const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
-    const hover = (d < startButtons.width/2 );
+    const hover = (d < startButtons.width/2);
     if (hover) {
         startButtons.width = baseButtonWidth + 10
         startButtons.height = baseButtonHeight + 10
@@ -543,26 +540,27 @@ function checkLaserAsteroidOverlap() {
 function mousePressed() {
   
     const d = dist(mouseX, mouseY, startButtons.x, startButtons.y);
-  const hover = (d < startButtons.width / 2);
+    const hover = (d < startButtons.width / 2);
 
     const loseD = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
     const loseHover = (loseD < loseButtons.width / 2);
     
      const freeD = dist(mouseX, mouseY, freePlayButton.x, freePlayButton.y);
-  const freeHover = (freeD < freePlayButton.width / 2);
+    const freeHover = (freeD < freePlayButton.width / 2);
     
-  // If we're on the start screen and clicked the button
-  if (scene === "start" && hover) {
+    // If we're on the start screen and clicked the button
+     if (scene === "start" && hover) {
       
       scene = "game"
       musicGameScene.loop();
-        console.log("start clicked!");
-  }
+         console.log("start clicked!");
+     }
+    
     
     
 
-  // If we're on the start screen and clicked the button
- if (scene === "lose" && loseHover) {
+  // If we're on the lose screen and clicked the button
+    if (scene === "lose" && loseHover) {
    // Reset player stats
    lives.text = 3;       // back to full lives
    score.text = 0;       // restart score
