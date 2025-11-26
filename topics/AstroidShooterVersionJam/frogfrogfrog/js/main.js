@@ -1,9 +1,9 @@
 "use strict";
 
-//(Controls scenes, setup, draw, mouse input)
+// (Controls scenes, setup, draw, mouse input)
 
 let scene = "start";
-let level = "level1";
+let level = "level3";
 
 function setup() {
     createCanvas(1000, 700);
@@ -43,8 +43,7 @@ function draw() {
         drawTarget();
         moveTarget();
         buttonHover();
-    }
-
+    } 
     else if (scene === "game") {
         noCursor();
         drawBackground();
@@ -59,8 +58,7 @@ function draw() {
         moveTarget();
         drawScore();
         drawLives();
-    }
-    
+    } 
     else if (scene === "lose") {
         noCursor();
         drawBackground();
@@ -69,8 +67,7 @@ function draw() {
         drawLoseScore();
         drawloseButton();
         drawTarget();
-    }
-
+    } 
     else if (scene === "end") {
         noCursor();
         drawBackground();
@@ -79,8 +76,7 @@ function draw() {
         drawFreePlayButton();
         drawTarget();
         moveTarget();
-    }
-
+    } 
     else if (scene === "freePlay") {
         noCursor();
         drawBackground();
@@ -110,20 +106,26 @@ function mousePressed() {
     const loseD  = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
     const freeD  = dist(mouseX, mouseY, freePlayButton.x, freePlayButton.y);
 
+    // Start button
     if (scene === "start" && startD < startButtons.width / 2) {
         scene = "game";
-        musicGameScene.loop();
 
-
-        if (level === "level1") {
-    musicGameSceneLevel2.stop();
-    musicGameScene.loop();
-} else if (level === "level2") {
-    musicGameScene.stop();
-    musicGameSceneLevel2.loop();
-}
+       if (level === "level1") {
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.stop();
+            musicGameScene.loop();
+        } else if (level === "level2") {
+            musicGameScene.stop();
+            musicGameSceneLevel3.stop();
+            musicGameSceneLevel2.loop();
+        } else if (level === "level3") {
+            musicGameScene.stop();
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.loop();
+        }
     }
 
+    // Lose button
     if (scene === "lose" && loseD < loseButtons.width / 2) {
         lives.text = 3;
         score.text = 0;
@@ -131,33 +133,46 @@ function mousePressed() {
         spaceShip.laser.state = "idle";
         scene = "game";
 
-             if (level === "level1") {
-    musicGameSceneLevel2.stop();
-    musicGameScene.loop();
-} else if (level === "level2") {
-    musicGameScene.stop();
-    musicGameSceneLevel2.loop();
-}
+        if (level === "level1") {
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.stop();
+            musicGameScene.loop();
+        } else if (level === "level2") {
+            musicGameScene.stop();
+            musicGameSceneLevel3.stop();
+            musicGameSceneLevel2.loop();
+        } else if (level === "level3") {
+            musicGameScene.stop();
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.loop();
+        }
         
+    }
 
-}
-
+    // Free Play button
     if (scene === "end" && freeD < freePlayButton.width / 2) {
         lives.text = 3;
         score.text = 0;
         scene = "freePlay";
-            
+
         if (level === "level1") {
-    musicGameSceneLevel2.stop();
-    musicGameScene.loop();
-} else if (level === "level2") {
-    musicGameScene.stop();
-    musicGameSceneLevel2.loop();
-}
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.stop();
+            musicGameScene.loop();
+        } else if (level === "level2") {
+            musicGameScene.stop();
+            musicGameSceneLevel3.stop();
+            musicGameSceneLevel2.loop();
+        } else if (level === "level3") {
+            musicGameScene.stop();
+            musicGameSceneLevel2.stop();
+            musicGameSceneLevel3.loop();
+        }
+        
     }
 
-    if ((scene === "game" || scene === "freePlay") &&
-        spaceShip.laser.state === "idle") {
+    // Fire laser
+    if ((scene === "game" || scene === "freePlay") && spaceShip.laser.state === "idle") {
         spaceShip.laser.state = "outbound";
         sfxFire.play();
     }
