@@ -43,6 +43,7 @@ function draw() {
         drawTarget();
         moveTarget();
         buttonHover();
+        draweasyButton()
     } 
     else if (scene === "game") {
         noCursor();

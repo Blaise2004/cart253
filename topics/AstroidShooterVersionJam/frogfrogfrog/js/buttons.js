@@ -1,4 +1,5 @@
 let startButtons = { x: 500, y: 350, width: 100, height: 50 };
+let easyButton = { x: 200, y: 250, width: 100, height: 50 };
 let loseButtons  = { x: 500, y: 350, width: 100, height: 50 };
 let freePlayButton = { x: 500, y: 350, width: 100, height: 50 };
 
@@ -14,6 +15,21 @@ function drawStartButton() {
     textAlign(CENTER);
     textSize(20);
     text("START", startButtons.x, startButtons.y);
+    pop();
+}
+
+function draweasyButton() {
+    push();
+    rectMode(CENTER);
+    fill("#4e90ff");
+    rect(easyButton.x, easyButton.y, easyButton.width, easyButton.height);
+    pop();
+
+    push();
+    fill(255);
+    textAlign(CENTER);
+    textSize(20);
+    text("Easy", easyButton.x, easyButton.y);
     pop();
 }
 
@@ -57,5 +73,16 @@ function buttonHover() {
     } else {
         startButtons.width = baseW;
         startButtons.height = baseH;
+    }
+    
+    
+    let dEasy = dist(mouseX, mouseY, easyButton.x, easyButton.y);
+
+    if (dEasy < easyButton.width / 2) {
+        easyButton.width = baseW + 10;
+        easyButton.height = baseH + 10;
+    } else {
+        easyButton.width = baseW;
+        easyButton.height = baseH;
     }
 }
