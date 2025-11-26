@@ -4,7 +4,9 @@ let hardButton = { x: 500, y: 450, width: 0, height: 50 };
 let impossibleButton = { x: 500, y: 550, width: 0, height: 50 };
 let loseButtons  = { x: 500, y: 350, width: 100, height: 50 };
 let freePlayButton = { x: 500, y: 350, width: 100, height: 50 };
-
+let easyText = "Easy"
+let hardText = "Hard"
+let impossibleText = "Impossible"
 function drawStartButton() {
     push();
     rectMode(CENTER);
@@ -31,7 +33,7 @@ function draweasyButton() {
     fill(255);
     textAlign(CENTER);
     textSize(20);
-    text("Easy", easyButton.x, easyButton.y);
+    text(easyText, easyButton.x, easyButton.y);
     pop();
 }
 
@@ -46,10 +48,24 @@ function drawhardButton() {
     fill(255);
     textAlign(CENTER);
     textSize(20);
-    text("Hard", hardButton.x, hardButton.y);
+    text(hardText, hardButton.x, hardButton.y);
     pop();
 }
 
+function drawImpossibleButton() {
+    push();
+    rectMode(CENTER);
+    fill("#8a00ff"); 
+    rect(impossibleButton.x, impossibleButton.y, impossibleButton.width, impossibleButton.height);
+    pop();
+
+    push();
+    fill(255);
+    textAlign(CENTER);
+    textSize(20);
+    text(impossibleText, impossibleButton.x, impossibleButton.y);
+    pop();
+}
 
 function drawloseButton() {
     push();
@@ -65,20 +81,7 @@ function drawloseButton() {
     text("Try Again!", loseButtons.x, loseButtons.y);
     pop();
 }
-function drawImpossibleButton() {
-    push();
-    rectMode(CENTER);
-    fill("#8a00ff"); 
-    rect(impossibleButton.x, impossibleButton.y, impossibleButton.width, impossibleButton.height);
-    pop();
 
-    push();
-    fill(255);
-    textAlign(CENTER);
-    textSize(20);
-    text("Impossible", impossibleButton.x, impossibleButton.y);
-    pop();
-}
 
 
 function drawFreePlayButton() {

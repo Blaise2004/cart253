@@ -108,8 +108,35 @@ function drawGoal() {
 function mousePressed() {
     const startD = dist(mouseX, mouseY, startButtons.x, startButtons.y);
     const loseD  = dist(mouseX, mouseY, loseButtons.x, loseButtons.y);
-    const freeD  = dist(mouseX, mouseY, freePlayButton.x, freePlayButton.y);
+    const freeD = dist(mouseX, mouseY, freePlayButton.x, freePlayButton.y);
+    
+    const easyD = dist(mouseX, mouseY, easyButton.x, easyButton.y);
+    const hardD = dist(mouseX, mouseY, hardButton.x, hardButton.y);
+    const impossibleD = dist(mouseX, mouseY, impossibleButton.x, impossibleButton.y);
 
+    if (scene === "start") {
+
+        if (easyD < easyButton.width / 2) {
+            level = "level1";
+            easyText = "Selected"
+            hardText = ""
+            impossibleText = ""
+        }
+        else if (hardD < hardButton.width / 2) {
+            level = "level2";
+             easyText = ""
+            hardText = "Selected"
+            impossibleText = ""
+        }
+        else if (impossibleD < impossibleButton.width / 2) {
+            level = "level3";
+                  easyText = ""
+            hardText = ""
+            impossibleText = "Selected"
+            
+        }
+    }
+    
     // Start button
     if (scene === "start" && startD < startButtons.width / 2) {
         scene = "game";
