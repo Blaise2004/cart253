@@ -5,6 +5,45 @@ let lives = { x: 900, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
 
 let endScore = { x: 500, y: 300 };
 
+
+let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#ff0000ff" };
+
+let Multiplier = 1
+
+function drawCredit() {
+    push();
+    fill(credit.colour);
+    textAlign(CENTER, CENTER);
+    textSize(credit.size);
+    text("Money: $"+credit.text, credit.x, credit.y);
+    pop();
+
+
+    if ((scene === "game" || scene === "freePlay" && spaceShip.laser.hit)) {
+       credit.text++ * Multiplier;
+    }
+}
+
+function multiplier() {
+    
+    if (((scene === "game" || scene === "freePlay" && spaceShip.laser.hit))) {
+        if (score.text === 5) {
+            Multiplier += 2;
+        }
+        if (score.text === 10) {
+            Multiplier += 3;
+        }
+        if (score.text === 15) {
+            Multiplier += 4;
+        }
+        if (score.text === 20) {
+            Multiplier += 5;
+        }
+    }
+    
+Multiplier + 2
+}
+
 function drawScore() {
     push();
     fill(asteroid.colour);

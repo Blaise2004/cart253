@@ -5,6 +5,8 @@
 let scene = "start";
 let level = "level3";
 
+
+
 function setup() {
     createCanvas(1000, 700);
 
@@ -43,9 +45,11 @@ function draw() {
         drawhardButton();
         drawImpossibleButton()
         drawGoal();
+        drawCredit();
         drawTarget();
         moveTarget();
         buttonHover();
+
         
     } 
     else if (scene === "game") {
@@ -58,6 +62,7 @@ function draw() {
         moveLaser();
         drawSpaceShip();
         checkLaserAsteroidOverlap();
+        drawCredit()
         drawTarget();
         moveTarget();
         drawScore();
@@ -70,6 +75,10 @@ function draw() {
         moveTarget();
         drawLoseScore();
         drawloseButton();
+          draweasyButton();
+        drawhardButton();
+        drawImpossibleButton();
+        drawCredit()
         drawTarget();
     } 
     else if (scene === "end") {
@@ -78,6 +87,7 @@ function draw() {
         drawStartShip();
         drawEndScore();
         drawFreePlayButton();
+        drawCredit()
         drawTarget();
         moveTarget();
     } 
@@ -91,6 +101,7 @@ function draw() {
         moveLaser();
         drawSpaceShip();
         checkLaserAsteroidOverlap();
+        drawCredit()
         drawTarget();
         moveTarget();
         drawScore();
@@ -114,7 +125,7 @@ function mousePressed() {
     const hardD = dist(mouseX, mouseY, hardButton.x, hardButton.y);
     const impossibleD = dist(mouseX, mouseY, impossibleButton.x, impossibleButton.y);
 
-    if (scene === "start") {
+    if (scene === "start" || scene === "lose") {
 
         if (easyD < easyButton.width / 2) {
             level = "level1";
@@ -156,12 +167,19 @@ function mousePressed() {
         }
     }
 
-    // Lose button
+    if (scene === "lose") {
+        musicGameScene.stop();
+        musicGameSceneLevel2.stop();
+        musicGameSceneLevel3.stop();
+    }
     if (scene === "lose" && loseD < loseButtons.width / 2) {
+
+       
         lives.text = 3;
         score.text = 0;
         resetAsteroid();
         spaceShip.laser.state = "idle";
+            
         scene = "game";
 
         if (level === "level1") {
