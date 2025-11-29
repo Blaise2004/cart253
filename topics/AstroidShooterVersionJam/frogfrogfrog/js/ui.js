@@ -1,4 +1,4 @@
-const goal = 30;
+const goal = 100;
 
 let score = { x: 500, y: 75, size: 100, text: 0 };
 let lives = { x: 900, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
@@ -9,40 +9,52 @@ let endScore = { x: 500, y: 300 };
 let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#ff0000ff" };
 
 let Multiplier = 1
+let nextTarget = 5;
+
+let appliedMultipliers = {
+    5: false,
+    15: false,
+    30: false,
+    60: false
+};
+
+
 
 function drawCredit() {
     push();
     fill(credit.colour);
     textAlign(CENTER, CENTER);
     textSize(credit.size);
-    text("Money: $"+credit.text, credit.x, credit.y);
+    text("Money: $" + credit.text, credit.x, credit.y);
     pop();
 
 
-    if ((scene === "game" || scene === "freePlay" && spaceShip.laser.hit)) {
-       credit.text++ * Multiplier;
-    }
-}
+    credit.text = score.text * Multiplier;
+    
 
-function multiplier() {
     
-    if (((scene === "game" || scene === "freePlay" && spaceShip.laser.hit))) {
-        if (score.text === 5) {
+    if ((scene === "game" || scene === "freePlay")) {
+   
+        if (score.text === 5 && !appliedMultipliers[5]) {
             Multiplier += 2;
+            appliedMultipliers[5] = true;
         }
-        if (score.text === 10) {
+        if (score.text === 15 && !appliedMultipliers[15]) {
             Multiplier += 3;
+            appliedMultipliers[15] = true;
         }
-        if (score.text === 15) {
+        if (score.text === 30 && !appliedMultipliers[30]) {
             Multiplier += 4;
+            appliedMultipliers[30] = true;
         }
-        if (score.text === 20) {
+        if (score.text === 60 && !appliedMultipliers[60]) {
             Multiplier += 5;
+            appliedMultipliers[60] = true;
         }
     }
-    
-Multiplier + 2
 }
+    
+
 
 function drawScore() {
     push();
