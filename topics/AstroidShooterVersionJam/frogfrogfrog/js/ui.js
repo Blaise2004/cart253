@@ -6,10 +6,12 @@ let lives = { x: 900, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
 let endScore = { x: 500, y: 300 };
 
 
-let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#ff0000ff" };
+let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
+let multipliershow = { x: 150, y: 650, size: 30, colour: "#eec344ff" };
+let Multiplier = 1;
+let FakeScore = 0 
 
-let Multiplier = 1
-let nextTarget = 5;
+let totalCredit = 0; 
 
 let appliedMultipliers = {
     5: false,
@@ -29,31 +31,44 @@ function drawCredit() {
     pop();
 
 
-    credit.text = score.text * Multiplier;
+    credit.text  =  FakeScore  *  Multiplier;
     
 
+    console.log(credit.text);
     
     if ((scene === "game" || scene === "freePlay")) {
    
-        if (score.text === 5 && !appliedMultipliers[5]) {
+        if (score.text >= 5 && !appliedMultipliers[5]) {
             Multiplier += 2;
             appliedMultipliers[5] = true;
         }
-        if (score.text === 15 && !appliedMultipliers[15]) {
+        if (score.text >= 15 && !appliedMultipliers[15]) {
             Multiplier += 3;
             appliedMultipliers[15] = true;
         }
-        if (score.text === 30 && !appliedMultipliers[30]) {
+        if (score.text >=30 && !appliedMultipliers[30]) {
             Multiplier += 4;
             appliedMultipliers[30] = true;
         }
-        if (score.text === 60 && !appliedMultipliers[60]) {
+        if (score.text >= 60 && !appliedMultipliers[60]) {
             Multiplier += 5;
             appliedMultipliers[60] = true;
         }
     }
+
+
+
+
 }
-    
+ function drawMultiplier() {
+    push();
+    fill(multipliershow.colour);         // use mulitpliershow color
+    textAlign(CENTER, CENTER);
+    textSize(multipliershow.size);       // use mulitpliershow size
+    text("Money Multiplier!: " + Multiplier ,  multipliershow.x, multipliershow.y); // display multiplier
+    pop();
+}
+
 
 
 function drawScore() {
@@ -66,6 +81,7 @@ function drawScore() {
 
     if ((scene === "game" || scene === "freePlay") && spaceShip.laser.hit) {
         score.text++;
+        FakeScore++;
         spaceShip.laser.hit = false;
         resetA.speedMin += 0.5;
         resetA.speedMax += 0.5;
@@ -85,7 +101,7 @@ function drawLives() {
     fill(lives.colour);
     textAlign(CENTER, CENTER);
     textSize(lives.size);
-    text(lives.text, lives.x, lives.y);
+    text("Lives: "+ lives.text, lives.x, lives.y);
     pop();
 
     if ((scene === "game" || scene === "freePlay") && lives.text <= 0) {

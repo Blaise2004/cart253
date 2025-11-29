@@ -63,6 +63,7 @@ function draw() {
         drawSpaceShip();
         checkLaserAsteroidOverlap();
         drawCredit()
+        drawMultiplier();
         drawTarget();
         moveTarget();
         drawScore();
@@ -102,6 +103,7 @@ function draw() {
         drawSpaceShip();
         checkLaserAsteroidOverlap();
         drawCredit()
+        drawMultiplier();
         drawTarget();
         moveTarget();
         drawScore();
