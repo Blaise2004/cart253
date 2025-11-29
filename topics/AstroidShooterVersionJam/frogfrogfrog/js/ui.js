@@ -9,9 +9,13 @@ let endScore = { x: 500, y: 300 };
 let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
 let multipliershow = { x: 150, y: 650, size: 30, colour: "#eec344ff" };
 let Multiplier = 1;
-let FakeScore = 0 
+let FakeScore = 500;
 
-let totalCredit = 0; 
+
+
+let showlevel = { x: 150, y: 550, size: 30, colour: "#3198e8ff" };
+
+
 
 let appliedMultipliers = {
     5: false,
@@ -62,12 +66,22 @@ function drawCredit() {
 }
  function drawMultiplier() {
     push();
-    fill(multipliershow.colour);         // use mulitpliershow color
+    fill(multipliershow.colour);        
     textAlign(CENTER, CENTER);
-    textSize(multipliershow.size);       // use mulitpliershow size
-    text("Money Multiplier!: " + Multiplier ,  multipliershow.x, multipliershow.y); // display multiplier
+    textSize(multipliershow.size);       
+    text("Money Multiplier!: " + Multiplier ,  multipliershow.x, multipliershow.y);
     pop();
 }
+
+ function drawLevel() {
+    push();
+    fill(showlevel.colour);         
+    textAlign(CENTER, CENTER);
+    textSize(showlevel.size);      
+    text("Level: " + level ,  showlevel.x, showlevel.y); 
+    pop();
+}
+
 
 
 

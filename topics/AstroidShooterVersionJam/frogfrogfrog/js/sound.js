@@ -7,6 +7,7 @@ let musicGameScene;
 let sfxWinner;
 let musicGameSceneLevel2;
 let musicGameSceneLevel3;
+let sfxBuy;
 
 function preload() {
     soundFormats('mp3', 'wav');
@@ -18,4 +19,5 @@ function preload() {
     musicGameSceneLevel2 = loadSound('assets/sounds/gameSceneLevel2.mp3');
     musicGameSceneLevel3 = loadSound('assets/sounds/gameSceneLevel3.mp3');
     sfxWinner = loadSound('assets/sounds/winner.mp3');
+    sfxBuy = loadSound('assets/sounds/chaChing.wav');
 }

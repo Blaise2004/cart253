@@ -3,7 +3,7 @@
 // (Controls scenes, setup, draw, mouse input)
 
 let scene = "start";
-let level = "level3";
+let level = "level0";
 
 
 
@@ -43,9 +43,10 @@ function draw() {
         drawStartButton();
         draweasyButton();
         drawhardButton();
-        drawImpossibleButton()
+        drawImpossibleButton();
         drawGoal();
         drawCredit();
+        drawLevel();
         drawTarget();
         moveTarget();
         buttonHover();
@@ -62,7 +63,8 @@ function draw() {
         moveLaser();
         drawSpaceShip();
         checkLaserAsteroidOverlap();
-        drawCredit()
+        drawCredit();
+        drawLevel();
         drawMultiplier();
         drawTarget();
         moveTarget();
@@ -79,8 +81,10 @@ function draw() {
           draweasyButton();
         drawhardButton();
         drawImpossibleButton();
-        drawCredit()
+        drawCredit();
+        drawLevel();
         drawTarget();
+        buttonHover()
     } 
     else if (scene === "end") {
         noCursor();
@@ -88,7 +92,8 @@ function draw() {
         drawStartShip();
         drawEndScore();
         drawFreePlayButton();
-        drawCredit()
+        drawCredit();
+        drawLevel();
         drawTarget();
         moveTarget();
     } 
@@ -102,7 +107,8 @@ function draw() {
         moveLaser();
         drawSpaceShip();
         checkLaserAsteroidOverlap();
-        drawCredit()
+        drawCredit();
+        drawLevel();
         drawMultiplier();
         drawTarget();
         moveTarget();
@@ -129,25 +135,34 @@ function mousePressed() {
 
     if (scene === "start" || scene === "lose") {
 
-        if (easyD < easyButton.width / 2) {
+        if (easyD < easyButton.width / 2 && credit.text  >= levelCost.x) {
             level = "level1";
             easyText = "Selected"
             hardText = ""
             impossibleText = ""
+            FakeScore -= levelCost.x;
+            sfxBuy.play();
         }
-        else if (hardD < hardButton.width / 2) {
+       if (easyD < easyButton.width / 2 && credit.text < levelCost.x) {
+           credit.colour = "#ff0000ff"; 
+           sfxLoseLife.play();  
+        setTimeout(() => {credit.colour = "#24da3cff"; }, 2000); 
+}
+        if (hardD < hardButton.width / 2 && credit.text  >= levelCost.y) {
             level = "level2";
              easyText = ""
             hardText = "Selected"
             impossibleText = ""
+             FakeScore -= levelCost.y;
         }
-        else if (impossibleD < impossibleButton.width / 2) {
+        if (impossibleD < impossibleButton.width / 2 && credit.text >= levelCost.z) {
             level = "level3";
                   easyText = ""
             hardText = ""
             impossibleText = "Selected"
-            
+             FakeScore -= levelCost.z;
         }
+        
     }
     
     // Start button
@@ -176,9 +191,12 @@ function mousePressed() {
     }
     if (scene === "lose" && loseD < loseButtons.width / 2) {
 
+          
+
        
         lives.text = 3;
         score.text = 0;
+     
         resetAsteroid();
         spaceShip.laser.state = "idle";
             

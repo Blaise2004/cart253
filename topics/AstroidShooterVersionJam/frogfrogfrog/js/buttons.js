@@ -1,12 +1,13 @@
-let startButtons = { x: 500, y: 350, width: 100, height: 50 };
-let easyButton = { x: 500, y: 250, width: 0, height: 50 };
+let startButtons = { x: 500, y: 250, width: 100, height: 50 };
+let easyButton = { x: 500, y: 350, width: 0, height: 50 };
 let hardButton = { x: 500, y: 450, width: 0, height: 50 };
 let impossibleButton = { x: 500, y: 550, width: 0, height: 50 };
-let loseButtons  = { x: 500, y: 350, width: 100, height: 50 };
+let loseButtons  = { x: 500, y: 250, width: 100, height: 50 };
 let freePlayButton = { x: 500, y: 350, width: 100, height: 50 };
-let easyText = "Easy"
-let hardText = "Hard"
-let impossibleText = "Impossible"
+let easyText = "Level 1"
+let hardText = "Level 2"
+let impossibleText = "Level 3"
+let levelCost = { x: 300, y: 1000, z: 5000 };
 function drawStartButton() {
     push();
     rectMode(CENTER);
@@ -106,9 +107,11 @@ function buttonHover() {
     if (d < startButtons.width / 2) {
         startButtons.width = baseW + 10;
         startButtons.height = baseH + 10;
+        
     } else {
         startButtons.width = baseW;
         startButtons.height = baseH;
+       
     }
     
     const easyBaseW = 70, easyBaseH = 50;
@@ -117,9 +120,11 @@ function buttonHover() {
     if (dEasy < easyButton.width / 2) {
         easyButton.width = easyBaseW + 10;
         easyButton.height = easyBaseH + 10;
+        easyText = "$" + levelCost.x;
     } else {
         easyButton.width = easyBaseW;
         easyButton.height = easyBaseH;
+        easyText = "Level 1"
     }
 
     const hardBaseW = 70, hardBaseH = 50;
@@ -128,9 +133,11 @@ let dHard = dist(mouseX, mouseY, hardButton.x, hardButton.y);
 if (dHard < hardButton.width / 2) {
     hardButton.width = hardBaseW + 10;
     hardButton.height = hardBaseH + 10;
+         hardText = "$"+ levelCost.y;
 } else {
     hardButton.width = hardBaseW;
     hardButton.height = hardBaseH;
+        hardText = "Level 2"
 }
 
 const impossibleBaseW = 70, impossibleBaseH = 50;
@@ -139,9 +146,11 @@ let dImpossible = dist(mouseX, mouseY, impossibleButton.x, impossibleButton.y);
 if (dImpossible < impossibleButton.width / 2) {
     impossibleButton.width = impossibleBaseW + 10;
     impossibleButton.height = impossibleBaseH + 10;
+    impossibleText = "$" + levelCost.z;
 } else {
     impossibleButton.width = impossibleBaseW;
     impossibleButton.height = impossibleBaseH;
+    impossibleText = "Level 3"
 }
 
     

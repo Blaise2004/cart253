@@ -10,6 +10,14 @@ const spaceShip = {
     }
 };
 
+colour = "#2f556eff"
+colour1 = "#7f4ccbff"
+colour2 = "#76c126ff"
+colour3 = "#bd0b0bff"
+colour4 = "#c1ff15ff"
+colour5 = "#15c4ffff"
+
+
 const startShip = {
     body: { x: 500, y: 350, size: 300 }
 };
@@ -40,7 +48,7 @@ function drawSpaceShip() {
    
     // Draw the laser tip
     push();
-    fill("#ff0000");
+    fill(colour);
     noStroke();
     ellipse(spaceShip.laser.x, spaceShip.body.y, spaceShip.laser.size);
     pop();
@@ -61,7 +69,7 @@ function drawSpaceShip() {
         translate(-spaceShip.body.x, -spaceShip.body.y);
     }
     // Draw the spaceShip's body + wings
-    fill("#2f556eff");
+    fill(colour);
     noStroke();
     ellipse(spaceShip.body.x, spaceShip.body.y, spaceShip.body.size);
 
@@ -105,10 +113,10 @@ function drawSpaceShip() {
 }
 
 
-function drawStartShip() {
+function drawStartShip(col = colour) {
     // identical to your original, safely moved here
     push();
-    fill("#2f556eff");
+    fill(col);
     noStroke();
 
     ellipse(startShip.body.x, startShip.body.y, startShip.body.size);
@@ -149,3 +157,4 @@ function drawStartShip() {
 
 
 }
+
