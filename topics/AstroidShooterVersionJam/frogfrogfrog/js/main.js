@@ -5,7 +5,9 @@
 let scene = "start";
 let level = "level0";
 
-
+let level1Select = false
+let level2Select = false
+let level3Select = false
 
 function setup() {
     createCanvas(1000, 700);
@@ -136,13 +138,14 @@ function mousePressed() {
     if (scene === "start" || scene === "lose") {
 
         //easy button logic
-        if (easyD < easyButton.width / 2 && credit.text  >= levelCost.x) {
+        if (easyD < easyButton.width / 2 && credit.text  >= levelCost.x && level1Select === false) {
             level = "level1";
             easyText = "Selected"
             hardText = ""
             impossibleText = ""
             FakeScore -= levelCost.x;
             sfxBuy.play();
+            level1Select = true
         }
        if (easyD < easyButton.width / 2 && credit.text < levelCost.x) {
            credit.colour = "#ff0000ff"; 
@@ -151,28 +154,30 @@ function mousePressed() {
        }
         
         //hard button logic
-        if (hardD < hardButton.width / 2 && credit.text  >= levelCost.y) {
+        if (hardD < hardButton.width / 2 && credit.text  >= levelCost.y && level2Select === false) {
             level = "level2";
              easyText = ""
             hardText = "Selected"
             impossibleText = ""
             FakeScore -= levelCost.y;
             sfxBuy.play();
+            level2Select = true
         }
-        if (hardD < hardButton.width / 2 && credit.text < levelCost.y) {
+        if (hardD < hardButton.width / 2 && credit.text < levelCost.y ) {
             credit.colour = "#ff0000ff";
             sfxLoseLife.play();
             setTimeout(() => { credit.colour = "#24da3cff"; }, 2000);
         }
 
         //impossible button logic
-        if (impossibleD < impossibleButton.width / 2 && credit.text >= levelCost.z) {
+        if (impossibleD < impossibleButton.width / 2 && credit.text >= levelCost.z && level3Select === false) {
             level = "level3";
             easyText = ""
             hardText = ""
             impossibleText = "Selected"
             FakeScore -= levelCost.z;
             sfxBuy.play();
+            level3Select = true
         }
          if (impossibleD < impossibleButton.width / 2 && credit.text < levelCost.z) {
             credit.colour = "#ff0000ff";

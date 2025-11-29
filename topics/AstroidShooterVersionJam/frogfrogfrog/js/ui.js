@@ -13,7 +13,7 @@ let FakeScore = 7000;
 
 
 
-let showlevel = { x: 150, y: 550, size: 30, colour: "#3198e8ff" };
+let showlevel = { x: 100, y: 100, size: 30, colour: "#3198e8ff" };
 
 
 
