@@ -68,6 +68,7 @@ function draw() {
         drawCredit();
         drawLevel();
         drawMultiplier();
+        crossHairAnimation()
         drawTarget();
         moveTarget();
         drawScore();
@@ -112,6 +113,7 @@ function draw() {
         drawCredit();
         drawLevel();
         drawMultiplier();
+        crossHairAnimation()
         drawTarget();
         moveTarget();
         drawScore();
@@ -146,7 +148,7 @@ function mousePressed() {
             FakeScore -= levelCost.x;
             sfxBuy.play();
             level1Select = true
-        }
+        }             
        if (easyD < easyButton.width / 2 && credit.text < levelCost.x) {
            credit.colour = "#ff0000ff"; 
            sfxLoseLife.play();  
