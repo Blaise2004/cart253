@@ -9,7 +9,7 @@ let endScore = { x: 500, y: 300 };
 let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
 let multipliershow = { x: 150, y: 650, size: 30, colour: "#eec344ff" };
 let Multiplier = 1;
-let FakeScore = 500;
+let FakeScore = 7000;
 
 
 

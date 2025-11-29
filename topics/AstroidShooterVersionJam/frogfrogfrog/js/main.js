@@ -135,6 +135,7 @@ function mousePressed() {
 
     if (scene === "start" || scene === "lose") {
 
+        //easy button logic
         if (easyD < easyButton.width / 2 && credit.text  >= levelCost.x) {
             level = "level1";
             easyText = "Selected"
@@ -147,22 +148,37 @@ function mousePressed() {
            credit.colour = "#ff0000ff"; 
            sfxLoseLife.play();  
         setTimeout(() => {credit.colour = "#24da3cff"; }, 2000); 
-}
+       }
+        
+        //hard button logic
         if (hardD < hardButton.width / 2 && credit.text  >= levelCost.y) {
             level = "level2";
              easyText = ""
             hardText = "Selected"
             impossibleText = ""
-             FakeScore -= levelCost.y;
+            FakeScore -= levelCost.y;
+            sfxBuy.play();
         }
+        if (hardD < hardButton.width / 2 && credit.text < levelCost.y) {
+            credit.colour = "#ff0000ff";
+            sfxLoseLife.play();
+            setTimeout(() => { credit.colour = "#24da3cff"; }, 2000);
+        }
+
+        //impossible button logic
         if (impossibleD < impossibleButton.width / 2 && credit.text >= levelCost.z) {
             level = "level3";
-                  easyText = ""
+            easyText = ""
             hardText = ""
             impossibleText = "Selected"
-             FakeScore -= levelCost.z;
+            FakeScore -= levelCost.z;
+            sfxBuy.play();
         }
-        
+         if (impossibleD < impossibleButton.width / 2 && credit.text < levelCost.z) {
+            credit.colour = "#ff0000ff";
+            sfxLoseLife.play();
+            setTimeout(() => { credit.colour = "#24da3cff"; }, 2000);
+        }
     }
     
     // Start button
