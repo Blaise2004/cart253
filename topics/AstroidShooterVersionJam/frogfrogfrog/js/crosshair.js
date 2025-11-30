@@ -26,6 +26,6 @@ function moveTarget() {
 
 function crossHairAnimation() {
     if ((scene === "game" || scene === "freePlay") && spaceShip.laser.state === "inbound") {
-        crossHairAngle += TWO_PI * (1 / 60); 
+        crossHairAngle += TWO_PI * (3/ 60); 
     }
 }

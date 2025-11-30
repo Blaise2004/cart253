@@ -59,20 +59,22 @@ function draw() {
         noCursor();
         drawBackground();
         drawSpeedAstroid();
+        drawMultiplier();
+        drawCredit();
         moveAsteroid();
         drawAsteroid();
         moveSpaceShip();
         moveLaser();
         drawSpaceShip();
         checkLaserAsteroidOverlap();
-        drawCredit();
+        
         drawLevel();
-        drawMultiplier();
         crossHairAnimation()
         drawTarget();
         moveTarget();
         drawScore();
         drawLives();
+
     } 
     else if (scene === "lose") {
         noCursor();
@@ -119,6 +121,7 @@ function draw() {
         drawScore();
         drawLives();
     }
+
 }
 
 function drawGoal() {
@@ -139,33 +142,37 @@ function mousePressed() {
 
     if (scene === "start" || scene === "lose") {
 
-        //easy button logic
-        if (easyD < easyButton.width / 2 && credit.text  >= levelCost.x && level1Select === false) {
+        //easy button logic 
+        if (easyD < easyButton.width / 2 && bankCredit >= levelCost.x && level1Select === false) {
+             
             level = "level1";
             easyText = "Selected"
             hardText = ""
             impossibleText = ""
-            FakeScore -= levelCost.x;
+            bankCredit -= levelCost.x
             sfxBuy.play();
             level1Select = true
+            Multiplier = 1
+        
+
         }             
-       if (easyD < easyButton.width / 2 && credit.text < levelCost.x) {
+       if (easyD < easyButton.width / 2 && bankCredit < levelCost.x) {
            credit.colour = "#ff0000ff"; 
            sfxLoseLife.play();  
         setTimeout(() => {credit.colour = "#24da3cff"; }, 2000); 
        }
         
         //hard button logic
-        if (hardD < hardButton.width / 2 && credit.text  >= levelCost.y && level2Select === false) {
+        if (hardD < hardButton.width / 2 && bankCredit  >= levelCost.y && level2Select === false) {
             level = "level2";
              easyText = ""
             hardText = "Selected"
             impossibleText = ""
-            FakeScore -= levelCost.y;
+            bankCredit -= levelCost.y;
             sfxBuy.play();
             level2Select = true
         }
-        if (hardD < hardButton.width / 2 && credit.text < levelCost.y ) {
+        if (hardD < hardButton.width / 2 && bankCredit < levelCost.y ) {
             credit.colour = "#ff0000ff";
             sfxLoseLife.play();
             setTimeout(() => { credit.colour = "#24da3cff"; }, 2000);
@@ -177,7 +184,7 @@ function mousePressed() {
             easyText = ""
             hardText = ""
             impossibleText = "Selected"
-            FakeScore -= levelCost.z;
+            bankCredit -= levelCost.z;
             sfxBuy.play();
             level3Select = true
         }

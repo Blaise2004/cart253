@@ -3,80 +3,78 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="Index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
     <title>Blaise Treverton</title>
+
+    <!-- Custom Font -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Model Viewer (if needed) -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
 </head>
-<script>
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const maxScroll = 600;       // Scroll distance to reach full effect
-        const minBrightness = 0.3;    // Darkest at the end (30% brightness)
-
-        // Calculate current brightness
-        const brightnessValue = Math.max(1 - (scrollY / maxScroll) * (1 - minBrightness), minBrightness);
-
-        // Apply brightness filter to the background image
-        document.querySelector('.background img').style.filter =
-            `brightness(${brightnessValue})`;
-    });
-
-    
-</script>
-
-
-
 
 <body>
+    <!-- Flashlight overlay -->
     <div class="flashlight-overlay" id="flashlight"></div>
 
+    <!-- Background image -->
     <div class="background">
-        <img src="assets/Chapter1Background.jpg" alt="">
+        <img src="assets/Chapter1Background.jpg" alt="Background">
     </div>
-    <div class="blocker"></div>
+
+    <!-- Optional blur overlays -->
+<div class="spacer"></div>
 
 
-  
-
-    <div class="blocker2"></div>
+    <!-- Center bottom arrow -->
     <div class="center-bottom">></div>
+
     <!-- Main content -->
     <div class="wrapper">
-
-        <div class="spacer"></div>
-
-
         <main>
             <p>
-I shouldn’t be here. And yet, here I am—somewhere that isn’t meant for me, a space that hums quietly with things I don’t
-fully understand. It is dark, endless, and still, but I feel it—something waiting. Not far, not obvious, but close
-enough. Something that wants me, wants the pieces of me I didn’t even know were leaving traces. I can feel it shifting,
-patient, curious, and I know that the longer I stay, the more it notices. Then I see it: a switch, simple, unassuming,
-almost out of place. My hand hovers over it. Let me press it. Let me see if something happens. I shouldn’t. And still, I
-can’t move away.
-
-
-
+                I shouldn’t be here. And yet, here I am—somewhere that isn’t meant for me, a space that hums quietly
+                with things I don’t
+                fully understand. It is dark, endless, and still, but I feel it—something waiting. Not far, not obvious,
+                but close
+                enough. Something that wants me, wants the pieces of me I didn’t even know were leaving traces. I can
+                feel it shifting,
+                patient, curious, and I know that the longer I stay, the more it notices. Then I see it: a switch,
+                simple, unassuming,
+                almost out of place. My hand hovers over it. Let me press it. Let me see if something happens. I
+                shouldn’t. And still, I
+                can’t move away.
             </p>
-
         </main>
     </div>
-    <nav> <a href="Chapter1.html">></a></nav>
 
+    <!-- Navigation -->
+    <nav>
+        <a href="Chapter1.html">></a>
+    </nav>
 
+    <!-- Footer -->
+    <footer>
         <small><em>By Blaise Treverton</em></small>
     </footer>
-    <!-- JavaScript for scroll-based blur -->
-    <script src="script.js"></script>
-    <script>
-        const flashlight = document.getElementById('flashlight');
 
-        document.addEventListener('mousemove', (e) => {
-            flashlight.style.background = `radial-gradient(circle 150px at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0) 0%, rgba(0,0,0,0.95) 200px)`;
+    <!-- Scripts -->
+    <script>
+        // Flashlight effect
+        const flashlight = document.getElementById('flashlight');
+        document.addEventListener('mousemove', e => {
+            flashlight.style.backgroundImage = `radial-gradient(circle 150px at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0) 0%, rgba(0,0,0,0.95) 200px)`;
+        });
+
+        // Scroll-based brightness
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const maxScroll = 600;
+            const minBrightness = 0.3;
+            const brightnessValue = Math.max(1 - (scrollY / maxScroll) * (1 - minBrightness), minBrightness);
+            document.querySelector('.background img').style.filter = `brightness(${brightnessValue})`;
         });
     </script>
-
 </body>
 
 </html>

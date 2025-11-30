@@ -7,15 +7,15 @@ let endScore = { x: 500, y: 300 };
 
 
 let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
-let multipliershow = { x: 150, y: 650, size: 30, colour: "#eec344ff" };
+let multipliershow = { x: 850, y: 600, size: 30, colour: "#eec344ff" };
 let Multiplier = 1;
-let FakeScore = 7000;
+let FakeScore = 0;
 
-
+bankCredit = 0
 
 let showlevel = { x: 100, y: 100, size: 30, colour: "#3198e8ff" };
 
-
+totalCredit = 0 
 
 let appliedMultipliers = {
     5: false,
@@ -31,14 +31,16 @@ function drawCredit() {
     fill(credit.colour);
     textAlign(CENTER, CENTER);
     textSize(credit.size);
-    text("Money: $" + credit.text, credit.x, credit.y);
+    text("Money: $" + bankCredit, credit.x, credit.y);
     pop();
 
 
-    credit.text  =  FakeScore  *  Multiplier;
-    
+    credit.text = FakeScore * Multiplier;
 
-    console.log(credit.text);
+console.log(bankCredit)
+
+
+
     
     if ((scene === "game" || scene === "freePlay")) {
    
@@ -60,10 +62,17 @@ function drawCredit() {
         }
     }
 
-
+    
 
 
 }
+
+function bank() {
+    
+}
+
+
+
  function drawMultiplier() {
     push();
     fill(multipliershow.colour);        
@@ -96,6 +105,7 @@ function drawScore() {
     if ((scene === "game" || scene === "freePlay") && spaceShip.laser.hit) {
         score.text++;
         FakeScore++;
+        
         spaceShip.laser.hit = false;
         resetA.speedMin += 0.5;
         resetA.speedMax += 0.5;
@@ -120,6 +130,12 @@ function drawLives() {
 
     if ((scene === "game" || scene === "freePlay") && lives.text <= 0) {
         scene = "lose";
+        appliedMultipliers[5] = false;
+        appliedMultipliers[15] = false;
+        appliedMultipliers[30] = false;
+        appliedMultipliers[60] = false;
+        
+        bankCredit += credit.text
         sfxGameOver.play();
         musicGameScene.stop();
         resetA.speedMin = resetA.baseSpeedMin;

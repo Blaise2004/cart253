@@ -43,13 +43,16 @@ body {
     align-items: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
+    font-weight: bold;
     font-size: 62px;
     color: rgb(0, 0, 0);
     text-align: center;
+    margin: 0 auto;
     padding: 20px 0;
+    cursor: pointer;
     z-index: 2;
     transform: rotate(90deg);
-    pointer-events: none;
+    /* above background but below nav if needed */
 }
 
 
