@@ -1,4 +1,4 @@
-const goal = 100;
+const goal = 5;
 
 let score = { x: 500, y: 75, size: 100, text: 0 };
 let lives = { x: 900, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
@@ -10,7 +10,7 @@ let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
 let multipliershow = { x: 850, y: 600, size: 30, colour: "#eec344ff" };
 let Multiplier = 1;
 let FakeScore = 0;
-
+let levelCost = { x: 150, y: 500, z: 1000 };
 bankCredit = 0
 
 let showlevel = { x: 100, y: 100, size: 30, colour: "#3198e8ff" };
@@ -67,12 +67,6 @@ console.log(bankCredit)
 
 }
 
-function bank() {
-    
-}
-
-
-
  function drawMultiplier() {
     push();
     fill(multipliershow.colour);        
@@ -111,7 +105,7 @@ function drawScore() {
         resetA.speedMax += 0.5;
     }
 
-    if (scene === "game" && score.text >= goal) {
+    if (scene === "game" && level3Select === true && score.text >= goal) {
         scene = "end";
         sfxWinner.play();
         musicGameScene.stop();
@@ -157,6 +151,6 @@ function drawEndScore() {
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("YOU WIN " + score.text + "!", endScore.x, endScore.y);
+    text("YOU WIN (i am really impressed if you made it this far..)" + "!", endScore.x, endScore.y);
     pop();
 }

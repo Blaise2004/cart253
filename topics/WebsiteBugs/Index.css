@@ -128,7 +128,15 @@ main p {
 
 @media (max-width: 400px) {
 
-   
+
+    
+.background img {
+        content: url('assets/Chapter1Background-vertical.jpg');
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 /*two fingers to scroll*/
     html,
         body {

@@ -128,7 +128,7 @@ function drawGoal() {
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("AIM: DESTROY " + goal + " ASTEROIDS", startButtons.x, startButtons.y + 50);
+    text("Unlock all levels and destroy " + goal + " astroids on the final level to Win!", startButtons.x, startButtons.y + 50);
 }
 
 function mousePressed() {
@@ -152,7 +152,13 @@ function mousePressed() {
             bankCredit -= levelCost.x
             sfxBuy.play();
             level1Select = true
-            Multiplier = 1
+           col = colour1
+        resetA.sizeMin = 35;
+        resetA.sizeMax = 120;
+        resetA.speedMin = 3;
+        resetA.speedMax = 5;
+        resetA.baseSpeedMin = 2.5;
+        resetA.baseSpeedMax = 3.2;
         
 
         }             
@@ -171,6 +177,15 @@ function mousePressed() {
             bankCredit -= levelCost.y;
             sfxBuy.play();
             level2Select = true
+            col = colour2
+             Multiplier = 1
+            resetA.sizeMin = 25;
+        resetA.sizeMax = 70;
+        resetA.speedMin = 5;
+        resetA.speedMax = 8;
+        resetA.baseSpeedMin = 3;
+        resetA.baseSpeedMax = 4;
+
         }
         if (hardD < hardButton.width / 2 && bankCredit < levelCost.y ) {
             credit.colour = "#ff0000ff";
@@ -179,7 +194,7 @@ function mousePressed() {
         }
 
         //impossible button logic
-        if (impossibleD < impossibleButton.width / 2 && credit.text >= levelCost.z && level3Select === false) {
+        if (impossibleD < impossibleButton.width / 2 && bankCredit >= levelCost.z && level3Select === false) {
             level = "level3";
             easyText = ""
             hardText = ""
@@ -187,8 +202,17 @@ function mousePressed() {
             bankCredit -= levelCost.z;
             sfxBuy.play();
             level3Select = true
+            col = colour3
+
+        resetA.sizeMin = 20;
+        resetA.sizeMax = 60;
+        resetA.speedMin = 7;
+        resetA.speedMax = 11;
+        resetA.baseSpeedMin = 5;
+        resetA.baseSpeedMax = 8;
+        
         }
-         if (impossibleD < impossibleButton.width / 2 && credit.text < levelCost.z) {
+         if (impossibleD < impossibleButton.width / 2 && bankCredit < levelCost.z) {
             credit.colour = "#ff0000ff";
             sfxLoseLife.play();
             setTimeout(() => { credit.colour = "#24da3cff"; }, 2000);

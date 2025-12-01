@@ -43,18 +43,39 @@ body {
     align-items: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
-    font-weight: bold;
     font-size: 62px;
     color: rgb(0, 0, 0);
     text-align: center;
-    margin: 0 auto;
     padding: 20px 0;
-    cursor: pointer;
     z-index: 2;
     transform: rotate(90deg);
-    /* above background but below nav if needed */
+    position: relative;
 }
 
+/* Hidden hover text */
+.center-bottom::after {
+    content: "0:27 second video";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-family: 'Dot', sans-serif;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Fade out the “>” text */
+.center-bottom:hover {
+    color: transparent;
+}
+
+/* Fade in the hover text */
+.center-bottom:hover::after {
+    opacity: 1;
+}
 
 /* Navigation */
 a {
@@ -73,22 +94,15 @@ a {
 nav {
 
     bottom: 0;
-    /* stick to bottom */
     left: 0;
     width: 100%;
     display: flex;
-    /* horizontal layout */
     justify-content: center;
-    /* center the link(s) */
     gap: 40px;
-    /* space between links if multiple */
     cursor: pointer;
     margin: 0;
     padding: 15px 0;
-
-    /* subtle background */
     z-index: 1000;
-    /* on top of everything */
 }
 
 nav a {
@@ -104,7 +118,7 @@ nav a:hover {
     transform: scale(1.05);
     color: rgb(35, 87, 97);
 }
-/* Main content */
+
 .wrapper {
     width: 100%;
 
@@ -175,34 +189,7 @@ main p {
 
 @media (max-width: 400px) {
 
-    nav {
-       
-        display: flex;
-        /* flex layout */
-        flex-direction: row;
-        /* horizontal links */
-        justify-content: center;
-        /* center links horizontally */
-        align-items: center;
-        /* vertical alignment */
-        gap: 20px;
-        /* spacing between links */
-        margin: 0px 0;
-        /* top & bottom spacing */
-        padding: 0;
-        /* remove desktop padding */
-        width: 100%;
-        /* span full width */
-        float: none;
-        /* cancel any float */
-        position: fixed;
-    }
-
-    nav a {
-        scroll-margin-top: 30px;
-        font-size: 25px;
-
-    }
+   
 
     /* Main text */
     main p {
@@ -266,5 +253,7 @@ main p {
         font-size: 60px;
 
     }
-
+.spacer {
+    height: 90%;
+}
 }

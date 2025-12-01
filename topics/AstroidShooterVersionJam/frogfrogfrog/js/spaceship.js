@@ -17,6 +17,7 @@ colour3 = "#bd0b0bff"
 colour4 = "#c1ff15ff"
 colour5 = "#15c4ffff"
 
+let col = colour
 
 const startShip = {
     body: { x: 500, y: 350, size: 300 }
@@ -113,8 +114,9 @@ function drawSpaceShip() {
 }
 
 
-function drawStartShip(col = colour) {
+function drawStartShip() {
     // identical to your original, safely moved here
+
     push();
     fill(col);
     noStroke();

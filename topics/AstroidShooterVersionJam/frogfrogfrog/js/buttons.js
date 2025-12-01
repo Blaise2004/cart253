@@ -7,7 +7,7 @@ let freePlayButton = { x: 500, y: 350, width: 100, height: 50 };
 let easyText = "Level 1"
 let hardText = "Level 2"
 let impossibleText = "Level 3"
-let levelCost = { x: 300, y: 1000, z: 5000 };
+
 function drawStartButton() {
     push();
     rectMode(CENTER);

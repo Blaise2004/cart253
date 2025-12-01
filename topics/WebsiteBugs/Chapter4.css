@@ -142,9 +142,7 @@ main p {
     cursor: pointer;
 }
 
-.image-row img:hover {
-    transform: scale(1.55);
-}
+
 .image-row1 {
     display: flex;
     /* use flex to align items */
@@ -175,34 +173,7 @@ main p {
 
 @media (max-width: 400px) {
 
-    nav {
-       
-        display: flex;
-        /* flex layout */
-        flex-direction: row;
-        /* horizontal links */
-        justify-content: center;
-        /* center links horizontally */
-        align-items: center;
-        /* vertical alignment */
-        gap: 20px;
-        /* spacing between links */
-        margin: 0px 0;
-        /* top & bottom spacing */
-        padding: 0;
-        /* remove desktop padding */
-        width: 100%;
-        /* span full width */
-        float: none;
-        /* cancel any float */
-        position: fixed;
-    }
-
-    nav a {
-        scroll-margin-top: 30px;
-        font-size: 25px;
-
-    }
+    
 
     /* Main text */
     main p {

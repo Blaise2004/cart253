@@ -115,33 +115,9 @@ font-family: 'Dot', sans-serif;
 
 @media (max-width: 400px) {
 
-nav {
-    background-color: rgb(255, 255, 255);
-        display: flex;
-        /* flex layout */
-        flex-direction: row;
-        /* horizontal links */
-        justify-content: center;
-        /* center links horizontally */
-        align-items: center;
-        /* vertical alignment */
-        gap: 20px;
-        /* spacing between links */
-        margin: 0px 0;
-        /* top & bottom spacing */
-        padding: 0;
-        /* remove desktop padding */
-        width: 100%;
-        /* span full width */
-        float: none;
-        /* cancel any float */
-        position: fixed;
-    }
-    nav a {
-        scroll-margin-top: 30px;
-        font-size: 25px;
-        
-    }
+.spacer {
+        height: 90%;
+}
 
     /* Main text */
     main p {
