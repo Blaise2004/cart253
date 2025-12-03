@@ -16,6 +16,9 @@ function setup() {
     musicGameScene.setVolume(0.8);
     sfxLoseLife.setVolume(1.5);
 
+    textFont("monospace");
+    
+
     for (let i = 0; i < 400; i++) {
         farStars.push({
             x: random(width),

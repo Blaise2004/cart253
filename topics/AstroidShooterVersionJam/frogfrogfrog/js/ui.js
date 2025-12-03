@@ -1,19 +1,19 @@
 const goal = 5;
 
 let score = { x: 500, y: 75, size: 100, text: 0 };
-let lives = { x: 900, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
+let lives = { x: 860, y: 75, size: 50, text: 3, colour: "#ff0000ff" };
 
 let endScore = { x: 500, y: 300 };
 
 
 let credit = { x: 900, y: 650, size: 30, text: 0, colour: "#24da3cff" };
-let multipliershow = { x: 850, y: 600, size: 30, colour: "#eec344ff" };
+let multipliershow = { x: 800, y: 600, size: 30, colour: "#eec344ff" };
 let Multiplier = 1;
 let FakeScore = 0;
 let levelCost = { x: 150, y: 500, z: 1000 };
 bankCredit = 0
 
-let showlevel = { x: 100, y: 100, size: 30, colour: "#3198e8ff" };
+let showlevel = { x: 110, y: 80, size: 30, colour: "#3198e8ff" };
 
 totalCredit = 0 
 
@@ -31,13 +31,12 @@ function drawCredit() {
     fill(credit.colour);
     textAlign(CENTER, CENTER);
     textSize(credit.size);
+    
     text("Money: $" + bankCredit, credit.x, credit.y);
     pop();
 
 
     credit.text = FakeScore * Multiplier;
-
-console.log(bankCredit)
 
 
 
@@ -81,7 +80,7 @@ console.log(bankCredit)
     fill(showlevel.colour);         
     textAlign(CENTER, CENTER);
     textSize(showlevel.size);      
-    text("Level: " + level ,  showlevel.x, showlevel.y); 
+    text(level ,  showlevel.x, showlevel.y); 
     pop();
 }
 

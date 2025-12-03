@@ -8,6 +8,7 @@ let sfxWinner;
 let musicGameSceneLevel2;
 let musicGameSceneLevel3;
 let sfxBuy;
+let dotFont;
 
 function preload() {
     soundFormats('mp3', 'wav');
@@ -20,4 +21,6 @@ function preload() {
     musicGameSceneLevel3 = loadSound('assets/sounds/gameSceneLevel3.mp3');
     sfxWinner = loadSound('assets/sounds/winner.mp3');
     sfxBuy = loadSound('assets/sounds/chaChing.wav');
+
+    dotFont = loadFont ('assets/fonts/Doto/static/Doto-ExtraBold.ttf')
 }

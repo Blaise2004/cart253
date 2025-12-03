@@ -1,72 +1,67 @@
-# Pseudocode for Frogfrogfrog
+START GAME
+Initialize canvas
+Initialize spaceship at bottom
+Initialize asteroids
+Initialize score, lives, money, multiplier
+Initialize level, backgrounds, and music
 
-```
-frog
-    body
-        x: 320 // Halfway across a 640x480 canvas
-        y: 480 // Bottom of a 640x480 canvas
-        size: 100 // Diameter of the frog circle
-    tongue
-        x: undefined // Will always match the body
-        y: 480 // At the bottom (important to draw it BEHIND the frog)
-        size: 20 // The tip of the tongue
-        speed: 20 // Speed the tongue movies in pixels/second
-        state: idle // At the start the tongue hasn't been launched
+MAIN LOOP (every frame)
+Draw background
+Draw spaceship at mouse x
+Draw bullets and move them upward
+Draw asteroids and move them sideways
+Check bullet-asteroid collisions
+If collision:
+Destroy asteroid
+Add money \* multiplier
+Increase score
+Check if asteroid reaches other side
+If yes:
+Subtract a life
+Reset asteroid
+Draw UI: score, lives, money, multiplier, level
+Check level progression
+If money >= threshold:
+Unlock next level
+Change background/music
+Check win condition
+If final level goal reached:
+Show win screen
+Check lose condition
+If lives <= 0:
+Show lose screen
 
-fly
-    x: 0 // The left
-    y: 200? // This will be a random position...
-    size: 10 // Small?
-    speed: 3 // How fast it moves across the screen
+MOUSE INPUT
+If mouse clicked and laser is idle:
+Shoot bullet from spaceship
+If mouse clicked on buttons (start, level select, free play):
+Update scene, level, or start game
 
-setup()
-    Create a 640x480 canvas
+spaceship
+x, y, size
+laser: x, y, size, speed, state, hit
 
-draw()
-    Draw the background // Probably just blue or something
-    moveFly()
-    drawFly()
-    moveFrog()
-    moveTongue()
-    drawFrog()
-    checkTongueFlyOverlap()
+asteroid
+x, y, size, speed, score_value
 
-moveFly()
-    add fly speed to fly x
-    if (fly x is past the right side of the canvas)
-        move the fly back to the left
-        give the fly a random y position
+bullet
+x, y, size, speed, active
 
-drawFly()
-    Draw a black circle at the fly's position with its size
+player
+score
+lives
+money
+multiplier
 
-moveFrog()
-    Set the frog's x to the mouse x
+game
+scene
+level
+goal
+backgrounds
+music
 
-moveTongue()
-    Set tongue x to frog x
-    if (tongue state is idle)
-        Do nothing
-    else if (tongue state is outbound)
-        move the tongue up by its speed
-        if (tongue hit the top)
-            set the tongue state to inbound
-    else if (tongue state is inbound)
-        move the tongue down by its speed
-        if (tongue hit the bottom)
-            set the tongue state to idle
-
-drawFrog()
-    Draw a red circle at the tongue position with its size
-    Draw a red line from the tongue position to the frog position
-    Draw a green circle at the frog position with its size
-
-checkTongueFlyOverlap()
-    if (tongue circle overlaps the fly)
-        Move the fly back to the left at a random y
-        set the tongue state to inbound
-
-mousePressed()
-    if (tongue state is idle)
-        set tongue state to outbound
-```
+- Dynamic asteroid sizes and speeds per level
+- Money multipliers for score milestones
+- Level-specific music and backgrounds
+- Free play mode
+- Special goal for final level

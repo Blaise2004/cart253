@@ -58,6 +58,6 @@ function drawSpeedAstroid() {
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("Asteroid Speed: " + Math.round(asteroid.speed), 100, 30);
+    text("Speed: " + Math.round(asteroid.speed), 100, 30);
     pop();
 }
