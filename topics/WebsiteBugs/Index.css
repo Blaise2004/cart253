@@ -138,10 +138,6 @@ main p {
         object-position: center;
     }
 /*two fingers to scroll*/
-    html,
-        body {
-            touch-action: none;
-        }
 
     /* Main text */
     main p {
