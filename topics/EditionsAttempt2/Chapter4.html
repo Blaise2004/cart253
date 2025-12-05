@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Chapter4.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = 1600;  // Scroll distance to reach full effect
+        const maxBlur = 40;      // Max blur in pixels
+        const minSaturation = 0.01; // 0.5 = half as colorful (desaturated)
+
+        // Calculate current values
+        const blurValue = Math.min(scrollY / maxScroll * maxBlur, maxBlur);
+        const saturationValue = Math.max(1 - (scrollY / maxScroll) * (1 - minSaturation), minSaturation);
+
+        // Apply both filters
+        document.querySelector('.video-background').style.filter =
+            `blur(${blurValue}px)`;
+
+  
+    });
+
+
+
+</script>
+
+
+
+
+<body>
+    <!-- Background -->
+
+<div class="video-background">
+    <video autoplay muted loop playsinline>
+        <source src="assets/Chapter4.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+<div class="spacer"></div>
+<div class="center-bottom">></div>
+    <!-- Main content -->
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+
+        <main>
+            <p>
+        With a crack and what feels like being pulled through the eye of a needle, I am hurled forward. The world twists,
+        compresses, and snaps. For a moment I am nothing but pressure and motion. Then, suddenly, I am released.
+        
+        I spill out of whatever that place was, as if I’ve been vomited out of a quantum state. My body reforms piece by piece,
+        sensations returning in slow waves. The air is sharp and real. Solid ground holds me up. It takes me a moment to
+        understand that I am back.
+        
+        I look down at my hands.
+            </p>
+        </main>
+    </div>
+
+
+   
+<div class="image-row">
+    <img src="assets/_BT_1486.jpg" alt="">
+</div>
+
+<main>
+    <p>
+Not a shifting creature.
+Not data.
+Not light.
+
+Paper.
+
+A print.
+
+The bug’s body is there, flattened and still, captured in ink. The patents that once swirled around it are reduced to
+shapes, lines, marks pressed into the page. Its presence is quiet now, muted, held in place by the physical. No
+glitching. No pull. Just a frozen form, contained within the limits of this world.
+
+I breathe out, finally steady.
+
+This is my place.
+Somewhere it cannot slip through, cannot rewrite itself, cannot follow the currents it once lived inside. Here, it is
+trapped in the grid of the print, bound by the dots of ink.
+
+I’ve beaten it.
+
+And I’m not going back.
+    </p>
+</main>
+
+<nav><a href="Index.html">End</a></nav>
+
+    <!-- JavaScript for scroll-based blur -->
+    <script src="script.js"></script>
+</body>
+
+</html>

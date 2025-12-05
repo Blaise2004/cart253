@@ -1,0 +1,167 @@
+/* General layout */
+html,
+
+
+body {
+    height: 100%;
+
+
+        cursor: none;
+    
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'Dot';
+    src: url('assets/fonts/Doto/static/Doto-ExtraBold.ttf');
+
+}
+
+.flashlight-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    transition: background 0.05s;
+   
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.center-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: 'Dot', sans-serif;
+    font-size: 62px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px 0;
+    z-index: 2;
+    transform: rotate(90deg);
+    pointer-events: none;
+}
+
+.spacer {
+    height: 80%;
+    width: 100%;
+}
+
+a {
+    display: block;
+    font-weight: bold;
+    font-size: 62px;
+    margin-bottom: 15px;
+    text-decoration: none;
+
+    font-family: 'Dot', sans-serif;
+    font-kerning: initial;
+}
+
+nav {
+    z-index: 2000;
+    bottom: 0;           /* stick to bottom */
+    left: 0;
+    width: 100%;
+    display: flex;       /* horizontal layout */
+    justify-content: center; /* center the link(s) */
+    gap: 40px;           /* space between links if multiple */
+    cursor: pointer;
+    margin: 0;
+    padding: 15px 0;
+    background: rgba(0,0,0,0.3); /* subtle background */
+    z-index: 1000;       /* on top of everything */
+}
+
+nav a {
+    color: rgb(232,232,232);
+    font-family: 'Dot', sans-serif;
+    font-weight: bold;
+    font-size: 62px;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    transform: scale(1.3);
+    color: rgb(179, 249, 255);
+}
+
+/* Main content */
+.wrapper {
+    width: 100%;
+
+}
+
+h1 {
+    margin-left: 10%;
+}
+
+main p {
+    max-width: 80%;
+    margin: 40px auto;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    font-family: 'Dot', sans-serif;
+}
+
+
+@media (max-width: 400px) {
+
+
+    
+.background img {
+        content: url('assets/Chapter1Background-vertical.jpg');
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+/*two fingers to scroll*/
+    html,
+        body {
+            touch-action: none;
+        }
+
+    /* Main text */
+    main p {
+        width: 90%;
+        max-width: 320px;
+        margin: auto;
+        font-size: 25px;
+        line-height: 1.5;
+        color: rgb(255, 255, 255);
+        text-align: left;
+    }
+
+
+    h1 a {
+        margin-top: 30%;
+        font-size: 60px;
+
+    }
+.spacer {
+    height: 86%;
+    width: 100%;
+}
+}
