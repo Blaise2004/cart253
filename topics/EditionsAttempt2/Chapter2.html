@@ -11,8 +11,8 @@
 <script>
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
-            const maxScroll = 1600;
-            const maxBlur = 20;
+            const maxScroll = 1200;
+            const maxBlur = 35;
 
             const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
 
@@ -36,6 +36,41 @@
 
 
 </script>
+<script>
+    document.addEventListener("scroll", () => {
+        const triggerPoint = 1800;
+        const section = document.querySelector(".image-row1");
+        const img = section.querySelector("img");
+        const text = section.querySelector(".hover-text");
+
+        if (window.scrollY > triggerPoint) {
+            if (!section.classList.contains("fade-triggered")) {
+                section.classList.add("fade-triggered");
+
+                setTimeout(() => {
+                    img.classList.remove("fade-in-once"); // ensure reverse class removed
+                    img.classList.add("fade-out-once");
+
+                    text.classList.remove("fade-out-once");
+                    text.classList.add("fade-in-once");
+                }, 700); // 2.5s delay before first animation
+            }
+        } else {
+            // Fade back smoothly when scrolling above trigger
+            img.classList.remove("fade-out-once");
+            img.classList.add("fade-in-once");
+
+            text.classList.remove("fade-in-once");
+            text.classList.add("fade-out-once");
+
+            section.classList.remove("fade-triggered"); // allow retriggering
+        }
+    });
+</script>
+
+
+
+
 
 
 
@@ -98,7 +133,11 @@
 </div>
 </div>
 
-<a href="https://blaise2004.github.io/cart253/topics/WebsiteBugs/Home.html" class="narrative-btn">Narrative Game Link</a>
+<a href="https://blaise2004.github.io/cart253/topics/WebsiteBugs/Home.html" class="narrative-btn" target="_blank"
+    rel="noopener noreferrer">
+    Narrative Game Link
+</a>
+
 
     <main>
         <p>

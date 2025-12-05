@@ -15,7 +15,6 @@ body {
 
 }
 
-/* Background */
 .video-background {
     position: fixed;
     top: 0;
@@ -32,7 +31,6 @@ body {
     object-fit: cover;
     /* Makes sure video covers the entire area */
 }
-
 .spacer {
     height: 80%;
     width: 100%;
@@ -119,7 +117,7 @@ main p {
     margin: 40px auto;
     line-height: 1.2;
     color: rgb(0, 0, 0);
-    font-size: 32px;
+    font-size: 36px;
     font: bold;
     font-family: 'Dot', sans-serif;
 }

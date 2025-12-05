@@ -15,28 +15,22 @@ body {
 
 }
 
-/* Background */
 .video-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     z-index: -2;
 }
 
 .video-background video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     /* Makes sure video covers the entire area */
 }
-
 #video-background {
     display: block;
 }
@@ -60,7 +54,6 @@ body {
     text-align: center;
     width: 100%;
     justify-content: center;
-    
     width: 100%;
     font-family: 'Dot', sans-serif;
     font-size: 40px;
@@ -166,8 +159,8 @@ main p {
     backdrop-filter: blur(4px);
 
     box-shadow:
-        inset 2px 2px 6px rgba(255, 255, 255, 0.4),
-        inset -2px -2px 6px rgba(0, 0, 0, 0.3),
+        inset 2px 2px 6px rgba(255, 255, 255, 0.137),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.1),
         0 4px 10px rgba(0, 0, 0, 0.25);
 
     transition: 0.25s ease;
@@ -230,6 +223,7 @@ main p {
     max-width: 800px;
     width: 100%;
 }
+
 
 
 /* Image grid layout */
@@ -323,12 +317,14 @@ main p {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 1%;
+
     font-family: 'Dot';
-    font-size: 35px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 20px 0;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    mix-blend-mode:difference;
+    /* or multiply screen, overlay, etc. */
+
+    padding: 50px 0;
     z-index: 2;
     pointer-events: none;
 }
@@ -393,4 +389,69 @@ font-size: 15px;
     text-align: center;
     white-space: normal;
 }
+
+
+/* Image fade-out animation */
+/* Image fade out */
+/* Image fade out */
+/* Fade out image */
+@keyframes fade-out-once {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.image-row1 img.fade-out-once {
+    animation: fade-out-once 0.5s ease-out forwards;
+}
+
+/* Fade in image (reverse) */
+@keyframes fade-in-once-image {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.image-row1 img.fade-in-once {
+    animation: fade-in-once-image 0.5s ease-out forwards;
+}
+
+/* Fade in text */
+@keyframes fade-in-once {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.image-row1 .hover-text.fade-in-once {
+    animation: fade-in-once 0.5s ease-out forwards;
+}
+
+/* Fade out text (reverse) */
+@keyframes fade-out-text {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.image-row1 .hover-text.fade-out-once {
+    animation: fade-out-text 0.5s ease-out forwards;
+}
+
 }
