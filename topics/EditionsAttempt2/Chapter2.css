@@ -57,9 +57,10 @@ body {
 
 .Title {
     display: flex;
+    text-align: center;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    
     width: 100%;
     font-family: 'Dot', sans-serif;
     font-size: 40px;
@@ -283,24 +284,23 @@ main p {
 
 
 .spacer {
-    height: 30%;
+    height: 25%;
 }
 .spacer2{
-    height: 25%;
+    height: 30%;
 }
 
 .Title {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    margin-left: 1%;
     font-family: 'Dot';
     font-size: 35px;
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 20px 0;
     z-index: 2;
-
     pointer-events: none;
 }
 
