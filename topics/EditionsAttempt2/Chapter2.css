@@ -254,43 +254,25 @@ main p {
 
 
 
-/* Hover text hidden by default */
-.image-item .hover-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.image-item .description {
+    position: static;
+    /* remove absolute positioning */
+    transform: none;
+    /* remove centering transform */
     width: 100%;
-    /* match image width */
-    padding: 0 20px;
-    /* optional: prevents text touching edges */
+    padding: 10px 0 0 0;
+    /* space above description */
     color: rgb(0, 0, 0);
     font-family: 'Dot', sans-serif;
-    font-size: 10px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+    font-size: 12px;
+    opacity: 1;
+    /* always visible */
     text-align: center;
     white-space: normal;
-    /* allow wrapping */
     box-sizing: border-box;
-    /* padding stays inside width */
 }
 
-/* Fade out image on hover */
-.image-item:hover img {
-    opacity: 0;
-}
 
-/* Fade in hover text */
-.image-item:hover .hover-text {
-    opacity: 1;
-}
-
-/* Ensure links still behave inside image-item */
-.image-item a {
-    display: block;
-}
 
 
 @media (max-width: 700px) {
