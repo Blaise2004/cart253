@@ -334,7 +334,7 @@ font-size: 15px;
     }
 
     .image-row1 {
-        max-width: 40%;
+        max-width: 80%;
         padding: 20px;
     }
 
@@ -348,5 +348,20 @@ font-size: 15px;
         font-size: 50px;
     }
 
-
+.image-row1 .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 0 20px;
+    color: black;
+    font-family: 'Dot', sans-serif;
+    font-size: 17x;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    text-align: center;
+    white-space: normal;
+}
 }
