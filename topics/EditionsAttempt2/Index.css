@@ -268,7 +268,7 @@ main p {
     height: auto;
     display: block;
 
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .image-item:hover {
@@ -293,36 +293,6 @@ main p {
     white-space: normal;
     box-sizing: border-box;
 }
-
-.All3 {
-    display: flex;
-    justify-content: center;
-
-    padding: 40px;
-}
-
-.All3 img {
-    max-width: 60%;
-
-    border-radius: 5px;
-}
-
-.All3 .description {
-    position: static;
-    width: 100%;
-    padding: 10px 0 0 0;
-    color: rgb(0, 0, 0);
-    font-family: 'Dot', sans-serif;
-    font-size: 12px;
-    opacity: 1;
-    text-align: center;
-    white-space: normal;
-
-
-
-}
-
-
 
 
 
