@@ -8,34 +8,47 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
     <title>Blaise Treverton</title>
 </head>
+<div id="blueHue"></div>
+
 <script>
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const maxScroll = 1200;
-            const maxBlur = 35;
+  window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
 
-            const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+        // Limits for blur + overlay fade
+        const maxScroll = 300;
+        const maxBlur = 13;
+       
 
-            // Get whichever background is currently visible
-            const desktopBG = document.getElementById("video-background");
-            const mobileBG = document.getElementById("mobile-videoBackground");
-                
-            // Check computed style — this tells us which one is actually shown
-            const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
-            const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
+        // Calculated values
+        const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+       
 
-            if (desktopVisible) {
-                desktopBG.style.filter = `blur(${blurValue}px)`;
-                mobileBG.style.filter = "";
-            } else {
-                mobileBG.style.filter = `blur(${blurValue}px)`;
-                desktopBG.style.filter = "";
-            }
-        });
+        // Background video elements
+        const desktopBG = document.getElementById("video-background");
+        const mobileBG = document.getElementById("mobile-videoBackground");
 
+        // Detect which one is currently visible
+        const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
+        const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
 
+      
+        if (desktopVisible) {
+            desktopBG.style.filter = `blur(${blurValue}px)`;
+            mobileBG.style.filter = "";
+        } else {
+            mobileBG.style.filter = `blur(${blurValue}px)`;
+            desktopBG.style.filter = "";
+        }
+
+        
+       
+        
+    });
 
 </script>
+
+
+
 <script>
     document.addEventListener("scroll", () => {
         const triggerPoint = 1800;
@@ -89,6 +102,7 @@
         <source src="assets/BackgroundIndex2_1.mp4" type="video/mp4">
     </video>
 </div>
+
 
 
 <div class="spacer"></div>
@@ -150,26 +164,27 @@ screen prints at 22 by 30 inches and 11 by 15 inches, each piece contributing to
 
     <!-- Image grid -->
 <div class="image-row">
-
-    
     <div class="image-item">
-        <img src="assets/LargeCMYK.jpg" alt="">
+        <img src="assets/_BT_1603.jpg" alt="">
         <div class="description">22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8</div>
     </div>
 
     <div class="image-item">
-            <img src="assets/MediumCMYK.jpg" alt="">
-            <div class="description">11 by 15 inch CMYK screen print on 250 GSM Somerset Satin paper 1/6</div>
-        </a>
+        <img src="assets/_BT_1536.jpg" alt="">
+        <div class="description">11 by 15 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8</div>
     </div>
 
-<div class="image-item">
-    <img src="assets/MediumCMYK.jpg" alt="">
-    <div class="description">14 by 10 inch black and white lithograph on 250 GSM Somerset Satin paper 1/7</div>
-    </a>
-</div>
+    <div class="image-item">
+        <img src="assets/_BT_1558.jpg" alt="">
+        <div class="description">14 by 10 inch black and white lithograph on 250 GSM Somerset Satin paper 1/8</div>
+    </div>
+</div> <!-- end of image-row -->
 
 
+<!-- All3 image under the grid -->
+<div class="All3">
+    <img src="assets/_BT_1623.jpg" alt="">
+    <div class="description">Size Comparison</div>
 </div>
 
 
