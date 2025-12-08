@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<div id="blueHue"></div>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Limits for blur + overlay fade
+        const maxScroll = 300;
+        const maxBlur = 13;
+
+
+        // Calculated values
+        const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+
+
+        // Background video elements
+        const desktopBG = document.getElementById("video-background");
+        const mobileBG = document.getElementById("mobile-videoBackground");
+
+        // Detect which one is currently visible
+        const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
+        const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
+
+
+        if (desktopVisible) {
+            desktopBG.style.filter = `blur(${blurValue}px)`;
+            mobileBG.style.filter = "";
+        } else {
+            mobileBG.style.filter = `blur(${blurValue}px)`;
+            desktopBG.style.filter = "";
+        }
+
+
+
+
+    });
+
+</script>
+
+
+
+<script>
+    document.addEventListener("scroll", () => {
+        const triggerPoint = 1100;
+        const section = document.querySelector(".image-row1");
+        const img = section.querySelector("img");
+        const text = section.querySelector(".hover-text");
+
+        if (window.scrollY > triggerPoint) {
+            if (!section.classList.contains("fade-triggered")) {
+                section.classList.add("fade-triggered");
+
+                setTimeout(() => {
+                    img.classList.remove("fade-in-once"); // ensure reverse class removed
+                    img.classList.add("fade-out-once");
+
+                    text.classList.remove("fade-out-once");
+                    text.classList.add("fade-in-once");
+                }, 700); // 2.5s delay before first animation
+            }
+        } else {
+            // Fade back smoothly when scrolling above trigger
+            img.classList.remove("fade-out-once");
+            img.classList.add("fade-in-once");
+
+            text.classList.remove("fade-in-once");
+            text.classList.add("fade-out-once");
+
+            section.classList.remove("fade-triggered"); // allow retriggering
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<body>
+    <!-- Background -->
+
+    <div class="video-background" id="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="assets/BackgroundIndex.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-background" id="mobile-videoBackground">
+        <video autoplay muted loop playsinline>
+            <source src="assets/BackgroundIndex2_1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+<a href="Index.html">
+    <img src="assets/HomeIcon2.png" alt="Home" class="home-icon">
+</a>
+
+    <div class="spacer"></div>
+
+    <div class="Title" id="desktop-Title">
+        <h1>Data Migration</h1>
+    </div>
+
+
+    <div class="spacer2"></div>
+
+    <div class="center-bottom">></div>
+
+
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+
+        <main>
+            <p>
+                My work looks at the hidden infrastructure behind our online lives, the systems that quietly track us,
+                profile us, and
+                turn our personal data into something profitable. I am interested in the severity of that surveillance,
+                the way it
+                operates just out of sight while shaping how we are seen, targeted, and understood by companies.
+
+                By pulling patents, diagrams, and extraction methods into view, I am revealing how these technologies
+                map our behaviour,
+                relationships, and decisions for commercial gain. It is easy to move through the internet without
+                thinking about what we
+                are giving away or who benefits from it. But the reality is that our digital selves are constantly being
+                collected,
+                repackaged, and sold.
+
+                This piece is my way of making that process visible, of confronting the quiet mechanisms built to
+                capture us, and
+                questioning the cost of living in a world where almost everything about us becomes data for someone else
+                to use.
+            </p>
+        </main>
+    </div>
+
+    <div class="image-row1">
+        <img src="assets/_BT_1622.jpg" alt="">
+
+        <div class="hover-text">Click on the button below to explore my interactive first-person narrative experience, a
+            story-driven game where you uncover the truth
+            behind the “bug” and what it represents, and how my final piece took shape through that unfolding journey.
+        </div>
+    </div>
+
+    <a href="https://blaise2004.github.io/cart253/topics/WebsiteBugs/Home.html" class="narrative-btn" target="_blank"
+        rel="noopener noreferrer">
+        Narrative Game Link
+    </a>
+
+
+    <main>
+        <p>
+            Three unique artworks are available for purchase, forming a cohesive triptych as part of the larger Data
+            Migration
+            project. The collection includes a black and white lithograph measuring 14 by 10 inches, alongside two
+            vibrant CMYK
+            screen prints at 22 by 30 inches and 11 by 15 inches, each piece contributing to the narrative of the
+            series.
+        </p>
+    </main>
+
+
+    <!-- Image grid -->
+    <div class="image-row">
+        <div class="image-item">
+            <a href="Chapter2.html">
+            <img src="assets/_BT_1603.jpg" alt=""></a>
+            <div class="description">22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8</div>
+        </div>
+
+        <div class="image-item">
+            <a href="MediumCMYK.html">
+            <img src="assets/_BT_1536.jpg" alt=""></a>
+            <div class="description">11 by 15 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8</div>
+        </div>
+
+        <div class="image-item">
+            <img src="assets/_BT_1558.jpg" alt="">
+            <div class="description">14 by 10 inch black and white lithograph on 250 GSM Somerset Satin paper 1/8</div>
+        </div>
+    </div> <!-- end of image-row -->
+
+    <!-- JavaScript for scroll-based blur -->
+    <script src="script.js"></script>
+</body>
+
+</html>

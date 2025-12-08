@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="MediumCMYK.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+  window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Limits for blur + overlay fade
+        const maxScroll = 300;
+        const maxBlur = 50;
+       
+
+        // Calculated values
+        const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+       
+
+        // Background video elements
+        const desktopBG = document.getElementById("video-background");
+        const mobileBG = document.getElementById("mobile-videoBackground");
+
+        // Detect which one is currently visible
+        const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
+        const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
+
+      
+        if (desktopVisible) {
+            desktopBG.style.filter = `blur(${blurValue}px)`;
+            mobileBG.style.filter = "";
+        } else {
+            mobileBG.style.filter = `blur(${blurValue}px)`;
+            desktopBG.style.filter = "";
+        }
+
+        
+       
+        
+    });
+
+</script>
+
+<body>
+    <!-- Background -->
+<a href="Index.html">
+    <img src="assets/HomeIcon2.png" alt="Home" class="home-icon">
+</a>
+
+
+
+    <div class="video-background" id="video-background">
+        <video autoplay muted loop playsinline>
+        <source src="assets/Reasemble1_5.mp4" type="video/mp4">
+        </video>
+    </div>
+<div class="video-background" id="mobile-videoBackground">
+    <video autoplay muted loop playsinline>
+        <source src="assets/Reasemble1_4.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+
+<div class="spacer"></div>
+
+<div class="Title"id="desktop-Title">
+    <h1>Data Migration</h1>
+</div>
+
+
+<div class="spacer2"></div>
+
+
+
+
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+<div class="content-wrap">
+
+    <div class="image-box">
+        <img src="assets/MediumCMYK.jpg" alt="">
+        <a href="Index.html" class="narrative-btn desktop-btn" target="_blank" rel="noopener noreferrer">
+            Buy
+        </a>
+        <p class="description">
+            22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8
+        </p>
+    </div>
+    
+
+    <a href="Index.html" class="narrative-btn mobile-btn" target="_blank" rel="noopener noreferrer">
+        Buy
+    </a>
+
+
+    <main class="text-box">
+        <p>
+            This piece was the first edition of the Typitic and my first CMYK screen print. It became the foundation
+            for the entire project. The original file was a large photograph taken at the Insectarium in Montreal.
+            I processed this image in TouchDesigner, a visual-coding platform, where it went through a series of
+            steps that reconfigured and reassembled it into a glitch-like composition.
+            <br><br>
+            I then brought the image into Photoshop, where it was further broken down into its CMYK layers. Each layer
+            was exported as a separate file and used to create stencils for the screen-printing process.
+        </p>
+    </main>
+
+</div>
+
+
+      
+
+    <!-- JavaScript for scroll-based blur -->
+    <script src="script.js"></script>
+</body>
+
+</html>
