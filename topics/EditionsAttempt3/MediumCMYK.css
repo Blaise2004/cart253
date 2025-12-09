@@ -104,64 +104,131 @@ body {
 
 .content-wrap {
     display: flex;
-    gap: 40px;
-    align-items: flex-start;
+    gap: 50px;
+    /* distance between image + text */
     padding: 40px;
+    max-width: 1200px;
+    /* full content width */
+    margin: 0 auto;
+    /* center on page */
+    align-items: flex-start;
+  
 }
 
-/* Left column */
+/* LEFT COLUMN — image section */
 .image-box {
-    width: 250px;
-    /* Adjust size */
+    flex: 0 0 260px;
+    
+    position: relative;
 }
 
 .image-box img {
     width: 100%;
+    
     border-radius: 5px;
     display: block;
-
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
+/* description under image */
 .image-box .description {
-    margin-top: 8px;
+    margin: 12px auto;
     font-family: 'Dot', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
-    color: black;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20%;
+
 }
 
-/* Right column */
-.text-box p {
-    max-width: 550px;
-    line-height: 1.4;
-    font-size: 15px;
+.image-box {
+    position: relative;
+  
+}
+
+
+.image-box {
+    position: relative;
+    /* required for absolute arrows */
+}
+
+.leftArrow,
+.rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* center vertically */
     font-family: 'Dot', sans-serif;
+    font-size: 60px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.15s;
+    color: rgba(42, 42, 42, 0.304);
+}
+
+/* Left arrow */
+.leftArrow {
+    left: 10px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Right arrow */
+.rightArrow {
+    right: 10px;
+}
+
+/* Hover */
+.leftArrow:hover,
+.rightArrow:hover {
+  
+    color: rgb(0, 0, 0);
+}
+
+/* BUY button (desktop) */
+.desktop-btn {
+    display: block;
+    margin: 12px auto 0 auto;
+    text-align: center;
+    width: 100px;
+}
+
+/* RIGHT COLUMN — main text */
+.text-box {
+    flex: 1;
+    /* expands to fill remaining space */
+}
+
+.text-box p {
+    font-family: 'Dot', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
     color: rgb(14, 14, 14);
+    max-width: 600px;
+    
 }
 
 
 .narrative-btn {
     display: block;
-        margin: 40px auto;
-        /* centers the button */
-        width: fit-content;
-        align-items: center;
-        padding: 15px 40px;
-        border-radius: 40px;
-        font-family:'Dot', sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        color: rgb(20, 20, 20);
-        background: rgba(255, 255, 255, 0.15);
-        text-decoration: none;
-        backdrop-filter: blur(4px);
-    
-        box-shadow:
-            inset 2px 2px 6px rgba(255, 255, 255, 0.137),
-            inset -2px -2px 6px rgba(0, 0, 0, 0.1),
-            0 4px 10px rgba(0, 0, 0, 0.25);
-    
-        transition: 0.25s ease;
+    width: fit-content;
+    padding: 15px 40px;
+    border-radius: 40px;
+    font-family: 'Dot', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(20, 20, 20);
+    background: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    box-shadow:
+        inset 2px 2px 6px rgba(255, 255, 255, 0.137),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: 0.25s ease;
+
+    /* new addition */
+   
 }
 
 .narrative-btn:hover {
@@ -172,12 +239,14 @@ body {
 /* Desktop button visible by default, mobile button hidden */
 .desktop-btn {
     display: inline-block;
-    margin-left: 20%;
+    margin-left: 28%;
 }
 
 .mobile-btn {
     display: none;
 }
+
+
 
 @media (max-width: 700px) {
 
@@ -358,13 +427,15 @@ font-size: 15px;
          }
     
          .mobile-btn {
-             display: inline-block;
-             /* show mobile button */
-             /* optional: float at bottom */
-             bottom: 20px;
-             left: 50%;
-             z-index: 1000;
-         }
+ 
+            display: block;
+           margin-top: -10%;
+        }
          
- }
+          
+        
+        
+
+
+}
 

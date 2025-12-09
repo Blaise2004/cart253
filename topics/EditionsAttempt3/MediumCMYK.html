@@ -45,6 +45,11 @@
 
 </script>
 
+
+
+
+
+
 <body>
     <!-- Background -->
 <a href="Index.html">
@@ -82,39 +87,88 @@
 
         <div class="spacer"></div>
 
-<div class="content-wrap">
+<div class="wrapper">
 
-    <div class="image-box">
-        <img src="assets/MediumCMYK.jpg" alt="">
-        <a href="Index.html" class="narrative-btn desktop-btn" target="_blank" rel="noopener noreferrer">
-            Buy
-        </a>
-        <p class="description">
-            22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8
-        </p>
-    </div>
+    <div class="spacer"></div>
+
+    <div class="content-wrap">
     
+        <!-- LEFT COLUMN -->
+        <div class="image-box">
+           
+            <a class="leftArrow">></a>
+            <a class="rightArrow">></a>
+           
+            <img src="assets/MediumCMYK.jpg" alt="">
+       
 
-    <a href="Index.html" class="narrative-btn mobile-btn" target="_blank" rel="noopener noreferrer">
-        Buy
-    </a>
+            <p class="description">
+                22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8
+            </p>
 
+            <a href="Index.html" class="narrative-btn desktop-btn" target="_blank" rel="noopener noreferrer">
+                Buy
+            </a>
+        </div>
 
-    <main class="text-box">
-        <p>
-            This piece was the first edition of the Typitic and my first CMYK screen print. It became the foundation
-            for the entire project. The original file was a large photograph taken at the Insectarium in Montreal.
-            I processed this image in TouchDesigner, a visual-coding platform, where it went through a series of
-            steps that reconfigured and reassembled it into a glitch-like composition.
-            <br><br>
-            I then brought the image into Photoshop, where it was further broken down into its CMYK layers. Each layer
-            was exported as a separate file and used to create stencils for the screen-printing process.
-        </p>
-    </main>
+      
+
+<a href="Index.html" class="narrative-btn mobile-btn" target="_blank" rel="noopener noreferrer">
+    Buy
+</a>
+        <!-- RIGHT SIDE TEXT -->
+        <main class="text-box">
+            <p>
+                This piece was the first edition of the Typitic and my first CMYK screen print. It became the foundation
+                for the entire project. The original file was a large photograph taken at the Insectarium in Montreal.
+                I processed this image in TouchDesigner, a visual-coding platform, where it went through a series of
+                steps that reconfigured and reassembled it into a glitch-like composition.
+                <br><br>
+                I then brought the image into Photoshop, where it was further broken down into its CMYK layers. Each
+                layer was exported as a separate file and used to create stencils for the screen-printing process.
+            </p>
+        </main>
+
+    </div><!-- END content-wrap -->
+
+    <!-- MOBILE BUY BUTTON BELOW EVERYTHING -->
+ 
 
 </div>
 
 
+<script>
+    const images = [
+        "assets/MediumCMYK.jpg",
+        "assets/BT1500.jpg",
+        "assets/BT1504.jpg"
+    ];
+
+    let index = 0;
+
+    const img = document.querySelector(".image-box img");
+    const leftArrow = document.querySelector(".leftArrow");
+    const rightArrow = document.querySelector(".rightArrow");
+
+    function showImage(newIndex) {
+        img.style.opacity = 0; // fade out
+
+        setTimeout(() => {
+            img.src = images[newIndex];
+            img.style.opacity = 1; // fade in
+        }, 300); // must be less than CSS transition
+    }
+
+    rightArrow.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        showImage(index);
+    });
+
+    leftArrow.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    });
+</script>
       
 
     <!-- JavaScript for scroll-based blur -->
