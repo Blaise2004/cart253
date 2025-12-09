@@ -164,7 +164,7 @@ body {
     cursor: pointer;
     z-index: 10;
     transition: 0.15s;
-    color: rgba(42, 42, 42, 0.304);
+    color: rgba(29, 29, 29, 0.745);
 }
 
 /* Left arrow */
@@ -262,10 +262,10 @@ body {
 
 
 .spacer {
-    height: 32%;
+    height: 27%;
 }
 .spacer2{
-    height: 30%;
+    height: 36%;
 }
 
 .Title {
@@ -434,8 +434,7 @@ font-size: 15px;
          
           
         
-        
-
+     
 
 }
 
