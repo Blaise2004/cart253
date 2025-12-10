@@ -296,7 +296,14 @@ main p {
     white-space: normal;
     box-sizing: border-box;
 }
-
+.SizeRefrence {
+    width: 80%;
+    height: auto;
+    display: block;
+    /* optional */
+    margin: 0 auto;
+    /* optional – centers the image */
+}
 
 
 
