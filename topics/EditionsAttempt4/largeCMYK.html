@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="largeCMYK.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+  window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Limits for blur + overlay fade
+        const maxScroll = 300;
+        const maxBlur = 50;
+       
+
+        // Calculated values
+        const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+       
+
+        // Background video elements
+        const desktopBG = document.getElementById("video-background");
+        const mobileBG = document.getElementById("mobile-videoBackground");
+
+        // Detect which one is currently visible
+        const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
+        const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
+
+      
+        if (desktopVisible) {
+            desktopBG.style.filter = `blur(${blurValue}px)`;
+            mobileBG.style.filter = "";
+        } else {
+            mobileBG.style.filter = `blur(${blurValue}px)`;
+            desktopBG.style.filter = "";
+        }
+
+        
+       
+        
+    });
+
+</script>
+
+
+
+
+
+
+<body>
+    <!-- Background -->
+<a href="Index.html">
+    <img src="assets/HomeIcon2.png" alt="Home" class="home-icon">
+</a>
+
+
+
+    <div class="video-background" id="video-background">
+        <video autoplay muted loop playsinline>
+        <source src="assets/LargeBackground.mp4" type="video/mp4">
+        </video>
+    </div>
+<div class="video-background" id="mobile-videoBackground">
+    <video autoplay muted loop playsinline>
+        <source src="assets/LargeBackground90.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+
+<div class="spacer"></div>
+
+<div class="Title"id="desktop-Title">
+    <h1>Data Migration</h1>
+</div>
+
+
+<div class="spacer2"></div>
+
+
+
+
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+<div class="wrapper">
+
+    <div class="spacer"></div>
+
+    <div class="content-wrap">
+    
+        <!-- LEFT COLUMN -->
+        <div class="image-box">
+           
+            <a class="leftArrow">></a>
+            <a class="rightArrow">></a>
+           
+            <img src="assets/LargeCMYK.jpg" alt="">
+       
+
+            <p class="description">
+                22 by 30 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8
+            </p>
+
+            <a href="Index.html" class="narrative-btn desktop-btn" target="_blank" rel="noopener noreferrer">
+                Buy
+            </a>
+        </div>
+
+      
+
+<a href="Index.html" class="narrative-btn mobile-btn" target="_blank" rel="noopener noreferrer">
+    Buy
+</a>
+        <!-- RIGHT SIDE TEXT -->
+        <main class="text-box">
+            <p>
+        This piece is my most accomplished work of art and represents the pinnacle of my screen-printing practice. As the final
+        and most recent print, it marks the conclusion of my narrative story website project. It embodies everything from the
+        “bug” motif to the patent imagery integrated into the background. Printed in CMYK and the largest of the triptych, this
+        piece stands at the forefront of my work and serves as the culmination of the themes and techniques I explored
+        throughout the project.
+            </p>
+        </main>
+
+    </div><!-- END content-wrap -->
+
+    <!-- MOBILE BUY BUTTON BELOW EVERYTHING -->
+ 
+
+</div>
+
+
+<script>
+    const images = [
+        "assets/LargeCMYK.jpg",
+        "assets/BT1603.jpg",
+        "assets/BT1505.jpg",
+        "assets/BT1507.jpg",
+        "assets/BT1506.jpg",
+        "assets/BT1516.jpg",
+        "assets/BT1511.jpg"
+       
+    ];
+
+    let index = 0;
+
+    const img = document.querySelector(".image-box img");
+    const leftArrow = document.querySelector(".leftArrow");
+    const rightArrow = document.querySelector(".rightArrow");
+
+    function showImage(newIndex) {
+        img.style.opacity = 0; // fade out
+
+        setTimeout(() => {
+            img.src = images[newIndex];
+            img.style.opacity = 1; // fade in
+        }, 300); // must be less than CSS transition
+    }
+
+    rightArrow.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        showImage(index);
+    });
+
+    leftArrow.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    });
+</script>
+      
+
+
+</body>
+
+</html>

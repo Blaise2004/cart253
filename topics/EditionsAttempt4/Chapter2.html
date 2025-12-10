@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Chapter2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = 1600;  // Scroll distance to reach full effect
+        const maxBlur = 10;      // Max blur in pixels
+        const minSaturation = 0.01; // 0.5 = half as colorful (desaturated)
+
+        // Calculate current values
+        const blurValue = Math.min(scrollY / maxScroll * maxBlur, maxBlur);
+        const saturationValue = Math.max(1 - (scrollY / maxScroll) * (1 - minSaturation), minSaturation);
+
+        // Apply both filters
+        document.querySelector('.video-background').style.filter =
+            `blur(${blurValue}px)`;
+
+  
+    });
+
+
+
+</script>
+
+
+
+
+<body>
+    <!-- Background -->
+
+<div class="video-background">
+    <video autoplay muted loop playsinline>
+        <source src="assets/aboutBackground.mp4" type="video/mp4">
+    </video>
+</div>
+
+<a href="Index.html">
+    <img src="assets/HomeIcon2.png" alt="Home" class="home-icon">
+</a>
+
+<div class="spacer"></div>
+<div class="center-bottom">></div>
+    <!-- Main content -->
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+
+        <main>
+            <p>
+                …and then it happens. The bug ruptures—not violently, but as if its surface simply gives up holding itself together. It
+                blooms outward in a silent burst, and what spills from it is not code, not light, but paper. Hundreds of pieces,
+                thousands, cascading into the void like brittle white petals. I stand there, stunned,
+                watching the creature’s true body unravel into this impossible storm. Instinctively, I reach out and catch one. The
+                paper is cold. 
+            </p>
+        </main>
+    </div>
+
+<div class="image-row1"> <img src="assets/Modeling_And_Visualizing_A_Dynamic_Interpersonal_Relationship_From_Social_Media_noBackground.png" alt=""></div>
+<div class="wrapper">
+
+    <div class="spacer"></div>
+
+
+    <main>
+        <p>
+    A diagram is etched across it—intricate, delicate, familiar. Then I understand. These aren’t scraps.
+    They’re patents. Designs. Schematics. The blueprints companies use to take from people quietly, methodically.
+    These are the things the bug used to steal from me, from everyone. And now they’re everywhere.
+    
+    I manage to catch only a few, handfuls at most, and place them carefully at my feet.
+    Even with so few, they form a small, scattered pattern, giving me a glimpse of what the bug has collected.
+    I study them quietly, trying to take in what I’m seeing, piece by piece.
+        </p>
+    </main>
+</div>
+
+    <!-- Image grid -->
+<div class="image-row">
+
+    <div class="image-item">
+        <img src="assets/Modeling_And_Visualizing_A_Dynamic_Interpersonal_Relationship_From_Social_Media_noBackground.png"
+            alt="">
+        <div class="hover-text">This patent outlines a system that analyzes a user’s social-media data to model and visualize relationship strength over
+        time. It classifies contacts (friends, colleagues, acquaintances) into types (personal, operational, strategic), tracks
+        interactions (messages, posts, profile data), and predicts future tie-strength — effectively profiling social
+        relationships by mining personal activity.</div>
+    </div>
+
+    <div class="image-item">
+      
+            <img src="assets/System_And_Method_For_Identifying_Contacts_Of_A_Target_User_In_A_Social_Network_noBackground.png"
+                alt="">
+            <div class="hover-text">This system reconstructs a user's hidden “friends/contact list” by crawling other users' profiles. It infers connections
+            even when the target user hides their contacts — revealing relationships and networks by cross-referencing publicly
+            available data.</div>
+        </a>
+    </div>
+
+    <div class="image-item">
+        <img src="assets/Machine_Learned_Candidate_Selection_On_Inverted_Indices_noBackgorund.png" alt="">
+        <div class="hover-text">Describes building behavioral index models from member activity and using those indices to rank or select candidate
+        items (people, content). It trains feature vectors on historical behaviors and applies learned models to search
+        structures (inverted indices), effectively surfacing likely matches—leveraging behavioral traces to surface
+        people/content based on mined usage.</div>
+    </div>
+
+    <div class="image-item">
+            <img src="assets/System_And_Method_For_Managing_Targeted_Social_Communications_noBackground.png" alt="">
+            <div class="hover-text">A platform for measuring, routing, and personalizing messages based on social activity and content signals. It monitors
+            social streams, evaluates conversation context and user attributes, then selects or targets communications to specific
+            users or groups. By harvesting and scoring social signals it directs tailored messaging and can amplify profiling and
+            targeting.</div>
+        </a>
+    </div>
+
+    <div class="image-item">
+        <img src="assets/Monitoring_User_Status_By_Comparing_Public_And_Private_Activities.png" alt="">
+        <div class="hover-text">This invention pairs public activity (posts, public shares) with private activity signals to detect anomalous behavior
+        or infer private states. It constructs paired feature vectors over time and flags correlations — enabling inference of
+        private actions from public traces and therefore revealing sensitive patterns by combining data streams.</div>
+    </div>
+
+    <div class="image-item">
+        <img src="assets/User_Recommendation_Using_A_Multi-view_Deep_Learning_Framework.png" alt="">
+        <div class="hover-text">Recommendation Using a Multi-View Deep Learning Framework
+        This patent describes a deep-learning system that maps both user behavior and item/content features into a latent space.
+        By learning from a user’s past interactions across different “views,” it predicts and recommends content or products
+        that match inferred preferences — exploiting behavioral traces to influence what users see and engage with.</div>
+    </div>
+
+</div>
+
+<nav><a href="Chapter3.html">></a></nav>
+   
+
+    <!-- JavaScript for scroll-based blur -->
+    <script src="script.js"></script>
+</body>
+
+</html>

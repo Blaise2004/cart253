@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="MediumCMYK.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.12.0/model-viewer.min.js"></script>
+    <title>Blaise Treverton</title>
+</head>
+<script>
+  window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Limits for blur + overlay fade
+        const maxScroll = 300;
+        const maxBlur = 50;
+       
+
+        // Calculated values
+        const blurValue = Math.min((scrollY / maxScroll) * maxBlur, maxBlur);
+       
+
+        // Background video elements
+        const desktopBG = document.getElementById("video-background");
+        const mobileBG = document.getElementById("mobile-videoBackground");
+
+        // Detect which one is currently visible
+        const desktopVisible = window.getComputedStyle(desktopBG).display !== "none";
+        const mobileVisible = window.getComputedStyle(mobileBG).display !== "none";
+
+      
+        if (desktopVisible) {
+            desktopBG.style.filter = `blur(${blurValue}px)`;
+            mobileBG.style.filter = "";
+        } else {
+            mobileBG.style.filter = `blur(${blurValue}px)`;
+            desktopBG.style.filter = "";
+        }
+
+        
+       
+        
+    });
+
+</script>
+
+
+
+
+
+
+<body>
+    <!-- Background -->
+<a href="Index.html">
+    <img src="assets/HomeIcon2.png" alt="Home" class="home-icon">
+</a>
+
+
+
+    <div class="video-background" id="video-background">
+        <video autoplay muted loop playsinline>
+        <source src="assets/Reasemble1_5.mp4" type="video/mp4">
+        </video>
+    </div>
+<div class="video-background" id="mobile-videoBackground">
+    <video autoplay muted loop playsinline>
+        <source src="assets/Reasemble1_4.mp4" type="video/mp4">
+    </video>
+</div>
+
+
+
+<div class="spacer"></div>
+
+<div class="Title"id="desktop-Title">
+    <h1>Data Migration</h1>
+</div>
+
+
+<div class="spacer2"></div>
+
+
+
+
+    <div class="wrapper">
+
+        <div class="spacer"></div>
+
+<div class="wrapper">
+
+    <div class="spacer"></div>
+
+    <div class="content-wrap">
+    
+        <!-- LEFT COLUMN -->
+        <div class="image-box">
+           
+            <a class="leftArrow">></a>
+            <a class="rightArrow">></a>
+           
+            <img src="assets/MediumCMYK.jpg" alt="">
+       
+
+            <p class="description">
+                11 by 15 inch CMYK screen print on 250 GSM Somerset Satin paper 1/8
+            </p>
+
+            <a href="Index.html" class="narrative-btn desktop-btn" target="_blank" rel="noopener noreferrer">
+                Buy
+            </a>
+        </div>
+
+      
+
+<a href="Index.html" class="narrative-btn mobile-btn" target="_blank" rel="noopener noreferrer">
+    Buy
+</a>
+        <!-- RIGHT SIDE TEXT -->
+        <main class="text-box">
+            <p>
+                This piece was the first edition of the Typitic and my first CMYK screen print. It became the foundation
+                for the entire project. The original file was a large photograph taken at the Insectarium in Montreal.
+                I processed this image in TouchDesigner, a visual-coding platform, where it went through a series of
+                steps that reconfigured and reassembled it into a glitch-like composition.
+                <br><br>
+                I then brought the image into Photoshop, where it was further broken down into its CMYK layers. Each
+                layer was exported as a separate file and used to create stencils for the screen-printing process.
+            </p>
+        </main>
+
+    </div><!-- END content-wrap -->
+
+    <!-- MOBILE BUY BUTTON BELOW EVERYTHING -->
+ 
+
+</div>
+
+
+<script>
+    const images = [
+        "assets/MediumCMYK.jpg",
+        "assets/BT1500.jpg",
+        "assets/BT1504.jpg"
+    ];
+
+    let index = 0;
+
+    const img = document.querySelector(".image-box img");
+    const leftArrow = document.querySelector(".leftArrow");
+    const rightArrow = document.querySelector(".rightArrow");
+
+    function showImage(newIndex) {
+        img.style.opacity = 0; // fade out
+
+        setTimeout(() => {
+            img.src = images[newIndex];
+            img.style.opacity = 1; // fade in
+        }, 300); // must be less than CSS transition
+    }
+
+    rightArrow.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        showImage(index);
+    });
+
+    leftArrow.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    });
+</script>
+      
+
+
+</body>
+
+</html>

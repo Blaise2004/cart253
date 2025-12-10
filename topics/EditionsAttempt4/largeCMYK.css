@@ -1,0 +1,448 @@
+/* General layout */
+html,
+
+
+body {
+    height: 100%;
+
+
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'Dot';
+    src: url('assets/fonts/Doto/static/Doto-ExtraBold.ttf');
+
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+        /* full screen width */
+        height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+
+}
+
+.video-background video {
+    width: 100%;
+        /* full screen width */
+        height: 100%;
+    object-fit: cover;
+    /* Makes sure video covers the entire area */
+}
+#video-background {
+    display: block;
+}
+
+#mobile-videoBackground {
+    display: none;
+}
+
+.home-icon {
+    position: fixed;
+    /* stays in the same place on scroll */
+    top: 20px;
+    /* distance from top */
+    right: 20px;
+    /* distance from right */
+    width: 70px;
+    /* adjust size as needed */
+    height: 70px;
+    /* optional */
+    cursor: pointer;
+    /* pointer on hover */
+    z-index: 1000;
+    /* ensures it stays on top */
+    mix-blend-mode: difference;
+    transition: opacity 0.3s ease;
+    /* smooth hover effect */
+}
+
+.home-icon:hover {
+    opacity: 0.8;
+    /* slight fade on hover */
+}
+
+.spacer {
+    height: 20%;
+    width: 100%;
+}
+
+.spacer2 {
+    height: 30%;
+    width: 100%;
+}
+
+.Title {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Dot', sans-serif;
+    font-size: 70px;
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
+    
+}
+
+/* Main content */
+.wrapper {
+    width: 100%;
+
+}
+
+
+
+
+
+
+
+.content-wrap {
+    display: flex;
+    gap: 50px;
+    /* distance between image + text */
+    padding: 40px;
+    max-width: 80%;
+    /* full content width */
+    margin: 0 auto;
+    /* center on page */
+    align-items: flex-start;
+  
+}
+
+/* LEFT COLUMN — image section */
+.image-box {
+    flex: 0 0 400px;
+    
+    position: relative;
+}
+
+.image-box img {
+    width: 100%;
+    
+    border-radius: 5px;
+    display: block;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+/* description under image */
+.image-box .description {
+    margin: 12px auto;
+    font-family: 'Dot', sans-serif;
+    font-size: 19px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20%;
+
+}
+
+.image-box {
+    position: relative;
+  
+}
+
+
+.image-box {
+    position: relative;
+    /* required for absolute arrows */
+}
+
+.leftArrow,
+.rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* center vertically */
+    font-family: 'Dot', sans-serif;
+    font-size: 60px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.15s;
+    color: rgba(29, 29, 29, 0.745);
+}
+
+/* Left arrow */
+.leftArrow {
+    left: 10px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Right arrow */
+.rightArrow {
+    right: 10px;
+}
+
+/* Hover */
+.leftArrow:hover,
+.rightArrow:hover {
+  
+    color: rgb(0, 0, 0);
+}
+
+/* BUY button (desktop) */
+.desktop-btn {
+    display: block;
+    margin: 12px auto 0 auto;
+    text-align: center;
+    width: 100px;
+}
+
+/* RIGHT COLUMN — main text */
+.text-box {
+    flex: 1;
+    /* expands to fill remaining space */
+}
+
+.text-box p {
+    font-family: 'Dot', sans-serif;
+    font-size: 30px;
+    line-height: 1.5;
+    color: rgb(14, 14, 14);
+    max-width: 1000px,auto;
+    
+}
+
+
+.narrative-btn {
+    display: block;
+    width: fit-content;
+    padding: 28px 70px;
+    border-radius: 40px;
+    font-family: 'Dot', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(20, 20, 20);
+    background: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    box-shadow:
+        inset 2px 2px 6px rgba(255, 255, 255, 0.137),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: 0.25s ease;
+
+    /* new addition */
+   
+}
+
+.narrative-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.03);
+}
+
+/* Desktop button visible by default, mobile button hidden */
+.desktop-btn {
+    display: inline-block;
+    margin-left: 30%;
+    margin-top: -30px;
+}
+
+.mobile-btn {
+    display: none;
+}
+
+
+
+@media (max-width: 700px) {
+
+    #video-background {
+            display: none;
+        }
+    
+        #mobile-videoBackground {
+            display: block;
+        }
+
+
+
+
+.spacer {
+    height: 27%;
+}
+.spacer2{
+    height: 36%;
+}
+
+.Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Dot';
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    mix-blend-mode:difference;
+    /* or multiply screen, overlay, etc. */
+
+    padding: 50px 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+
+
+.image-item .hover-text {
+font-size: 15px;
+}
+    /* Image grid */
+    .image-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .image-row img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .image-row1 {
+        max-width: 80%;
+        padding: 20px;
+    }
+
+    .image-row1 img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    h1 a {
+        margin-top: 25%;
+        font-size: 50px;
+    }
+
+.image-row1 .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 0 20px;
+    color: black;
+    font-family: 'Dot', sans-serif;
+    font-size: 25x;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    text-align: center;
+    white-space: normal;
+}
+
+
+/* Image fade-out animation */
+/* Image fade out */
+/* Image fade out */
+/* Fade out image */
+@keyframes fade-out-once {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.image-row1 img.fade-out-once {
+    animation: fade-out-once 0.5s ease-out forwards;
+}
+
+/* Fade in image (reverse) */
+@keyframes fade-in-once-image {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.image-row1 img.fade-in-once {
+    animation: fade-in-once-image 0.5s ease-out forwards;
+}
+
+/* Fade in text */
+@keyframes fade-in-once {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.image-row1 .hover-text.fade-in-once {
+    animation: fade-in-once 0.5s ease-out forwards;
+}
+
+/* Fade out text (reverse) */
+@keyframes fade-out-text {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.image-row1 .hover-text.fade-out-once {
+    animation: fade-out-text 0.5s ease-out forwards;
+}
+
+
+ .content-wrap {
+     flex-direction: column;
+     /* stack image above text */
+     align-items: center;
+     padding: 5px;
+ }
+
+ .image-box {
+     width: 95%;
+     /* make image nicely fit the screen */
+     margin-bottom: 5px;
+ }
+
+ .text-box p {
+     max-width: 100%;
+     text-align: center;
+     /* optional for mobile */
+ }
+
+
+ 
+         .desktop-btn {
+             display: none;
+             /* hide desktop button */
+         }
+    
+         .mobile-btn {
+ 
+            display: block;
+           margin-top: -10%;
+        }
+         
+          
+                .text-box p {
+                    font-family: 'Dot', sans-serif;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    color: rgb(14, 14, 14);
+                    max-width: 1000px, auto;
+        
+                }
+     
+
+}
+
