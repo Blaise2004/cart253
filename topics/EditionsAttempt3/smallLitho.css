@@ -20,8 +20,8 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-        /* full screen width */
-        height: 100vh;
+    /* full screen width */
+    height: 100vh;
     overflow: hidden;
     z-index: -2;
 
@@ -29,11 +29,12 @@ body {
 
 .video-background video {
     width: 100%;
-        /* full screen width */
-        height: 100%;
+    /* full screen width */
+    height: 100%;
     object-fit: cover;
     /* Makes sure video covers the entire area */
 }
+
 #video-background {
     display: block;
 }
@@ -49,9 +50,9 @@ body {
     /* distance from top */
     right: 20px;
     /* distance from right */
-    width: 40px;
+    width: 70px;
     /* adjust size as needed */
-    height: 40px;
+    height: 70px;
     /* optional */
     cursor: pointer;
     /* pointer on hover */
@@ -84,10 +85,10 @@ body {
     justify-content: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
-    font-size: 40px;
+    font-size: 70px;
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
-    
+
 }
 
 /* Main content */
@@ -107,24 +108,24 @@ body {
     gap: 50px;
     /* distance between image + text */
     padding: 40px;
-    max-width: 1200px;
+    max-width: 80%;
     /* full content width */
     margin: 0 auto;
     /* center on page */
     align-items: flex-start;
-  
+
 }
 
 /* LEFT COLUMN — image section */
 .image-box {
-    flex: 0 0 260px;
-    
+    flex: 0 0 400px;
+
     position: relative;
 }
 
 .image-box img {
     width: 100%;
-    
+
     border-radius: 5px;
     display: block;
     opacity: 1;
@@ -135,7 +136,7 @@ body {
 .image-box .description {
     margin: 12px auto;
     font-family: 'Dot', sans-serif;
-    font-size: 13px;
+    font-size: 19px;
     text-align: center;
     color: rgb(0, 0, 0);
     margin-bottom: 20%;
@@ -144,7 +145,7 @@ body {
 
 .image-box {
     position: relative;
-  
+
 }
 
 
@@ -181,7 +182,7 @@ body {
 /* Hover */
 .leftArrow:hover,
 .rightArrow:hover {
-  
+
     color: rgb(0, 0, 0);
 }
 
@@ -201,18 +202,18 @@ body {
 
 .text-box p {
     font-family: 'Dot', sans-serif;
-    font-size: 15px;
+    font-size: 30px;
     line-height: 1.5;
     color: rgb(14, 14, 14);
-    max-width: 600px;
-    
+    max-width: 1000px, auto;
+
 }
 
 
 .narrative-btn {
     display: block;
     width: fit-content;
-    padding: 15px 40px;
+    padding: 28px 70px;
     border-radius: 40px;
     font-family: 'Dot', sans-serif;
     font-size: 20px;
@@ -228,7 +229,7 @@ body {
     transition: 0.25s ease;
 
     /* new addition */
-   
+
 }
 
 .narrative-btn:hover {
@@ -239,7 +240,8 @@ body {
 /* Desktop button visible by default, mobile button hidden */
 .desktop-btn {
     display: inline-block;
-    margin-left: 28%;
+    margin-left: 30%;
+    margin-top: -30px;
 }
 
 .mobile-btn {
@@ -251,45 +253,47 @@ body {
 @media (max-width: 700px) {
 
     #video-background {
-            display: none;
-        }
-    
-        #mobile-videoBackground {
-            display: block;
-        }
+        display: none;
+    }
+
+    #mobile-videoBackground {
+        display: block;
+    }
 
 
 
 
-.spacer {
-    height: 27%;
-}
-.spacer2{
-    height: 36%;
-}
+    .spacer {
+        height: 27%;
+    }
 
-.Title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .spacer2 {
+        height: 36%;
+    }
 
-    font-family: 'Dot';
-    font-size: 30px;
-    color: rgb(255, 255, 255);
-    mix-blend-mode:difference;
-    /* or multiply screen, overlay, etc. */
+    .Title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    padding: 50px 0;
-    z-index: 2;
-    pointer-events: none;
-}
+        font-family: 'Dot';
+        font-size: 30px;
+        color: rgb(255, 255, 255);
+        mix-blend-mode: difference;
+        /* or multiply screen, overlay, etc. */
+
+        padding: 50px 0;
+        z-index: 2;
+        pointer-events: none;
+    }
 
 
 
 
-.image-item .hover-text {
-font-size: 15px;
-}
+    .image-item .hover-text {
+        font-size: 15px;
+    }
+
     /* Image grid */
     .image-row {
         grid-template-columns: 1fr;
@@ -318,123 +322,129 @@ font-size: 15px;
         font-size: 50px;
     }
 
-.image-row1 .hover-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    padding: 0 20px;
-    color: black;
-    font-family: 'Dot', sans-serif;
-    font-size: 25x;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    text-align: center;
-    white-space: normal;
-}
-
-
-/* Image fade-out animation */
-/* Image fade out */
-/* Image fade out */
-/* Fade out image */
-@keyframes fade-out-once {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
+    .image-row1 .hover-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        padding: 0 20px;
+        color: black;
+        font-family: 'Dot', sans-serif;
+        font-size: 25x;
         opacity: 0;
-    }
-}
-
-.image-row1 img.fade-out-once {
-    animation: fade-out-once 0.5s ease-out forwards;
-}
-
-/* Fade in image (reverse) */
-@keyframes fade-in-once-image {
-    0% {
-        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        text-align: center;
+        white-space: normal;
     }
 
-    100% {
-        opacity: 1;
-    }
-}
 
-.image-row1 img.fade-in-once {
-    animation: fade-in-once-image 0.5s ease-out forwards;
-}
-
-/* Fade in text */
-@keyframes fade-in-once {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.image-row1 .hover-text.fade-in-once {
-    animation: fade-in-once 0.5s ease-out forwards;
-}
-
-/* Fade out text (reverse) */
-@keyframes fade-out-text {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-.image-row1 .hover-text.fade-out-once {
-    animation: fade-out-text 0.5s ease-out forwards;
-}
-
-
- .content-wrap {
-     flex-direction: column;
-     /* stack image above text */
-     align-items: center;
-     padding: 5px;
- }
-
- .image-box {
-     width: 95%;
-     /* make image nicely fit the screen */
-     margin-bottom: 5px;
- }
-
- .text-box p {
-     max-width: 100%;
-     text-align: center;
-     /* optional for mobile */
- }
-
-
- 
-         .desktop-btn {
-             display: none;
-             /* hide desktop button */
-         }
-    
-         .mobile-btn {
- 
-            display: block;
-           margin-top: -10%;
+    /* Image fade-out animation */
+    /* Image fade out */
+    /* Image fade out */
+    /* Fade out image */
+    @keyframes fade-out-once {
+        0% {
+            opacity: 1;
         }
-         
-          
-        
-     
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .image-row1 img.fade-out-once {
+        animation: fade-out-once 0.5s ease-out forwards;
+    }
+
+    /* Fade in image (reverse) */
+    @keyframes fade-in-once-image {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .image-row1 img.fade-in-once {
+        animation: fade-in-once-image 0.5s ease-out forwards;
+    }
+
+    /* Fade in text */
+    @keyframes fade-in-once {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .image-row1 .hover-text.fade-in-once {
+        animation: fade-in-once 0.5s ease-out forwards;
+    }
+
+    /* Fade out text (reverse) */
+    @keyframes fade-out-text {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .image-row1 .hover-text.fade-out-once {
+        animation: fade-out-text 0.5s ease-out forwards;
+    }
+
+
+    .content-wrap {
+        flex-direction: column;
+        /* stack image above text */
+        align-items: center;
+        padding: 5px;
+    }
+
+    .image-box {
+        width: 95%;
+        /* make image nicely fit the screen */
+        margin-bottom: 5px;
+    }
+
+    .text-box p {
+        max-width: 100%;
+        text-align: center;
+        /* optional for mobile */
+    }
+
+
+
+    .desktop-btn {
+        display: none;
+        /* hide desktop button */
+    }
+
+    .mobile-btn {
+
+        display: block;
+        margin-top: -10%;
+    }
+
+
+    .text-box p {
+        font-family: 'Dot', sans-serif;
+        font-size: 20px;
+        line-height: 1.5;
+        color: rgb(14, 14, 14);
+        max-width: 1000px, auto;
+
+    }
+
 
 }
-
