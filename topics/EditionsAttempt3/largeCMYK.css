@@ -49,9 +49,9 @@ body {
     /* distance from top */
     right: 20px;
     /* distance from right */
-    width: 40px;
+    width: 70px;
     /* adjust size as needed */
-    height: 40px;
+    height: 70px;
     /* optional */
     cursor: pointer;
     /* pointer on hover */
@@ -84,7 +84,7 @@ body {
     justify-content: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
-    font-size: 40px;
+    font-size: 70px;
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
     
@@ -107,7 +107,7 @@ body {
     gap: 50px;
     /* distance between image + text */
     padding: 40px;
-    max-width: 1200px;
+    max-width: 80%;
     /* full content width */
     margin: 0 auto;
     /* center on page */
@@ -117,7 +117,7 @@ body {
 
 /* LEFT COLUMN — image section */
 .image-box {
-    flex: 0 0 260px;
+    flex: 0 0 400px;
     
     position: relative;
 }
@@ -135,7 +135,7 @@ body {
 .image-box .description {
     margin: 12px auto;
     font-family: 'Dot', sans-serif;
-    font-size: 13px;
+    font-size: 19px;
     text-align: center;
     color: rgb(0, 0, 0);
     margin-bottom: 20%;
@@ -201,10 +201,10 @@ body {
 
 .text-box p {
     font-family: 'Dot', sans-serif;
-    font-size: 15px;
+    font-size: 30px;
     line-height: 1.5;
     color: rgb(14, 14, 14);
-    max-width: 600px;
+    max-width: 1000px,auto;
     
 }
 
@@ -212,7 +212,7 @@ body {
 .narrative-btn {
     display: block;
     width: fit-content;
-    padding: 15px 40px;
+    padding: 28px 70px;
     border-radius: 40px;
     font-family: 'Dot', sans-serif;
     font-size: 20px;
@@ -239,7 +239,8 @@ body {
 /* Desktop button visible by default, mobile button hidden */
 .desktop-btn {
     display: inline-block;
-    margin-left: 28%;
+    margin-left: 30%;
+    margin-top: -30px;
 }
 
 .mobile-btn {
@@ -433,7 +434,14 @@ font-size: 15px;
         }
          
           
+                .text-box p {
+                    font-family: 'Dot', sans-serif;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    color: rgb(14, 14, 14);
+                    max-width: 1000px, auto;
         
+                }
      
 
 }

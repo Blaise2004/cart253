@@ -5,6 +5,8 @@ html,
 body {
     height: 100%;
 
+       
+  
 
     scroll-behavior: smooth;
 }
@@ -47,9 +49,9 @@ body {
     /* distance from top */
     right: 20px;
     /* distance from right */
-    width: 40px;
+    width: 70px;
     /* adjust size as needed */
-    height: 40px;
+    height: 70px;
     /* optional */
     cursor: pointer;
     /* pointer on hover */
@@ -65,7 +67,7 @@ body {
 }
 
 .spacer2 {
-    height: 15%;
+    height: 35%;
     width: 100%;
 }
 
@@ -76,7 +78,7 @@ body {
     justify-content: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
-    font-size: 40px;
+    font-size: 70px;
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
 
@@ -90,7 +92,7 @@ body {
     align-items: center;
     width: 100%;
     font-family: 'Dot', sans-serif;
-    font-size: 40px;
+    font-size: 70px;
     color: rgb(0, 0, 0);
     text-align: center;
     z-index: 2;
@@ -160,7 +162,7 @@ main p {
     margin: 40px auto;
     line-height: 1.2;
     color: rgb(0, 0, 0);
-    font-size: 15px;
+    font-size: 28px;
     font: bold;
     font-family: 'Dot', sans-serif;
 }
@@ -171,7 +173,7 @@ main p {
     /* centers the button */
     width: fit-content;
 
-    padding: 15px 40px;
+    padding: 28px 70px;
     border-radius: 40px;
     font-size: 20px;
     font-weight: 600;
@@ -200,7 +202,7 @@ main p {
     display: flex;
     justify-content: center;
     padding: 40px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -251,6 +253,7 @@ main p {
     padding: 40px;
     transition: transform 0.3s;
 
+
 }
 
 /* Each image + its hover text overlay */
@@ -286,7 +289,7 @@ main p {
     /* space above description */
     color: rgb(0, 0, 0);
     font-family: 'Dot', sans-serif;
-    font-size: 12px;
+    font-size: 19px;
     opacity: 1;
     /* always visible */
     text-align: center;
